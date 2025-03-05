@@ -1,6 +1,7 @@
 
 # Clase 1: Conceptos básicos de Python
 
+**Tabla de contenidos**
 - [Clase 1: Conceptos básicos de Python](#clase-1-conceptos-básicos-de-python)
   - [1. Indentación en Python](#1-indentación-en-python)
     - [Reglas clave de la indentación en Python](#reglas-clave-de-la-indentación-en-python)
