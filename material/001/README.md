@@ -141,23 +141,113 @@ Otra opción es utilizar `#` en varias líneas consecutivas:
 
 Python maneja diferentes tipos de datos, organizados en categorías.
 
-| Categoría        | Tipo         | Descripción                               | Ejemplo                          | _Type casting_         |
-|-----------------|-------------|-------------------------------------------|----------------------------------|--------------------------|
-| **Texto**       | `str`       | Cadenas de caracteres                     | `"Hola, Python!"`               | `str(valor)`             |
-| **Numéricos**   | `int`       | Números enteros                           | `5, -3, 100`                     | `int(valor)`             |
-|                | `float`     | Números decimales                         | `3.14, -0.5, 2.71`               | `float(valor)`           |
-|                | `complex`   | Números complejos                         | `3+5j, -1j`                      | `complex(valor)`         |
-| **Secuencias**  | `list`      | Lista de valores modificables             | `[1, 2, 3]`                      | `list(valor)`            |
-|                | `tuple`     | Lista de valores inmutables               | `(10, 20, 30)`                   | `tuple(valor)`           |
-|                | `range`     | Rango de números                          | `range(5)` (0,1,2,3,4)           | `range(inicio, fin, paso)` |
-| **Mapas**      | `dict`      | Almacena pares clave-valor                | `{"nombre": "Ana", "edad": 17}`  | `dict(valor)`            |
-| **Conjuntos**   | `set`       | Conjunto de valores únicos                | `{1, 2, 3}`                      | `set(valor)`             |
-|                | `frozenset` | Conjunto inmutable                        | `frozenset([1, 2, 3])`           | `frozenset(valor)`       |
-| **Booleanos**   | `bool`      | Valores lógicos `True` o `False`          | `True, False`                    | `bool(valor)`            |
-| **Binarios**    | `bytes`     | Secuencia de bytes inmutable              | `b"Hola"`                        | `bytes(valor)`           |
-|                | `bytearray` | Secuencia de bytes modificable            | `bytearray(5)`                   | `bytearray(valor)`       |
-|                | `memoryview` | Vista de memoria de un objeto binario     | `memoryview(b"Hola")`            | `memoryview(valor)`      |
-| **Nulo**        | `NoneType`  | Representa ausencia de valor              | `None`                           | No aplica                |
+<table>
+  <tr>
+    <th>Categoría</th>
+    <th>Tipo</th>
+    <th>Descripción</th>
+    <th>Ejemplo</th>
+    <th>Type casting</th>
+  </tr>
+  <tr>
+    <td rowspan="1"><b>Texto</b></td>
+    <td><code>str</code></td>
+    <td>Cadenas de caracteres</td>
+    <td><code>"Hola, Python!"</code></td>
+    <td><code>str(valor)</code></td>
+  </tr>
+  <tr>
+    <td rowspan="3"><b>Numéricos</b></td>
+    <td><code>int</code></td>
+    <td>Números enteros</td>
+    <td><code>5, -3, 100</code></td>
+    <td><code>int(valor)</code></td>
+  </tr>
+  <tr>
+    <td><code>float</code></td>
+    <td>Números decimales</td>
+    <td><code>3.14, -0.5, 2.71</code></td>
+    <td><code>float(valor)</code></td>
+  </tr>
+  <tr>
+    <td><code>complex</code></td>
+    <td>Números complejos</td>
+    <td><code>3+5j, -1j</code></td>
+    <td><code>complex(valor)</code></td>
+  </tr>
+  <tr>
+    <td rowspan="3"><b>Secuencias</b></td>
+    <td><code>list</code></td>
+    <td>Lista de valores modificables</td>
+    <td><code>[1, 2, 3]</code></td>
+    <td><code>list(valor)</code></td>
+  </tr>
+  <tr>
+    <td><code>tuple</code></td>
+    <td>Lista de valores inmutables</td>
+    <td><code>(10, 20, 30)</code></td>
+    <td><code>tuple(valor)</code></td>
+  </tr>
+  <tr>
+    <td><code>range</code></td>
+    <td>Rango de números</td>
+    <td><code>range(5)</code> = (0,1,2,3,4)</td>
+    <td><code>range(inicio, fin, paso)</code></td>
+  </tr>
+  <tr>
+    <td rowspan="1"><b>Mapas</b></td>
+    <td><code>dict</code></td>
+    <td>Almacena pares clave-valor</td>
+    <td><code>{"nombre": "Ana", "edad": 17}</code></td>
+    <td><code>dict(valor)</code></td>
+  </tr>
+  <tr>
+    <td rowspan="2"><b>Conjuntos</b></td>
+    <td><code>set</code></td>
+    <td>Conjunto de valores únicos</td>
+    <td><code>{1, 2, 3}</code></td>
+    <td><code>set(valor)</code></td>
+  </tr>
+  <tr>
+    <td><code>frozenset</code></td>
+    <td>Conjunto inmutable</td>
+    <td><code>frozenset([1, 2, 3])</code></td>
+    <td><code>frozenset(valor)</code></td>
+  </tr>
+  <tr>
+    <td rowspan="1"><b>Booleanos</b></td>
+    <td><code>bool</code></td>
+    <td>Valores lógicos <code>True</code> o <code>False</code></td>
+    <td><code>True, False</code></td>
+    <td><code>bool(valor)</code></td>
+  </tr>
+  <tr>
+    <td rowspan="3"><b>Binarios</b></td>
+    <td><code>bytes</code></td>
+    <td>Secuencia de bytes inmutable</td>
+    <td><code>b"Hola"</code></td>
+    <td><code>bytes(valor)</code></td>
+  </tr>
+  <tr>
+    <td><code>bytearray</code></td>
+    <td>Secuencia de bytes modificable</td>
+    <td><code>bytearray(5)</code></td>
+    <td><code>bytearray(valor)</code></td>
+  </tr>
+  <tr>
+    <td><code>memoryview</code></td>
+    <td>Vista de memoria de un objeto binario</td>
+    <td><code>memoryview(b"Hola")</code></td>
+    <td><code>memoryview(valor)</code></td>
+  </tr>
+  <tr>
+    <td rowspan="1"><b>Nulo</b></td>
+    <td><code>NoneType</code></td>
+    <td>Representa ausencia de valor</td>
+    <td><code>None</code></td>
+    <td>No aplica</td>
+  </tr>
+</table>
 
 A continuación se muestra la definición de variables de cada uno de los tipos de datos anteriores:
 
@@ -243,7 +333,7 @@ precio = float(input("Ingresa un precio: "))  # Conversión a flotante
 print("Edad:", edad, "Precio:", precio)
 ```
 
-## 3. Concatenación de Strings
+## 6. Concatenación de Strings
 
 La **concatenación** de strings es la unión de dos o más cadenas de texto.
 
