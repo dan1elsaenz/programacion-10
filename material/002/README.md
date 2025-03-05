@@ -1,6 +1,24 @@
 # Clase 2
 
-En esta clase, se abordan los temas de operadores, strings (métodos y slicing), booleanos y la estructura de control `if-elif-else`.
+**Tabla de contenidos**
+- [Clase 2](#clase-2)
+  - [1. Operadores en Python](#1-operadores-en-python)
+    - [Operadores Matemáticos](#operadores-matemáticos)
+    - [Operadores de Asignación](#operadores-de-asignación)
+    - [Operadores Relacionales](#operadores-relacionales)
+    - [Operadores Lógicos](#operadores-lógicos)
+  - [2. Uso de Strings en Python](#2-uso-de-strings-en-python)
+    - [Métodos de Strings](#métodos-de-strings)
+    - [Slicing de Strings](#slicing-de-strings)
+    - [Caracteres de Escape en Strings](#caracteres-de-escape-en-strings)
+  - [3. Valores Booleanos en Python](#3-valores-booleanos-en-python)
+  - [4. Estructura de Control `if-elif-else`](#4-estructura-de-control-if-elif-else)
+    - [¿Qué es una estructura condicional?](#qué-es-una-estructura-condicional)
+    - [Sintaxis básica de `if`](#sintaxis-básica-de-if)
+    - [Uso de `elif` y `else`](#uso-de-elif-y-else)
+    - [`if` anidado](#if-anidado)
+    - [Operador ternario](#operador-ternario)
+
 
 ## 1. Operadores en Python
 
