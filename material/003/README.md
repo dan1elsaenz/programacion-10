@@ -1,0 +1,238 @@
+# Clase 3: Listas y Bucles `for` en Python
+
+En esta clase se abordarán las listas en Python y sus métodos principales, así como el uso de los bucles `for`.
+
+## 1. Listas en Python
+
+### 1.1 Concepto y Creación de Listas
+
+Una lista es una estructura de datos en Python que permite almacenar múltiples valores en un solo contenedor. A diferencia de otros tipos de datos, las listas pueden contener elementos de diferentes tipos y permiten duplicados.
+
+Las listas son útiles cuando se necesita manejar colecciones de datos, como nombres de usuarios, precios de productos o resultados de cálculos.
+
+Se pueden crear listas de dos maneras:
+
+```python
+# Usando corchetes []
+mi_lista = [1, 2, 3, 4, 5]
+
+# Usando list()
+otra_lista = list(("rojo", "verde", "azul"))
+```
+
+Ambas formas crean una lista, aunque `list()` también puede usarse para convertir otros tipos de datos (tuplas, sets, entre otros) en listas.
+
+### 1.2 Propiedades de las Listas
+
+Las listas en Python tienen varias características clave:
+
+- **Mutabilidad**: Se pueden modificar después de su creación.
+- **Permiten duplicados**: Se pueden almacenar valores repetidos.
+- **Almacenan diferentes tipos de datos**: Una lista puede contener elementos de distintos tipos.
+- **Indexadas**: Las listas están ordenadas y su primer elemento posee un índice de 0 (similar a los strings).
+
+Ejemplo:
+
+```python
+lista_mixta = [10, "Python", 3.14, True]
+print(lista_mixta)
+```
+
+Esta característica de aceptar múltiples tipos de datos hace que las listas sean extremadamente **flexibles**.
+
+### 1.3 Largo de una Lista
+
+Se usa la función `len()` para obtener la cantidad de elementos en una lista. También se puede utilizar para contar caracteres en un string.
+
+```python
+lista = [1, 2, 3, 4, 5]
+print(len(lista))  # Salida: 5
+
+cadena = "Hola mundo"
+print(len(cadena))  # Salida: 10
+```
+
+Esta función es útil para determinar la cantidad de elementos presentes en una colección de datos.
+
+### 1.4 Acceso y Modificación de Elementos
+
+Los elementos de una lista se acceden mediante índices, comenzando desde `0`.
+
+```python
+mi_lista = ["manzana", "banana", "cereza"]
+print(mi_lista[0])  # manzana
+
+mi_lista[1] = "uva"
+print(mi_lista)  # ['manzana', 'uva', 'cereza']
+```
+
+También es posible acceder a elementos desde el final usando índices negativos:
+
+```python
+print(mi_lista[-1])  # Último elemento: cereza
+```
+
+### 1.5 Métodos para Modificar Listas
+
+#### 1.5.1 Agregar Elementos
+
+##### `append(x)`: Agregar un elemento al final de la lista
+
+Recibe el valor del elemento para agregarlo al final.
+
+```python
+numeros = [1, 2, 3]
+numeros.append(4)
+print(numeros)  # [1, 2, 3, 4]
+```
+
+##### `insert(i, x)`: Insertar un elemento en una posición específica
+
+Recibe el índice `i` y el valor `x` a agregar.
+
+```python
+colores = ["rojo", "azul", "verde"]
+colores.insert(1, "amarillo")
+print(colores)  # ['rojo', 'amarillo', 'azul', 'verde']
+```
+
+#### 1.5.2 Eliminar Elementos
+
+##### `remove(x)`: Eliminar la primera ocurrencia de un elemento
+
+Se ingresa el valor del elemento que se desea eliminar.
+
+```python
+frutas = ["manzana", "banana", "cereza", "banana"]
+frutas.remove("banana")
+print(frutas)  # ['manzana', 'cereza', 'banana']
+```
+
+##### `pop(i)`: Eliminar un elemento en una posición específica
+
+Recibe el índice del elemento a eliminar.
+
+```python
+numeros = [10, 20, 30, 40]
+ultimo = numeros.pop()
+print(numeros)  # [10, 20, 30]
+print("Elemento eliminado:", ultimo)  # 40
+```
+
+#### 1.5.3 Ordenar y Revertir Listas
+
+##### `sort()`: Ordenar la lista en orden ascendente
+
+```python
+numeros = [3, 1, 4, 1, 5, 9]
+numeros.sort()
+print(numeros)  # [1, 1, 3, 4, 5, 9]
+```
+
+##### `reverse()`: Invertir el orden de los elementos de la lista
+
+```python
+letras = ["a", "b", "c", "d"]
+letras.reverse()
+print(letras)  # ['d', 'c', 'b', 'a']
+```
+
+#### 1.5.4 Copiar y Unir Listas
+
+##### `copy()`: Crear una copia de la lista
+
+```python
+original = [1, 2, 3]
+copia = original.copy()
+print(copia)  # [1, 2, 3]
+```
+
+##### `extend(iterable)`: Agregar los elementos de otro iterable
+
+```python
+a = [1, 2, 3]
+b = [4, 5, 6]
+a.extend(b)
+print(a)  # [1, 2, 3, 4, 5, 6]
+```
+
+Estos métodos permiten modificar listas de manera eficiente sin necesidad de reescribir todos los valores manualmente.
+
+## 2. Bucles `for` en Python
+
+Un bucle `for` permite ejecutar un bloque de código múltiples veces, iterando sobre elementos de una secuencia como una lista, un string o un rango de números.
+
+### 2.1 Iteración sobre Listas y Strings
+
+```python
+colores = ["rojo", "verde", "azul"]
+for color in colores:
+    print(color)
+
+mensaje = "Python"
+for letra in mensaje:
+    print(letra)
+```
+
+En estos ejemplos, el bucle `for` recorre cada elemento de la lista `colores` y cada carácter del string `mensaje`.
+
+### 2.2 Iteración con `range()`
+
+El `range()` genera una secuencia de números, útil para iterar un número específico de veces.
+El rango creado inicia en 0 de forma predeterminada.
+
+```python
+for i in range(5):
+    print(i)  # 0, 1, 2, 3, 4
+```
+
+El `range(inicio, fin, paso)` permite especificar un inicio y un incremento personalizado. El valor de `fin` no es incluido en el rango final, realmente se recorre de `inicio` a `fin - 1`.
+
+```python
+for i in range(2, 10, 2):
+    print(i)  # 2, 4, 6, 8
+```
+
+¿Por qué se usa `range()` en bucles?
+
+- Es eficiente: No genera una lista en memoria, sino que produce los valores sobre la marcha.
+- Es flexible: Permite definir rangos personalizados con diferentes pasos.
+- Es fácil de usar con estructuras iterativas.
+
+### 2.3 Uso de `break`, `continue`, `pass`
+
+```python
+for num in range(10):
+    if num == 5:
+        break  # Detiene el bucle
+    if num % 2 == 0:
+        continue  # Salta a la siguiente iteración
+    print(num)
+```
+
+```python
+for _ in range(3):
+    pass  # No hace nada
+```
+
+### 2.4 Bucles `for` Anidados
+
+```python
+for i in range(3):
+    for j in range(3):
+        print(f"({i}, {j})")
+```
+
+**Complejidad:** Un `for` anidado puede aumentar la cantidad de ejecuciones, generalmente con una complejidad de O(n²).
+
+### 2.5 `else` en un `for`
+
+Si el bucle `for` no se interrumpe con `break`, el bloque `else` se ejecuta.
+
+```python
+for num in range(5):
+    print(num)
+else:
+    print("Bucle terminado sin interrupción")
+```
+
