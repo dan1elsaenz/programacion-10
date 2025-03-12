@@ -46,16 +46,37 @@ mi_lista = [1, 2, 3, 4, 5]
 otra_lista = list(("rojo", "verde", "azul"))
 ```
 
-Ambas formas crean una lista, aunque `list()` también puede usarse para convertir otros tipos de datos (tuplas, sets, entre otros) en listas.
+Ambas formas crean una lista, aunque `list()` también puede usarse para convertir otros tipos de datos en listas.
 
-### 1.2 Propiedades de las Listas
+### 1.2 Uso del Operador `in`
+
+El operador `in` permite verificar si un elemento se encuentra dentro de una lista o string. Es una forma sencilla y eficiente de comprobar pertenencia.
+
+#### **Ejemplo en listas:**
+
+```python
+frutas = ["manzana", "banana", "cereza"]
+if "banana" in frutas:
+    print("La banana está en la lista de frutas.")
+```
+
+#### **Ejemplo en strings:**
+
+```python
+mensaje = "Bienvenidos a la clase de Python"
+if "Python" in mensaje:
+    print("El mensaje menciona Python.")
+```
+
+Este operador se usa frecuentemente en estructuras de control como `if`, y también en bucles `for` para iterar sobre listas o strings.
+
+### 1.3 Propiedades de las Listas
 
 Las listas en Python tienen varias características clave:
 
 - **Mutabilidad**: Se pueden modificar después de su creación.
 - **Permiten duplicados**: Se pueden almacenar valores repetidos.
 - **Almacenan diferentes tipos de datos**: Una lista puede contener elementos de distintos tipos.
-- **Indexadas**: Las listas están ordenadas y su primer elemento posee un índice de 0 (similar a los strings).
 
 Ejemplo:
 
@@ -64,9 +85,9 @@ lista_mixta = [10, "Python", 3.14, True]
 print(lista_mixta)
 ```
 
-Esta característica de aceptar múltiples tipos de datos hace que las listas sean extremadamente **flexibles**.
+Esta característica de aceptar múltiples tipos de datos hace que las listas sean extremadamente flexibles.
 
-### 1.3 Largo de una Lista
+### 1.4 Largo de una Lista
 
 Se usa la función `len()` para obtener la cantidad de elementos en una lista. También se puede utilizar para contar caracteres en un string.
 
@@ -80,7 +101,7 @@ print(len(cadena))  # Salida: 10
 
 Esta función es útil para determinar la cantidad de elementos presentes en una colección de datos.
 
-### 1.4 Acceso y Modificación de Elementos
+### 1.5 Acceso y Modificación de Elementos
 
 Los elementos de una lista se acceden mediante índices, comenzando desde `0`.
 
@@ -98,13 +119,13 @@ También es posible acceder a elementos desde el final usando índices negativos
 print(mi_lista[-1])  # Último elemento: cereza
 ```
 
-### 1.5 Métodos para Modificar Listas
+### 1.6 Métodos para Modificar Listas
 
-#### 1.5.1 Agregar Elementos
+#### 1.6.1 Agregar Elementos
 
 ##### `append(x)`: Agregar un elemento al final de la lista
 
-Recibe el valor del elemento para agregarlo al final.
+Agrega un elemento `x` al final de la lista.
 
 ```python
 numeros = [1, 2, 3]
@@ -114,7 +135,7 @@ print(numeros)  # [1, 2, 3, 4]
 
 ##### `insert(i, x)`: Insertar un elemento en una posición específica
 
-Recibe el índice `i` y el valor `x` a agregar.
+Inserta un elemento en el índice `i` y con el valor de `x`.
 
 ```python
 colores = ["rojo", "azul", "verde"]
@@ -122,11 +143,11 @@ colores.insert(1, "amarillo")
 print(colores)  # ['rojo', 'amarillo', 'azul', 'verde']
 ```
 
-#### 1.5.2 Eliminar Elementos
+#### 1.6.2 Eliminar Elementos
 
 ##### `remove(x)`: Eliminar la primera ocurrencia de un elemento
 
-Se ingresa el valor del elemento que se desea eliminar.
+Elimina un elemento basado en su valor `x`.
 
 ```python
 frutas = ["manzana", "banana", "cereza", "banana"]
@@ -136,7 +157,7 @@ print(frutas)  # ['manzana', 'cereza', 'banana']
 
 ##### `pop(i)`: Eliminar un elemento en una posición específica
 
-Recibe el índice del elemento a eliminar.
+Elimina un elemento basado en su índice en la lista.
 
 ```python
 numeros = [10, 20, 30, 40]
@@ -145,7 +166,7 @@ print(numeros)  # [10, 20, 30]
 print("Elemento eliminado:", ultimo)  # 40
 ```
 
-#### 1.5.3 Ordenar y Revertir Listas
+#### 1.6.3 Ordenar y Revertir Listas
 
 ##### `sort()`: Ordenar la lista en orden ascendente
 
@@ -163,7 +184,7 @@ letras.reverse()
 print(letras)  # ['d', 'c', 'b', 'a']
 ```
 
-#### 1.5.4 Copiar y Unir Listas
+#### 1.6.4 Copiar y Unir Listas
 
 ##### `copy()`: Crear una copia de la lista
 
