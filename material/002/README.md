@@ -105,7 +105,6 @@ Python proporciona diversos métodos para trabajar con cadenas de texto. Se pres
 | Método                | Descripción                                                                   |
 |-----------------------|-------------------------------------------------------------------------------|
 | `capitalize()`        | Convierte el primer carácter en mayúscula.                                    |
-| `casefold()`          | Convierte el string a minúsculas (más agresivo que `lower()`).                |
 | `center(width)`       | Centra el string dentro de un ancho especificado.                             |
 | `count(substring)`    | Devuelve el número de veces que aparece un valor especificado.                |
 | `encode()`            | Codifica el string a una versión específica.                                  |
@@ -121,6 +120,7 @@ Python proporciona diversos métodos para trabajar con cadenas de texto. Se pres
 | `isnumeric()`         | Devuelve `True` si el string solo contiene números.                           |
 | `isspace()`           | Devuelve `True` si todos los caracteres son espacios en blanco.               |
 | `join(iterable)`      | Une elementos de un iterable con la cadena como separador.                    |
+| `lower()`             | Convierte el string a minúsculas (menos agresivo que `casefold()`).           |
 | `replace(old, new)`   | Reemplaza un valor por otro dentro de la cadena.                              |
 | `split(separator)`    | Divide la cadena en una lista, usando un separador específico.                |
 | `startswith(prefix)`  | Devuelve `True` si el string comienza con el valor especificado.              |
