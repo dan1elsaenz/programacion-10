@@ -5,20 +5,23 @@
 - [Clase 3: Listas y Bucles `for` en Python](#clase-3-listas-y-bucles-for-en-python)
   - [1. Listas en Python](#1-listas-en-python)
     - [1.1 Concepto y Creación de Listas](#11-concepto-y-creación-de-listas)
-    - [1.2 Propiedades de las Listas](#12-propiedades-de-las-listas)
-    - [1.3 Largo de una Lista](#13-largo-de-una-lista)
-    - [1.4 Acceso y Modificación de Elementos](#14-acceso-y-modificación-de-elementos)
-    - [1.5 Métodos para Modificar Listas](#15-métodos-para-modificar-listas)
-      - [1.5.1 Agregar Elementos](#151-agregar-elementos)
+    - [1.2 Uso del Operador `in`](#12-uso-del-operador-in)
+      - [Ejemplo en listas](#ejemplo-en-listas)
+      - [Ejemplo en strings](#ejemplo-en-strings)
+    - [1.3 Propiedades de las Listas](#13-propiedades-de-las-listas)
+    - [1.4 Largo de una Lista](#14-largo-de-una-lista)
+    - [1.5 Acceso y Modificación de Elementos](#15-acceso-y-modificación-de-elementos)
+    - [1.6 Métodos para Modificar Listas](#16-métodos-para-modificar-listas)
+      - [1.6.1 Agregar Elementos](#161-agregar-elementos)
         - [`append(x)`: Agregar un elemento al final de la lista](#appendx-agregar-un-elemento-al-final-de-la-lista)
         - [`insert(i, x)`: Insertar un elemento en una posición específica](#inserti-x-insertar-un-elemento-en-una-posición-específica)
-      - [1.5.2 Eliminar Elementos](#152-eliminar-elementos)
+      - [1.6.2 Eliminar Elementos](#162-eliminar-elementos)
         - [`remove(x)`: Eliminar la primera ocurrencia de un elemento](#removex-eliminar-la-primera-ocurrencia-de-un-elemento)
         - [`pop(i)`: Eliminar un elemento en una posición específica](#popi-eliminar-un-elemento-en-una-posición-específica)
-      - [1.5.3 Ordenar y Revertir Listas](#153-ordenar-y-revertir-listas)
+      - [1.6.3 Ordenar y Revertir Listas](#163-ordenar-y-revertir-listas)
         - [`sort()`: Ordenar la lista en orden ascendente](#sort-ordenar-la-lista-en-orden-ascendente)
         - [`reverse()`: Invertir el orden de los elementos de la lista](#reverse-invertir-el-orden-de-los-elementos-de-la-lista)
-      - [1.5.4 Copiar y Unir Listas](#154-copiar-y-unir-listas)
+      - [1.6.4 Copiar y Unir Listas](#164-copiar-y-unir-listas)
         - [`copy()`: Crear una copia de la lista](#copy-crear-una-copia-de-la-lista)
         - [`extend(iterable)`: Agregar los elementos de otro iterable](#extenditerable-agregar-los-elementos-de-otro-iterable)
   - [2. Bucles `for` en Python](#2-bucles-for-en-python)
@@ -52,7 +55,7 @@ Ambas formas crean una lista, aunque `list()` también puede usarse para convert
 
 El operador `in` permite verificar si un elemento se encuentra dentro de una lista o string. Es una forma sencilla y eficiente de comprobar pertenencia.
 
-#### **Ejemplo en listas:**
+#### Ejemplo en listas
 
 ```python
 frutas = ["manzana", "banana", "cereza"]
@@ -60,7 +63,7 @@ if "banana" in frutas:
     print("La banana está en la lista de frutas.")
 ```
 
-#### **Ejemplo en strings:**
+#### Ejemplo en strings
 
 ```python
 mensaje = "Bienvenidos a la clase de Python"
