@@ -27,7 +27,7 @@
   - [Ejercicio 7: Eliminar palabras repetidas de una lista](#ejercicio-7-eliminar-palabras-repetidas-de-una-lista)
   - [Ejercicio 8: Determinar si una lista está ordenada](#ejercicio-8-determinar-si-una-lista-está-ordenada)
   - [Ejercicio 9: Concatenar todas las palabras de una lista](#ejercicio-9-concatenar-todas-las-palabras-de-una-lista)
-- [Ejercicio 10: Contar números pares e impares en una lista](#ejercicio-10-contar-números-pares-e-impares-en-una-lista)
+  - [Ejercicio 10: Contar números pares e impares en una lista](#ejercicio-10-contar-números-pares-e-impares-en-una-lista)
 </details> 
 
 ## 1. Ejercicios de repaso
@@ -289,7 +289,7 @@ Entrada: ["Hola", "mundo", "esto", "es", "Python"]
 Salida: "Hola mundo esto es Python"
 ```
 
-## Ejercicio 10: Contar números pares e impares en una lista  
+### Ejercicio 10: Contar números pares e impares en una lista  
 
 Dada una lista de números enteros, cuenta cuántos son pares y cuántos son impares.  
 
