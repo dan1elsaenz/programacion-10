@@ -1,35 +1,30 @@
-# Clase 3: Listas y Bucles `for` en Python
+# Clase 3: Listas y sus métodos en Python <!-- omit from toc -->
 
-**Tabla de contenidos**
+<details> 
+  <summary>Tabla de contenidos</summary>
 
-- [Clase 3: Listas y Bucles `for` en Python](#clase-3-listas-y-bucles-for-en-python)
-  - [1. Listas en Python](#1-listas-en-python)
-    - [1.1 Concepto y Creación de Listas](#11-concepto-y-creación-de-listas)
-    - [1.2 Uso del Operador `in`](#12-uso-del-operador-in)
-      - [Ejemplo en listas](#ejemplo-en-listas)
-      - [Ejemplo en strings](#ejemplo-en-strings)
-    - [1.3 Propiedades de las Listas](#13-propiedades-de-las-listas)
-    - [1.4 Largo de una Lista](#14-largo-de-una-lista)
-    - [1.5 Acceso y Modificación de Elementos](#15-acceso-y-modificación-de-elementos)
-    - [1.6 Métodos para Modificar Listas](#16-métodos-para-modificar-listas)
-      - [1.6.1 Agregar Elementos](#161-agregar-elementos)
-        - [`append(x)`: Agregar un elemento al final de la lista](#appendx-agregar-un-elemento-al-final-de-la-lista)
-        - [`insert(i, x)`: Insertar un elemento en una posición específica](#inserti-x-insertar-un-elemento-en-una-posición-específica)
-      - [1.6.2 Eliminar Elementos](#162-eliminar-elementos)
-        - [`remove(x)`: Eliminar la primera ocurrencia de un elemento](#removex-eliminar-la-primera-ocurrencia-de-un-elemento)
-        - [`pop(i)`: Eliminar un elemento en una posición específica](#popi-eliminar-un-elemento-en-una-posición-específica)
-      - [1.6.3 Ordenar y Revertir Listas](#163-ordenar-y-revertir-listas)
-        - [`sort()`: Ordenar la lista en orden ascendente](#sort-ordenar-la-lista-en-orden-ascendente)
-        - [`reverse()`: Invertir el orden de los elementos de la lista](#reverse-invertir-el-orden-de-los-elementos-de-la-lista)
-      - [1.6.4 Copiar y Unir Listas](#164-copiar-y-unir-listas)
-        - [`copy()`: Crear una copia de la lista](#copy-crear-una-copia-de-la-lista)
-        - [`extend(iterable)`: Agregar los elementos de otro iterable](#extenditerable-agregar-los-elementos-de-otro-iterable)
-  - [2. Bucles `for` en Python](#2-bucles-for-en-python)
-    - [2.1 Iteración sobre Listas y Strings](#21-iteración-sobre-listas-y-strings)
-    - [2.2 Iteración con `range()`](#22-iteración-con-range)
-    - [2.3 Uso de `break`, `continue`, `pass`](#23-uso-de-break-continue-pass)
-    - [2.4 Bucles `for` Anidados](#24-bucles-for-anidados)
-    - [2.5 `else` en un `for`](#25-else-en-un-for)
+- [1. Listas en Python](#1-listas-en-python)
+  - [1.1 Concepto y Creación de Listas](#11-concepto-y-creación-de-listas)
+  - [1.2 Uso del Operador `in`](#12-uso-del-operador-in)
+    - [Ejemplo en listas](#ejemplo-en-listas)
+    - [Ejemplo en strings](#ejemplo-en-strings)
+  - [1.3 Propiedades de las Listas](#13-propiedades-de-las-listas)
+  - [1.4 Largo de una Lista](#14-largo-de-una-lista)
+  - [1.5 Acceso y Modificación de Elementos](#15-acceso-y-modificación-de-elementos)
+  - [1.6 Métodos para Modificar Listas](#16-métodos-para-modificar-listas)
+    - [1.6.1 Agregar Elementos](#161-agregar-elementos)
+      - [`append(x)`: Agregar un elemento al final de la lista](#appendx-agregar-un-elemento-al-final-de-la-lista)
+      - [`insert(i, x)`: Insertar un elemento en una posición específica](#inserti-x-insertar-un-elemento-en-una-posición-específica)
+    - [1.6.2 Eliminar Elementos](#162-eliminar-elementos)
+      - [`remove(x)`: Eliminar la primera ocurrencia de un elemento](#removex-eliminar-la-primera-ocurrencia-de-un-elemento)
+      - [`pop(i)`: Eliminar un elemento en una posición específica](#popi-eliminar-un-elemento-en-una-posición-específica)
+    - [1.6.3 Ordenar y Revertir Listas](#163-ordenar-y-revertir-listas)
+      - [`sort()`: Ordenar la lista en orden ascendente](#sort-ordenar-la-lista-en-orden-ascendente)
+      - [`reverse()`: Invertir el orden de los elementos de la lista](#reverse-invertir-el-orden-de-los-elementos-de-la-lista)
+    - [1.6.4 Copiar y Unir Listas](#164-copiar-y-unir-listas)
+      - [`copy()`: Crear una copia de la lista](#copy-crear-una-copia-de-la-lista)
+      - [`extend(iterable)`: Agregar los elementos de otro iterable](#extenditerable-agregar-los-elementos-de-otro-iterable)
+</details>
 
 ## 1. Listas en Python
 

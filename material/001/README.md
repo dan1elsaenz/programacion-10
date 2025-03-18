@@ -1,29 +1,31 @@
 
-# Clase 1: Conceptos básicos de Python
+# Clase 1: Conceptos básicos de Python <!-- omit from toc -->
 
-**Tabla de contenidos**
-- [Clase 1: Conceptos básicos de Python](#clase-1-conceptos-básicos-de-python)
-  - [1. Indentación en Python](#1-indentación-en-python)
-    - [Reglas clave de la indentación en Python](#reglas-clave-de-la-indentación-en-python)
-    - [Ejemplo de indentación correcta](#ejemplo-de-indentación-correcta)
-    - [Ejemplo de indentación incorrecta](#ejemplo-de-indentación-incorrecta)
-  - [2. Declaración y Definición de Variables](#2-declaración-y-definición-de-variables)
-    - [Reglas para declarar variables](#reglas-para-declarar-variables)
-      - [Ejemplo de declaración y asignación de variables](#ejemplo-de-declaración-y-asignación-de-variables)
-      - [Ejemplo de asignación múltiple](#ejemplo-de-asignación-múltiple)
-    - [Variables constantes en Python](#variables-constantes-en-python)
-  - [3. Comentarios en Python](#3-comentarios-en-python)
-    - [Comentarios de una línea](#comentarios-de-una-línea)
-    - [Comentarios multilínea](#comentarios-multilínea)
-  - [4. Tipos de Datos en Python](#4-tipos-de-datos-en-python)
-    - [Función `type`](#función-type)
-  - [5. Funciones de Entrada y Salida (I/O) en Python](#5-funciones-de-entrada-y-salida-io-en-python)
-    - [`print()`: Mostrar información en pantalla](#print-mostrar-información-en-pantalla)
-    - [`input()`: Leer información del usuario](#input-leer-información-del-usuario)
-  - [6. Concatenación de Strings](#6-concatenación-de-strings)
-    - [Métodos de concatenación](#métodos-de-concatenación)
-      - [Uso del operador `+`](#uso-del-operador-)
-      - [Uso de `f-strings` (Python 3.6 en adelante)](#uso-de-f-strings-python-36-en-adelante)
+<details> 
+  <summary>Tabla de contenidos</summary>
+
+- [1. Indentación en Python](#1-indentación-en-python)
+  - [Reglas clave de la indentación en Python](#reglas-clave-de-la-indentación-en-python)
+  - [Ejemplo de indentación correcta](#ejemplo-de-indentación-correcta)
+  - [Ejemplo de indentación incorrecta](#ejemplo-de-indentación-incorrecta)
+- [2. Declaración y Definición de Variables](#2-declaración-y-definición-de-variables)
+  - [Reglas para declarar variables](#reglas-para-declarar-variables)
+    - [Ejemplo de declaración y asignación de variables](#ejemplo-de-declaración-y-asignación-de-variables)
+    - [Ejemplo de asignación múltiple](#ejemplo-de-asignación-múltiple)
+  - [Variables constantes en Python](#variables-constantes-en-python)
+- [3. Comentarios en Python](#3-comentarios-en-python)
+  - [Comentarios de una línea](#comentarios-de-una-línea)
+  - [Comentarios multilínea](#comentarios-multilínea)
+- [4. Tipos de Datos en Python](#4-tipos-de-datos-en-python)
+  - [Función `type`](#función-type)
+- [5. Funciones de Entrada y Salida (I/O) en Python](#5-funciones-de-entrada-y-salida-io-en-python)
+  - [`print()`: Mostrar información en pantalla](#print-mostrar-información-en-pantalla)
+  - [`input()`: Leer información del usuario](#input-leer-información-del-usuario)
+- [6. Concatenación de Strings](#6-concatenación-de-strings)
+  - [Métodos de concatenación](#métodos-de-concatenación)
+    - [Uso del operador `+`](#uso-del-operador-)
+    - [Uso de `f-strings` (Python 3.6 en adelante)](#uso-de-f-strings-python-36-en-adelante)
+</details> 
 
 ## 1. Indentación en Python
 

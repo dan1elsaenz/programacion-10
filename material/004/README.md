@@ -1,4 +1,34 @@
-# Clase 4: Ejercicios de repaso y `for` Loops
+# Clase 4: Ejercicios de repaso y `for` Loops <!-- omit from toc -->
+
+<details> 
+  <summary>Tabla de contenidos</summary>
+
+- [1. Ejercicios de repaso](#1-ejercicios-de-repaso)
+  - [Ejercicio 1: Conversor de notas a letras](#ejercicio-1-conversor-de-notas-a-letras)
+  - [Ejercicio 2: Clasificación de palabras](#ejercicio-2-clasificación-de-palabras)
+  - [Ejercicio 3: Encontrar el número mayor y menor en una lista](#ejercicio-3-encontrar-el-número-mayor-y-menor-en-una-lista)
+  - [Ejercicio 4: Última palabra de una oración](#ejercicio-4-última-palabra-de-una-oración)
+  - [Ejercicio 5: Comprobar si un número es múltiplo de otro](#ejercicio-5-comprobar-si-un-número-es-múltiplo-de-otro)
+  - [Ejercicio 6: Comparar la longitud de dos palabras](#ejercicio-6-comparar-la-longitud-de-dos-palabras)
+  - [Ejercicio 7: Verificar si una palabra empieza con vocal](#ejercicio-7-verificar-si-una-palabra-empieza-con-vocal)
+- [2. Bucles `for` en Python](#2-bucles-for-en-python)
+  - [2.1 Iteración sobre Listas y Strings](#21-iteración-sobre-listas-y-strings)
+  - [2.2 Iteración con `range()`](#22-iteración-con-range)
+  - [2.3 Uso de `break`, `continue`, `pass`](#23-uso-de-break-continue-pass)
+  - [2.4 Bucles `for` Anidados](#24-bucles-for-anidados)
+  - [2.5 `else` en un `for`](#25-else-en-un-for)
+- [3. Ejercicios de `for` loop](#3-ejercicios-de-for-loop)
+  - [Ejercicio 1: Contar vocales en una palabra](#ejercicio-1-contar-vocales-en-una-palabra)
+  - [Ejercicio 2: Filtrar palabras cortas](#ejercicio-2-filtrar-palabras-cortas)
+  - [Ejercicio 3: Encontrar la palabra más larga en una lista](#ejercicio-3-encontrar-la-palabra-más-larga-en-una-lista)
+  - [Ejercicio 4: Contar palabras que contienen una letra específica](#ejercicio-4-contar-palabras-que-contienen-una-letra-específica)
+  - [Ejercicio 5: Convertir palabras a mayúsculas si tienen más de 5 letras](#ejercicio-5-convertir-palabras-a-mayúsculas-si-tienen-más-de-5-letras)
+  - [Ejercicio 6: Reemplazar vocales en una palabra](#ejercicio-6-reemplazar-vocales-en-una-palabra)
+  - [Ejercicio 7: Eliminar palabras repetidas de una lista](#ejercicio-7-eliminar-palabras-repetidas-de-una-lista)
+  - [Ejercicio 8: Determinar si una lista está ordenada](#ejercicio-8-determinar-si-una-lista-está-ordenada)
+  - [Ejercicio 9: Concatenar todas las palabras de una lista](#ejercicio-9-concatenar-todas-las-palabras-de-una-lista)
+- [Ejercicio 10: Contar números pares e impares en una lista](#ejercicio-10-contar-números-pares-e-impares-en-una-lista)
+</details> 
 
 ## 1. Ejercicios de repaso
 
