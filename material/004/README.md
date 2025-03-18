@@ -11,6 +11,7 @@
   - [Ejercicio 5: Comprobar si un número es múltiplo de otro](#ejercicio-5-comprobar-si-un-número-es-múltiplo-de-otro)
   - [Ejercicio 6: Comparar la longitud de dos palabras](#ejercicio-6-comparar-la-longitud-de-dos-palabras)
   - [Ejercicio 7: Verificar si una palabra empieza con vocal](#ejercicio-7-verificar-si-una-palabra-empieza-con-vocal)
+  - [### Ejercicio 8: OCI I Eliminatoria 2023](#ejercicio-8-oci-i-eliminatoria-2023)
 - [2. Bucles `for` en Python](#2-bucles-for-en-python)
   - [2.1 Iteración sobre Listas y Strings](#21-iteración-sobre-listas-y-strings)
   - [2.2 Iteración con `range()`](#22-iteración-con-range)
@@ -107,6 +108,19 @@ Pide al usuario una palabra y muestra un mensaje indicando si comienza con una v
 ```plaintext
 Entrada: "elefante"  
 Salida: "La palabra comienza con una vocal."
+```
+
+### Ejercicio 8: OCI I Eliminatoria 2023
+
+En una pequeña ciudad rodeada de vibrante vegetación y ríos cristalinos, Camila y Jonathan son apasionados por la historia y la cultura que se refleja en un símbolo nacional muy particular, el Yigüirro, el ave nacional. Ambos han dedicado años a coleccionar sellos con la imagen de este encantador pájaro.
+
+Un buen día, un amigo historiador les solicita prestados algunos de sus sellos para una exposición. La cantidad varía cada vez, y se vuelve un tanto complicado para Camila y Jonathan llevar la cuenta de cuántos sellos les quedan luego de cada préstamo.
+Necesitan tu ayuda para llevar un registro preciso. En cada ocasión, te informarán cuántos sellos tenían originalmente y cuántos su amigo les ha pedido prestados. Con esa información, deberás indicarles cuántos sellos les quedan. Recuerda, si el amigo les solicita más sellos de los que tienen, simplemente entregan todos sus sellos.
+
+```
+Entrada: "10 5"
+Salida: 5
+
 ```
 
 ---
