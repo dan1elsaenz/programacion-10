@@ -11,7 +11,7 @@
   - [Ejercicio 5: Comprobar si un número es múltiplo de otro](#ejercicio-5-comprobar-si-un-número-es-múltiplo-de-otro)
   - [Ejercicio 6: Comparar la longitud de dos palabras](#ejercicio-6-comparar-la-longitud-de-dos-palabras)
   - [Ejercicio 7: Verificar si una palabra empieza con vocal](#ejercicio-7-verificar-si-una-palabra-empieza-con-vocal)
-  - [### Ejercicio 8: OCI I Eliminatoria 2023](#ejercicio-8-oci-i-eliminatoria-2023)
+  - [Ejercicio 8: OCI I Eliminatoria 2023](#ejercicio-8-oci-i-eliminatoria-2023)
 - [2. Bucles `for` en Python](#2-bucles-for-en-python)
   - [2.1 Iteración sobre Listas y Strings](#21-iteración-sobre-listas-y-strings)
   - [2.2 Iteración con `range()`](#22-iteración-con-range)
@@ -120,7 +120,6 @@ Necesitan tu ayuda para llevar un registro preciso. En cada ocasión, te informa
 ```
 Entrada: "10 5"
 Salida: 5
-
 ```
 
 ---
