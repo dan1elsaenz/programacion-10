@@ -18,6 +18,7 @@
   - [2.3 Uso de `break`, `continue`, `pass`](#23-uso-de-break-continue-pass)
   - [2.4 Bucles `for` Anidados](#24-bucles-for-anidados)
   - [2.5 `else` en un `for`](#25-else-en-un-for)
+  - [2.6 Uso de `for` como iterador o acceso por índice](#26-uso-de-for-como-iterador-o-acceso-por-indice)
 </details> 
 
 ## 1. Ejercicios de repaso
@@ -189,5 +190,25 @@ for num in range(5):
     print(num)
 else:
     print("Bucle terminado sin interrupción")
+```
+
+### 2.6 Uso de `for` como iterador o acceso por índice
+
+Existen dos casos de uso del `for` loop:
+    - Como iterador: Recorrer elemento por elemento de un objeto iterable.
+    - Índice por índice: Acceder a los elementos por su índice.
+
+```py
+string = "Python"
+
+# Elemento por elemento
+for letra in string:
+    print(letra)
+
+# Índice por índice
+# Lo que interesa es que i esté en el intervalo de 0, largo-1
+for i in range(len(string)):
+    letra = string[i]
+    print(letra)
 ```
 
