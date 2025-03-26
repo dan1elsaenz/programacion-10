@@ -14,6 +14,14 @@
   - [Ejercicio 8: Determinar si una lista está ordenada](#ejercicio-8-determinar-si-una-lista-está-ordenada)
   - [Ejercicio 9: Concatenar todas las palabras de una lista](#ejercicio-9-concatenar-todas-las-palabras-de-una-lista)
   - [Ejercicio 10: Contar números pares e impares en una lista](#ejercicio-10-contar-números-pares-e-impares-en-una-lista)
+  - [Ejercicio 11: Contar letras en una lista de palabras](#ejercicio-11-contar-letras-en-una-lista-de-palabras)
+  - [Ejercicio 12: Palabras que terminan con una letra específica](#ejercicio-12-palabras-que-terminan-con-una-letra-específica)
+  - [Ejercicio 13: Contar cuántas veces aparece una letra en cada palabra](#ejercicio-13-contar-cuántas-veces-aparece-una-letra-en-cada-palabra)
+  - [Ejercicio 14: Buscar palabras con letras repetidas (for anidado)](#ejercicio-14-buscar-palabras-con-letras-repetidas-for-anidado)
+  - [Ejercicio 15: Contar letras vocales en cada palabra (for anidado)](#ejercicio-15-contar-letras-vocales-en-cada-palabra-for-anidado)
+  - [Ejercicio 16: Mostrar letras comunes entre pares de palabras (for anidado)](#ejercicio-16-mostrar-letras-comunes-entre-pares-de-palabras-for-anidado)
+  - [Ejercicio 17: Contar cuántas palabras contienen al menos una vocal](#ejercicio-17-contar-cuántas-palabras-contienen-al-menos-una-vocal)
+
 </details>
 
 ## 1. Ejercicios de `for` loop
@@ -124,4 +132,73 @@ Entrada: [1, 2, 3, 4, 5, 6]
 Salida: "Pares: 3, Impares: 3"
 ```
 
+### Ejercicio 11: Contar letras en una lista de palabras  
+
+Dada una lista de palabras, devuelve una nueva lista con la cantidad de letras que tiene cada palabra.  
+
+**Ejemplo:**  
+```plaintext
+Entrada: ["hola", "elefante", "sol"]  
+Salida: [4, 8, 3]
+```
+
+### Ejercicio 12: Palabras que terminan con una letra específica  
+
+Dada una lista de palabras y una letra, devuelve una lista con las palabras que terminan con esa letra.  
+
+**Ejemplo:**  
+```plaintext
+Entrada: ["luz", "sol", "coral", "animal"], "l"  
+Salida: ["coral", "animal"]
+```
+
+### Ejercicio 13: Contar cuántas veces aparece una letra en cada palabra  
+
+Dada una lista de palabras y una letra, crea una nueva lista con la cantidad de veces que esa letra aparece en cada palabra.  
+
+**Ejemplo:**  
+```plaintext
+Entrada: ["banana", "manzana", "pera"], "a"  
+Salida: [3, 3, 1]
+```
+
+### Ejercicio 14: Buscar palabras con letras repetidas (for anidado)  
+
+Dada una lista de palabras, devuelve una lista con las palabras que tienen alguna letra repetida.  
+
+**Ejemplo:**  
+```plaintext
+Entrada: ["sol", "gato", "taza", "luz", "elefante"]  
+Salida: ["taza", "elefante"]
+```
+
+### Ejercicio 15: Contar letras vocales en cada palabra (for anidado)  
+
+Dada una lista de palabras, devuelve una lista con la cantidad de vocales que tiene cada una.  
+
+**Ejemplo:**  
+```plaintext
+Entrada: ["hola", "python", "elefante"]  
+Salida: [2, 1, 4]
+```
+
+### Ejercicio 16: Mostrar letras comunes entre pares de palabras (for anidado)  
+
+Dada una lista de dos palabras, muestra las letras que tienen en común (sin repetir letras).  
+
+**Ejemplo:**  
+```plaintext
+Entrada: ["python", "elefante"]  
+Salida: ['e', 'n']
+```
+
+### Ejercicio 17: Contar cuántas palabras contienen al menos una vocal  
+
+Dada una lista de palabras, cuenta cuántas contienen al menos una vocal.  
+
+**Ejemplo:**  
+```plaintext
+Entrada: ["sky", "agua", "sol", "fly"]  
+Salida: 2
+```
 
