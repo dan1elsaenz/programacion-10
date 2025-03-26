@@ -18,7 +18,8 @@
   - [2.3 Uso de `break`, `continue`, `pass`](#23-uso-de-break-continue-pass)
   - [2.4 Bucles `for` Anidados](#24-bucles-for-anidados)
   - [2.5 `else` en un `for`](#25-else-en-un-for)
-  - [2.6 Uso de `for` como iterador o acceso por índice](#26-uso-de-for-como-iterador-o-acceso-por-indice)
+  - [2.6 Uso de `for` como iterador o acceso por índice](#26-uso-de-for-como-iterador-o-acceso-por-índice)
+
 </details> 
 
 ## 1. Ejercicios de repaso
