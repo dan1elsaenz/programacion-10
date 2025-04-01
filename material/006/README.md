@@ -32,11 +32,12 @@
   - [Ejercicio 10: Menú interactivo con opciones](#ejercicio-10-menú-interactivo-con-opciones)
 
 </details> 
-El bucle `while` en Python permite ejecutar un bloque de código **mientras se cumpla una condición**. Es una de las estructuras de control de flujo más utilizadas cuando no se sabe de antemano cuántas veces se necesita repetir un conjunto de instrucciones.
 
 ---
 
 ## 1. Sintaxis básica del `while`
+
+El bucle `while` en Python permite ejecutar un bloque de código **mientras se cumpla una condición**. Es una de las estructuras de control de flujo más utilizadas cuando no se sabe de antemano cuántas veces se necesita repetir un conjunto de instrucciones.
 
 La **condición** se evalúa antes de cada iteración. Si es `True`, se ejecuta el bloque. Cuando la condición sea `False`, se detiene el bucle.
 
