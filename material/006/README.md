@@ -83,6 +83,9 @@ while True:
     print("Ingresó:", entrada)
 ```
 
+> [!WARNING]
+> El uso de bucles infinitos con `while True` y luego terminarlos repentinamente con `break` no es recomendable ni considerado un buena práctica de programación. Es mejor utilizar una condición booleana como las del ejemplo 1.2 y cambiar su estado cuando se desea terminar el loop.
+
 ### 2.2. `continue`
 
 Salta al siguiente ciclo del bucle, sin ejecutar el resto del bloque actual.
