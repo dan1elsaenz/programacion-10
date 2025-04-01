@@ -1,5 +1,37 @@
-# Clase 4: Bucle `while` en Python
+# Clase 4: Bucle `while` en Python <!-- omit from toc -->
 
+<details> 
+  <summary>Tabla de contenidos</summary>
+
+- [1. Sintaxis básica del `while`](#1-sintaxis-básica-del-while)
+  - [1.1. Ejemplo con contador](#11-ejemplo-con-contador)
+  - [1.2. Ejemplo con condición booleana](#12-ejemplo-con-condición-booleana)
+- [2. Palabras clave útiles en bucles](#2-palabras-clave-útiles-en-bucles)
+  - [2.1 `break`](#21-break)
+  - [2.2. `continue`](#22-continue)
+  - [2.3. `pass`](#23-pass)
+- [3. Casos de uso del `while`](#3-casos-de-uso-del-while)
+  - [3.1. Contador con condición](#31-contador-con-condición)
+  - [3.2. Validación de entrada](#32-validación-de-entrada)
+  - [3.3. Esperar una condición externa](#33-esperar-una-condición-externa)
+  - [3.4. Repetir hasta que se introduzca un número válido](#34-repetir-hasta-que-se-introduzca-un-número-válido)
+  - [3.5. Calcular la suma de números hasta que el usuario escriba "fin"](#35-calcular-la-suma-de-números-hasta-que-el-usuario-escriba-fin)
+  - [3.6. Contraseña con intento limitado](#36-contraseña-con-intento-limitado)
+- [4. Importancia del control del bucle](#4-importancia-del-control-del-bucle)
+- [5. `else` con `while`](#5-else-con-while)
+- [6. Ejercicios del Bucle `while`](#6-ejercicios-del-bucle-while)
+  - [Ejercicio 1: Contador con condiciones](#ejercicio-1-contador-con-condiciones)
+  - [Ejercicio 2: Validación de número primo](#ejercicio-2-validación-de-número-primo)
+  - [Ejercicio 3: Suma acumulativa con control de errores](#ejercicio-3-suma-acumulativa-con-control-de-errores)
+  - [Ejercicio 4: Sistema de login con bloqueo](#ejercicio-4-sistema-de-login-con-bloqueo)
+  - [Ejercicio 5: Adivinar número con intentos contados](#ejercicio-5-adivinar-número-con-intentos-contados)
+  - [Ejercicio 6: Frecuencia de letra en una palabra](#ejercicio-6-frecuencia-de-letra-en-una-palabra)
+  - [Ejercicio 7: Confirmación de cierre con múltiples respuestas](#ejercicio-7-confirmación-de-cierre-con-múltiples-respuestas)
+  - [Ejercicio 8: Suma de dígitos (sin strings)](#ejercicio-8-suma-de-dígitos-sin-strings)
+  - [Ejercicio 9: Tabla personalizada de multiplicar](#ejercicio-9-tabla-personalizada-de-multiplicar)
+  - [Ejercicio 10: Menú interactivo con opciones](#ejercicio-10-menú-interactivo-con-opciones)
+
+</details> 
 El bucle `while` en Python permite ejecutar un bloque de código **mientras se cumpla una condición**. Es una de las estructuras de control de flujo más utilizadas cuando no se sabe de antemano cuántas veces se necesita repetir un conjunto de instrucciones.
 
 ---
@@ -162,7 +194,7 @@ else:
     print("El bucle terminó normalmente.")
 ```
 
-# 6. Ejercicios del Bucle `while`
+## 6. Ejercicios del Bucle `while`
 
 A continuación se presentan ejercicios para profundizar en el uso del bucle `while`.
 
