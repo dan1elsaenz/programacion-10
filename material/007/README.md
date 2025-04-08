@@ -1,5 +1,7 @@
 # Clase 7: Ejercicios de repaso
 
+En esta clase, se realizan 3 ejercicios como repaso para el primer examen parcial del curso.
+
 ## Ejercicio 1: Evaluación de Rendimiento Académico
 
 Solicita al usuario ingresar los nombres y notas de varios estudiantes.
