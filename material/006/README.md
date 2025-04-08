@@ -1,4 +1,4 @@
-# Clase 4: Bucle `while` en Python <!-- omit from toc -->
+# Clase 6: Bucle `while` en Python <!-- omit from toc -->
 
 <details> 
   <summary>Tabla de contenidos</summary>
