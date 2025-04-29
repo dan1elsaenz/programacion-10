@@ -45,6 +45,8 @@ Cada una tiene propiedades particulares, ventajas específicas y una variedad de
 ## Tuplas
 
 ### ¿Qué es una tupla?
+# Clave = Llave
+# Valor = Contenido detrás de la puerta
 
 Una tupla es una colección ordenada de elementos que no puede ser modificada después de su creación.
 Son útiles cuando se desea almacenar datos que no deben cambiar, como coordenadas, fechas o información de configuración.
@@ -136,12 +138,12 @@ Un diccionario es una colección de elementos que almacena datos en pares clave-
 Es útil cuando se desea relacionar una clave con un valor de forma eficiente.
 
 ```
-diccionario = {par1:clave1, par2:clave2, ...}
+diccionario = {clave1:valor1, clave2:valor2, ...}
 ```
 
 ### Cómo definir un diccionario
 
-Los diccionarios pueden definirse utilizando llaves `{}` o con el constructor `dict()`.
+Los diccionarios pueden definirse utilizando claves `{}` o con el constructor `dict()`.
 
 ```python
 d = {"nombre": "Ana", "edad": 25, "activo": True}
@@ -149,7 +151,7 @@ d2 = dict(nombre="Ana", edad=25)
 ```
 
 > [!IMPORTANT]
-> Observe que al utilizar el constructor, las llaves no van entre comillas ("").
+> Observe que al utilizar el constructor, las claves no van entre comillas ("").
 
 ### Propiedades de los diccionarios
 
