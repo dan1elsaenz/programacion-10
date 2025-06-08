@@ -195,18 +195,17 @@ def mcd(a, b):
 
 ### Lógica:
 
-La exponenciación binaria permite calcular potencias de forma muy eficiente, especialmente en contextos donde el exponente es muy grande, como en criptografía o teoría de números. En lugar de multiplicar `a` por sí mismo `b` veces, divide el problema usando que `a^b = (a^(b//2))^2` si `b` es par, o `a * a^(b-1)` si es impar. Esta estrategia reduce el número de multiplicaciones a O(log b), aprovechando la representación binaria del exponente.
-
+La exponenciación binaria permite calcular potencias de forma muy eficiente, especialmente en contextos donde el exponente es muy grande, como en criptografía o teoría de números. En lugar de multiplicar `a` por sí mismo `b` veces, divide el problema usando que $a^b = (a^{\frac{b}{2}})^2$ si $$b$$ es par, o $$a \cdot a^{b-1}$$ si es impar. Esta estrategia reduce el número de multiplicaciones a $$O(\log{b})$$, aprovechando la representación binaria del exponente.
+}
 ```python
-def exponenciacion_binaria(a, b, mod):
-    resultado = 1
-    a %= mod
-    while b:
-        if b % 2:
-            resultado = (resultado * a) % mod
-        a = (a * a) % mod
-        b //= 2
-    return resultado
+def exponenciacion_binaria(a, b):
+    if b == 0:
+        return 1
+    mitad = exponenciacion_binaria(a, b // 2)
+    if b % 2 == 0:
+        return mitad * mitad
+    else:
+        return a * mitad * mitad
 ```
 
 ---
