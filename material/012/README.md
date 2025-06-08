@@ -1,38 +1,53 @@
-# Clase 12: Algoritmos sobre números para la OCI
+# Clase 12: Algoritmos sobre números (OCI)  <!-- omit from toc -->
 
-<details> 
+<details>
   <summary>Tabla de contenidos</summary>
 
-</details> 
+- [1. Mínimo y Máximo en un Arreglo](#1-mínimo-y-máximo-en-un-arreglo)
+  - [Lógica:](#lógica)
+  - [Código por elemento:](#código-por-elemento)
+  - [Código por índice:](#código-por-índice)
+- [2. Sumas de Prefijos](#2-sumas-de-prefijos)
+  - [Lógica lineal:](#lógica-lineal)
+  - [Lógica bidimensional:](#lógica-bidimensional)
+- [3. Búsqueda Binaria](#3-búsqueda-binaria)
+  - [Lógica:](#lógica-1)
+  - [Iterativa:](#iterativa)
+  - [Recursiva:](#recursiva)
+- [4. Algoritmo de Euclides](#4-algoritmo-de-euclides)
+  - [Lógica:](#lógica-2)
+- [5. Exponenciación Binaria](#5-exponenciación-binaria)
+  - [Lógica:](#lógica-3)
+- [6. Test de Primalidad O(√n)](#6-test-de-primalidad-on)
+  - [Lógica:](#lógica-4)
+- [7. Factorización](#7-factorización)
+  - [Lógica:](#lógica-5)
+- [8. Criba de Eratóstenes](#8-criba-de-eratóstenes)
+  - [Lógica:](#lógica-6)
+  - [Parte 1: Generar la lista de primos](#parte-1-generar-la-lista-de-primos)
+  - [Parte 2: Verificar si un número es primo con criba](#parte-2-verificar-si-un-número-es-primo-con-criba)
+- [9. Cálculo de distancia entre puntos](#9-cálculo-de-distancia-entre-puntos)
+  - [Lógica:](#lógica-7)
+  - [Código:](#código)
+- [10. Suma Máxima de un Subarreglo (Algoritmo de Kadane)](#10-suma-máxima-de-un-subarreglo-algoritmo-de-kadane)
+  - [Lógica:](#lógica-8)
+  - [Código:](#código-1)
 
+</details>
 
 ---
 
-## 1. Suma Máxima de un Subarreglo (Algoritmo de Kadane)
+## 1. Mínimo y Máximo en un Arreglo
 
 ### Lógica:
 
-El algoritmo de Kadane permite encontrar la suma más alta posible de una secuencia continua dentro de un arreglo.
+Buscar el valor mínimo o máximo en un arreglo consiste en recorrer todos los elementos y comparar cada uno con el actual mínimo o máximo registrado.
 
-### Código:
-
-```python
-def algoritmo_kadane(arr):
-    max_actual = max_total = arr[0]
-    for num in arr[1:]:
-        max_actual = max(num, max_actual + num)
-        max_total = max(max_total, max_actual)
-    return max_total
-```
-
----
-
-## 2. Mínimo y Máximo en un Arreglo
-
-### Lógica:
-
-Se puede encontrar el valor mínimo o máximo directamente, o también identificar en qué índice se encuentra.
-Ambos enfoques recorren el arreglo una sola vez.
+Al inicio, se toma como referencia el primer elemento del arreglo.
+A medida que se avanza, si se encuentra un valor menor al mínimo registrado, se actualiza.
+De igual forma con el máximo.
+Esta operación es útil para encontrar extremos en conjuntos de datos, como temperaturas más altas, precios mínimos, entre otros.
+El algoritmo es lineal porque analiza todos los elementos una sola vez.
 
 ### Código por elemento:
 
@@ -50,7 +65,6 @@ for valor in arreglo:
 
 ```python
 indice_min = indice_max = 0
-
 for i in range(1, len(arreglo)):
     if arreglo[i] < arreglo[indice_min]:
         indice_min = i
@@ -60,11 +74,14 @@ for i in range(1, len(arreglo)):
 
 ---
 
-## 3. Sumas de Prefijos
+## 2. Sumas de Prefijos
 
 ### Lógica lineal:
 
-Se calcula la suma acumulada de izquierda a derecha.
+La suma de prefijos es una técnica que permite calcular rápidamente la suma de cualquier subarreglo en tiempo constante, una vez se ha hecho un preprocesamiento en tiempo lineal.
+
+Consiste en crear un arreglo auxiliar donde cada posición guarda la suma acumulada desde el inicio hasta esa posición.
+Esto es útil para responder muchas consultas de suma de rangos en arreglos de forma eficiente.
 
 ```python
 prefijos = [0] * len(numeros)
@@ -75,7 +92,10 @@ for i in range(1, len(numeros)):
 
 ### Lógica bidimensional:
 
-Permite calcular la suma de submatrices dentro de una matriz original.
+En el caso de matrices, la suma de prefijos bidimensional extiende esta idea para permitir obtener la suma de cualquier submatriz.
+
+Se usa una matriz acumulada donde cada celda representa la suma de la submatriz desde (0,0) hasta esa celda.
+Esta técnica es muy poderosa en procesamiento de imágenes o análisis de datos en cuadrículas.
 
 ```python
 filas, columnas = len(matriz), len(matriz[0])
@@ -93,7 +113,6 @@ for i in range(1, filas):
     for j in range(1, columnas):
         p[i][j] = p[i-1][j] + p[i][j-1] - p[i-1][j-1] + matriz[i][j]
 
-# Consulta entre (f1, c1) y (f2, c2)
 def suma_submatriz(f1, c1, f2, c2):
     suma = p[f2][c2]
     if f1 > 0: suma -= p[f1-1][c2]
@@ -104,11 +123,15 @@ def suma_submatriz(f1, c1, f2, c2):
 
 ---
 
-## 4. Búsqueda Binaria
+## 3. Búsqueda Binaria
 
 ### Lógica:
 
-Funciona únicamente sobre listas ordenadas. Se puede implementar de forma iterativa o recursiva.
+La búsqueda binaria es una técnica eficiente para encontrar un elemento dentro de una lista ordenada.
+
+En lugar de revisar todos los elementos, divide el arreglo a la mitad y decide en qué mitad continuar la búsqueda según si el objetivo es menor o mayor que el valor medio.
+Este enfoque reduce el tamaño del problema a la mitad en cada paso, lo cual da una complejidad logarítmica O(log n).
+Es fundamental que el arreglo esté ordenado para que esta estrategia funcione.
 
 ### Iterativa:
 
@@ -143,37 +166,74 @@ def busqueda_binaria_rec(arr, objetivo, izq, der):
 
 ---
 
-## 5. Cálculo de Distancia entre Puntos
+## 4. Algoritmo de Euclides
 
 ### Lógica:
 
-La distancia entre dos puntos en el plano se calcula con el teorema de Pitágoras: $d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$
-
-### Código:
+El algoritmo de Euclides es un método clásico para encontrar el máximo común divisor (MCD) de dos números enteros. Se basa en el principio de que el MCD de dos números no cambia si el número mayor se reemplaza por su diferencia con el menor. La versión moderna usa el residuo de la división: `gcd(a, b) = gcd(b, a % b)`. Este proceso se repite hasta que el residuo sea cero, y el último valor distinto de cero es el MCD. Es un algoritmo muy eficiente, con complejidad logarítmica.
 
 ```python
-from math import sqrt
-
-def distancia(p1, p2):
-    x1, y1 = p1
-    x2, y2 = p2
-    return sqrt((x2 - x1)**2 + (y2 - y1)**2)
+def mcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
 ```
 
 ---
 
-## 6. Cálculo de Divisores
+## 5. Exponenciación Binaria
 
 ### Lógica:
 
-Para encontrar todos los divisores de un número `n`, se prueba cada número `i` desde 1 hasta √n. Si divide a `n`, se guarda tanto `i` como `n // i`.
-
-### Código:
+La exponenciación binaria permite calcular potencias de forma muy eficiente, especialmente en contextos donde el exponente es muy grande, como en criptografía o teoría de números. En lugar de multiplicar `a` por sí mismo `b` veces, divide el problema usando que `a^b = (a^(b//2))^2` si `b` es par, o `a * a^(b-1)` si es impar. Esta estrategia reduce el número de multiplicaciones a O(log b), aprovechando la representación binaria del exponente.
 
 ```python
-from math import sqrt
+def exponenciacion_binaria(a, b, mod):
+    resultado = 1
+    a %= mod
+    while b:
+        if b % 2:
+            resultado = (resultado * a) % mod
+        a = (a * a) % mod
+        b //= 2
+    return resultado
+```
 
-def divisores(n):
+---
+
+## 6. Test de Primalidad O(√n)
+
+### Lógica:
+
+Un número `n` es primo si tiene exactamente dos divisores: 1 y él mismo. Para verificar esto, basta con probar si `n` es divisible por algún número entre 2 y √n. Si `n` tiene un divisor en ese rango, no es primo. Este método es eficiente porque cualquier divisor mayor que √n implicaría uno menor que ya se habría encontrado.
+
+```python
+from math import isqrt
+
+def es_primo(n):
+    if n <= 1:
+        return False
+    for i in range(2, isqrt(n) + 1):
+        if n % i == 0:
+            return False
+    return True
+```
+
+---
+
+## 7. Factorización
+
+### Lógica:
+
+La factorización consiste en descomponer un número en sus factores primos, es decir, en los números primos que multiplicados entre sí dan como resultado el número original.
+
+El método más común es dividir el número `n` por todos los posibles divisores desde 2 hasta $$\sqrt{n}$$, y repetir mientras sea divisible.
+Si al final queda un número mayor que 1, también es primo. Esta técnica se usa en criptografía y análisis de números.
+
+```python
+from math import isqrt
+
+def factorizar(n):
     resultado = set()
     for i in range(1, int(sqrt(n)) + 1):
         if n % i == 0:
@@ -184,11 +244,15 @@ def divisores(n):
 
 ---
 
-## 7. Criba de Eratóstenes
+## 8. Criba de Eratóstenes
 
 ### Lógica:
 
-Permite encontrar todos los números primos menores o iguales a un número `n`. Se parte de una lista donde todos son considerados primos. Luego, se eliminan los múltiplos de cada número primo empezando desde 2.
+La Criba de Eratóstenes es un algoritmo antiguo y muy eficiente para encontrar todos los números primos hasta un número dado `n`.
+
+Permite encontrar todos los números primos menores o iguales a un número `n`.
+Se parte de una lista donde todos son considerados primos.
+Luego, se eliminan los múltiplos de cada número primo empezando desde 2.
 
 ### Parte 1: Generar la lista de primos
 
@@ -220,4 +284,40 @@ def criba_verificar_primo(n):
 ```
 
 ---
+
+## 9. Cálculo de distancia entre puntos
+
+### Lógica:
+
+La distancia entre dos puntos en el plano se calcula con el teorema de Pitágoras: $d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$
+
+### Código:
+
+```python
+from math import sqrt
+
+def distancia(p1, p2):
+    x1, y1 = p1
+    x2, y2 = p2
+    return sqrt((x2 - x1)**2 + (y2 - y1)**2)
+```
+
+---
+
+## 10. Suma Máxima de un Subarreglo (Algoritmo de Kadane)
+
+### Lógica:
+
+El algoritmo de Kadane permite encontrar la suma más alta posible de una secuencia continua dentro de un arreglo.
+
+### Código:
+
+```python
+def algoritmo_kadane(arr):
+    max_actual = max_total = arr[0]
+    for num in arr[1:]:
+        max_actual = max(num, max_actual + num)
+        max_total = max(max_total, max_actual)
+    return max_total
+```
 
