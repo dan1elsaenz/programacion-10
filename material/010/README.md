@@ -14,10 +14,6 @@
 - [Paso por valor y referencia](#paso-por-valor-y-referencia)
 - [Palabra clave `pass`](#palabra-clave-pass)
 - [Palabra clave `return`](#palabra-clave-return)
-- [Recursión](#recursión)
-  - [Ejemplo 1: Factorial](#ejemplo-1-factorial)
-  - [Ejemplo 2: Fibonacci](#ejemplo-2-fibonacci)
-  - [Ejemplo 3: Suma de lista](#ejemplo-3-suma-de-lista)
 
 </details> 
 
@@ -230,49 +226,4 @@ def analizar_numero(n):
 
 > [!NOTE]
 > No se recomienda que las funciones tengan muchos `return` distintos.
-
----
-
-## Recursión
-
-La **recursión** ocurre cuando una función se llama a sí misma.
-Requiere una **condición base** que finalice la recursión, de lo contrario se produce un error de recursión infinita.
-
-<div align="center">
-    <p>
-        <img src="img/recursion.png" width="500px" alt="Ejemplo visual de recursión">
-    </p>
-</div>
-<div align="right">
-    <a href="https://www.edureka.co/blog/recursion-in-python/">Edureka</a>
-</div>
-
-### Ejemplo 1: Factorial
-```python
-def factorial(n):
-    if n == 0:
-        return 1
-    return n * factorial(n - 1)
-```
-
-### Ejemplo 2: Fibonacci
-```python
-def fibonacci(n):
-    if n == 0:
-        return 0
-    elif n == 1:
-        return 1
-    return fibonacci(n-1) + fibonacci(n-2)
-```
-
-### Ejemplo 3: Suma de lista
-```python
-def suma_lista(lista):
-    if not lista:
-        return 0
-    return lista[0] + suma_lista(lista[1:])
-```
-
-> [!NOTE]
-> La recursión es elegante, pero puede ser menos eficiente que un bucle en términos de memoria y tiempo. No es recomendable usar recursión si se pueden generar muchas funciones llamadas.
 
