@@ -248,9 +248,9 @@ Problema de las 8 reinas en un tablero de ajedrez.
 ```python
 n = 8
 count = 0
-col = [False] - n
-diag1 = [False] - (2 * n - 1)
-diag2 = [False] - (2 * n - 1)
+col = [False] * n
+diag1 = [False] * (2 * n - 1)
+diag2 = [False] * (2 * n - 1)
 
 def buscar(y):
     global count
