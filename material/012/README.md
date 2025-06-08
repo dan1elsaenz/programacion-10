@@ -12,7 +12,7 @@
   - [Lógica bidimensional:](#lógica-bidimensional)
 - [3. Búsqueda Binaria](#3-búsqueda-binaria)
   - [Lógica:](#lógica-1)
-  - [Iterativa:](#iterativa)
+  - [Igerativa:](#iterativa)
   - [Recursiva:](#recursiva)
 - [4. Algoritmo de Euclides](#4-algoritmo-de-euclides)
   - [Lógica:](#lógica-2)
@@ -170,7 +170,17 @@ def busqueda_binaria_rec(arr, objetivo, izq, der):
 
 ### Lógica:
 
-El algoritmo de Euclides es un método clásico para encontrar el máximo común divisor (MCD) de dos números enteros. Se basa en el principio de que el MCD de dos números no cambia si el número mayor se reemplaza por su diferencia con el menor. La versión moderna usa el residuo de la división: `gcd(a, b) = gcd(b, a % b)`. Este proceso se repite hasta que el residuo sea cero, y el último valor distinto de cero es el MCD. Es un algoritmo muy eficiente, con complejidad logarítmica.
+El algoritmo de Euclides es un método clásico para encontrar el máximo común divisor (MCD) de dos números enteros.
+Se basa en el principio de que el MCD de dos números no cambia si el número mayor se reemplaza por su diferencia con el menor.
+Este proceso se repite hasta que el residuo sea cero, y el último valor distinto de cero es el MCD.
+Es un algoritmo muy eficiente, con complejidad temporal $$O(\log{n})$$.
+
+$$
+\text{mcd}(a,b) = \begin{matrix}
+a & b = 0 \\
+\text{mcd(b, a mod b)} & b \ne 0
+\end{matrix}
+$$
 
 ```python
 def mcd(a, b):
