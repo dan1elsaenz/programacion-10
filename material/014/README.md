@@ -1,4 +1,38 @@
-# Clase 14: Manejo de archivos, múltiples archivos, módulos y manejo de errores
+# Clase 14: Manejo de archivos, múltiples archivos, módulos y manejo de errores <!-- omit from toc -->
+
+<details> 
+  <summary>Tabla de contenidos</summary>
+
+- [1. Manejo de Archivos en Python](#1-manejo-de-archivos-en-python)
+  - [1.1 Formas de abrir archivos](#11-formas-de-abrir-archivos)
+    - [Usando `open()` directamente:](#usando-open-directamente)
+    - [Usando `with open()`:](#usando-with-open)
+  - [1.2 Modos de apertura](#12-modos-de-apertura)
+  - [1.3 Lectura de archivos](#13-lectura-de-archivos)
+    - [Ejemplo:](#ejemplo)
+  - [1.4 Escritura de archivos](#14-escritura-de-archivos)
+  - [1.5 Crear o agregar archivos](#15-crear-o-agregar-archivos)
+- [2. Manejo de Paths en Python](#2-manejo-de-paths-en-python)
+  - [2.0 ¿Qué es un path?](#20-qué-es-un-path)
+  - [2.1 Usando `os.path`](#21-usando-ospath)
+    - [Ventajas:](#ventajas)
+    - [Limitaciones:](#limitaciones)
+  - [2.2 Usando `pathlib` (moderno)](#22-usando-pathlib-moderno)
+    - [Ventajas:](#ventajas-1)
+    - [Limitaciones:](#limitaciones-1)
+  - [2.3 Comparación breve](#23-comparación-breve)
+- [3. Manejo de Errores con try-except](#3-manejo-de-errores-con-try-except)
+  - [Tabla de errores comunes](#tabla-de-errores-comunes)
+- [4. Uso de Múltiples Archivos](#4-uso-de-múltiples-archivos)
+  - [Ejemplo:](#ejemplo-1)
+- [5. Módulos Externos](#5-módulos-externos)
+  - [Ejemplo con `math`](#ejemplo-con-math)
+- [6. Ejercicio](#6-ejercicio)
+  - [Enunciado](#enunciado)
+
+</details> 
+
+---
 
 ## 1. Manejo de Archivos en Python
 
@@ -80,38 +114,107 @@ with open('log.txt', 'a') as f:
     f.write("Nueva entrada\n")
 ```
 
+---
+
 ## 2. Manejo de Paths en Python
 
-En sistemas reales, trabajar con rutas (paths) correctamente es clave, especialmente cuando se desarrolla en diferentes sistemas operativos.
+### 2.0 ¿Qué es un path?
+
+En una computadora, un **path** (ruta) es una cadena de texto que indica la ubicación de un archivo o carpeta dentro del sistema de archivos.
+
+Existen dos tipos principales de rutas:
+
+- **Ruta absoluta**: comienza desde la raíz del sistema de archivos. Ejemplo en Linux/macOS:  
+  `/home/usuario/documentos/archivo.txt`  
+  o en Windows:  
+  `C:\Usuarios\usuario\documentos\archivo.txt`
+
+- **Ruta relativa**: se interpreta en relación con la carpeta actual desde donde se ejecuta el programa. Ejemplo:  
+  `documentos/archivo.txt`
+
+Python permite trabajar con ambas rutas. Para evitar errores de compatibilidad entre sistemas (por ejemplo, separadores `/` vs `\\`), es importante usar herramientas como `os.path` o `pathlib`, que abstraen estas diferencias.
 
 ### 2.1 Usando `os.path`
+
+El módulo `os.path` proporciona funciones para construir, transformar y analizar rutas de archivos en forma de cadenas (`str`). Es compatible con versiones anteriores de Python y funciona en todos los sistemas operativos.
 
 ```python
 import os
 
-ruta_absoluta = os.path.abspath("archivo.txt")
-existe = os.path.exists("archivo.txt")
-carpeta = os.path.dirname(ruta_absoluta)
-nombre_archivo = os.path.basename(ruta_absoluta)
+ruta_relativa = "archivo.txt"
+ruta_absoluta = os.path.abspath(ruta_relativa)  # Devuelve la ruta absoluta
+existe = os.path.exists(ruta_relativa)          # Verifica si el archivo existe
+carpeta = os.path.dirname(ruta_absoluta)        # Extrae el directorio
+nombre_archivo = os.path.basename(ruta_absoluta) # Extrae el nombre del archivo
+
+print("Ruta absoluta:", ruta_absoluta)
+print("¿Existe el archivo?", existe)
+print("Carpeta contenedora:", carpeta)
+print("Nombre del archivo:", nombre_archivo)
 ```
 
-### 2.2 Usando `pathlib` (moderno y recomendado)
+#### Ventajas:
+- Compatible con Python 2 y 3
+- Funciones simples para tareas comunes
+
+#### Limitaciones:
+- Todas las operaciones son con cadenas (`str`)
+- El código puede ser más difícil de leer y componer, especialmente al unir rutas
+
+### 2.2 Usando `pathlib` (moderno)
+
+El módulo `pathlib` permite trabajar con rutas como objetos (`Path`) en lugar de simples cadenas. Esto hace que el código sea más legible, expresivo y compatible con múltiples plataformas.
 
 ```python
 from pathlib import Path
 
 ruta = Path("archivo.txt")
-print(ruta.resolve())           # ruta absoluta
-print(ruta.exists())            # True o False
-print(ruta.parent)              # carpeta padre
-print(ruta.name)                # nombre del archivo
 
-# Leer archivo
-contenido = ruta.read_text()
-
-# Escribir archivo
-ruta.write_text("Hola desde pathlib")
+print("Ruta absoluta:", ruta.resolve())  # Devuelve un Path absoluto
+print("¿Existe el archivo?", ruta.exists())
+print("Carpeta padre:", ruta.parent)
+print("Nombre del archivo:", ruta.name)
 ```
+
+También se pueden leer y escribir archivos directamente desde objetos `Path`:
+
+```python
+# Escribir texto en un archivo
+ruta.write_text("Hola desde pathlib")
+
+# Leer el contenido del archivo
+contenido = ruta.read_text()
+print("Contenido:", contenido)
+```
+
+Para unir carpetas o navegar directorios se usa `/`, no `+` ni `os.path.join()`:
+
+```python
+nueva_ruta = Path("documentos") / "proyectos" / "informe.txt"
+print(nueva_ruta)  # documentos/proyectos/informe.txt
+```
+
+#### Ventajas:
+- Sintaxis moderna, clara y orientada a objetos
+- Más expresivo al construir rutas
+- Métodos integrados para lectura y escritura
+
+#### Limitaciones:
+- No está disponible en versiones anteriores a Python 3.4
+
+### 2.3 Comparación breve
+
+| Tarea                        | `os.path`                            | `pathlib`                              |
+|-----------------------------|--------------------------------------|----------------------------------------|
+| Unir rutas                  | `os.path.join("a", "b")`             | `Path("a") / "b"`                      |
+| Obtener nombre del archivo  | `os.path.basename(path)`             | `ruta.name`                            |
+| Obtener carpeta             | `os.path.dirname(path)`              | `ruta.parent`                          |
+| Verificar existencia        | `os.path.exists(path)`               | `ruta.exists()`                        |
+| Ruta absoluta               | `os.path.abspath(path)`              | `ruta.resolve()`                       |
+| Leer archivo                | `open(path).read()`                  | `ruta.read_text()`                     |
+| Escribir archivo            | `open(path, 'w').write(texto)`      | `ruta.write_text(texto)`              |
+
+---
 
 ## 3. Manejo de Errores con try-except
 
@@ -136,6 +239,8 @@ except FileNotFoundError:
 | `TypeError`              | Tipo de dato incorrecto usado               |
 | `ZeroDivisionError`      | División entre cero                         |
 | `KeyError`, `IndexError` | Acceso a clave o índice inexistente         |
+
+---
 
 ## 4. Uso de Múltiples Archivos
 
@@ -162,6 +267,8 @@ nombre = input("Ingresa tu nombre: ")
 print(utilidades.saludar(nombre))
 ```
 
+---
+
 ## 5. Módulos Externos
 
 Python incluye muchos módulos externos en su biblioteca estándar. Se importan con la palabra `import`.
@@ -181,6 +288,8 @@ Para instalar módulos externos que no están en la biblioteca estándar:
 ```bash
 pip install nombre_modulo
 ```
+
+---
 
 ## 6. Ejercicio
 
