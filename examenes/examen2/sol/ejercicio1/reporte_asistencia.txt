@@ -1,0 +1,16 @@
+Isaac: 7
+Josue: 4
+Keisy: 4
+Sofia: 4
+Sebastian: 4
+Emiliano: 3
+Daniela: 3
+Esteban: 3
+Jose: 3
+Fabriella: 3
+Pilar: 3
+Erick: 3
+Kristyn: 3
+Kenneth: 2
+Joshua: 2
+Kimberly: 1
