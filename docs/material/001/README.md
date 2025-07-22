@@ -1,4 +1,3 @@
-
 # Clase 1: Conceptos básicos de Python <!-- omit from toc -->
 
 <details> 
@@ -22,10 +21,8 @@
   - [`print()`: Mostrar información en pantalla](#print-mostrar-información-en-pantalla)
   - [`input()`: Leer información del usuario](#input-leer-información-del-usuario)
 - [6. Concatenación de Strings](#6-concatenación-de-strings)
-  - [Métodos de concatenación](#métodos-de-concatenación)
-    - [Uso del operador `+`](#uso-del-operador-)
-    - [Uso de `f-strings` (Python 3.6 en adelante)](#uso-de-f-strings-python-36-en-adelante)
-</details> 
+  - [Métodos de concatenación](#métodos-de-concatenación) - [Uso del operador `+`](#uso-del-operador-) - [Uso de `f-strings` (Python 3.6 en adelante)](#uso-de-f-strings-python-36-en-adelante)
+  </details>
 
 ## 1. Indentación en Python
 
@@ -34,7 +31,7 @@ Python utiliza la indentación para definir bloques de código, en lugar de llav
 ### Reglas clave de la indentación en Python
 
 - Todos los bloques de código dentro de estructuras como `if`, `for`, `while`, `def` y `class` deben estar indentados uniformemente.
-    - Esto se realiza para indicar que un bloque de código pertenece a una jerarquía específica.
+  - Esto se realiza para indicar que un bloque de código pertenece a una jerarquía específica.
 - Se recomienda utilizar 4 espacios por nivel de indentación.
 - Una indentación incorrecta generará un error de sintaxis (`IndentationError`).
 
@@ -77,9 +74,9 @@ En Python, no es necesario declarar explícitamente el tipo de dato de una varia
 - Sólo pueden contener letras, números y guiones bajos (`_`)
 - **NO** pueden contener espacios ni caracteres especiales.
 - Convenciones para nombrar variables:
-    - `snake_case`
-    - `camelCase`
-    - `PascalCase`
+  - `snake_case`
+  - `camelCase`
+  - `PascalCase`
 - Distinción entre mayúsculas y minúsculas (`edad` y `Edad` son variables diferentes).
 - Se pueden definir múltiples variables en una sola línea.
 
@@ -364,6 +361,7 @@ La **concatenación** de strings es la unión de dos o más cadenas de texto.
 ### Métodos de concatenación
 
 #### Uso del operador `+`
+
 Se puede usar `+` para unir dos cadenas de texto. Se debe agregar un espacio manualmente si es necesario.
 
 ```python
@@ -374,6 +372,7 @@ print("Tu nombre completo es: " + nombre_completo)
 ```
 
 #### Uso de `f-strings` (Python 3.6 en adelante)
+
 Permite insertar variables dentro de un string de manera más sencilla.
 
 ```python
@@ -382,4 +381,3 @@ edad = 17
 string_completo = f"Hola, {nombre}, tienes {edad} años."
 print(string_completo)
 ```
-

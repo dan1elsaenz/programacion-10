@@ -247,6 +247,7 @@ def orden_topologico(grafo):
 **Ejemplo**:
 
 Para el grafo:
+
 ```python
 grafo = {
     'A': ['C'],
@@ -495,7 +496,7 @@ def articulaciones_y_puentes(grafo):
                     puentes.append((u, v))
             elif v != padre.get(u):
                 # Caso de arista de retroceso
-                # 
+                #
                 low[u] = min(low[u], disc[v])
 
     for u in grafo:
@@ -547,9 +548,11 @@ if low[v] > disc[u]:
    - Al volver de la recursión, se actualiza `low[u] = min(low[u], low[v])`.
 3. Se verifica si `u` es punto de articulación y si `(u, v)` es un puente.
 4. Si `v` ya fue visitado **y no es el padre de `u`**, se actualiza:
+
    ```python
    low[u] = min(low[u], disc[v])
    ```
+
    Esto corresponde a una arista de retroceso.
 
 #### Ejemplo

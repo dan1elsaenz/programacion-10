@@ -3,7 +3,7 @@
 ## Indicaciones generales
 
 - El examen tiene una duración total de 2 horas y 15 minutos.
-- Subir al Google Classroom las soluciones en el espacio denominado *Examen Parcial I*.
+- Subir al Google Classroom las soluciones en el espacio denominado _Examen Parcial I_.
 - Entregue un documento para cada ejercicio: `ejercicio1.py` y `ejercicio2.py`.
 - Esta es una prueba de carácter individual y está prohibido el acceso a información en internet.
 - Los estudiantes pueden llevar una hoja como formulario escrita a mano.
@@ -35,17 +35,17 @@ Se debe registrar la información de varias personas y procesarla para determina
 
 ### Criterios de Evaluación
 
-| Criterio | Puntaje |
-|---------|---------|
-| Lectura de la cantidad total de personas | 2.5 pts |
-| Solicitud y almacenamiento correcto de nombre y edad en listas | 7.5 pts |
-| Filtrado correcto de personas dentro del rango permitido (15 a 18 años) | 5 pts |
-| Impresión clara de los nombres permitidos | 5 pts |
-| Conteo correcto de personas menores de 15 | 5 pts |
-| Conteo correcto de personas mayores de 18 | 5 pts |
-| Identificación de la persona permitida con mayor edad | 15 pts |
-| Documentación clara mediante comentarios | 5 pts |
-| **Total** | **60 pts** |
+| Criterio                                                                | Puntaje    |
+| ----------------------------------------------------------------------- | ---------- |
+| Lectura de la cantidad total de personas                                | 2.5 pts    |
+| Solicitud y almacenamiento correcto de nombre y edad en listas          | 7.5 pts    |
+| Filtrado correcto de personas dentro del rango permitido (15 a 18 años) | 5 pts      |
+| Impresión clara de los nombres permitidos                               | 5 pts      |
+| Conteo correcto de personas menores de 15                               | 5 pts      |
+| Conteo correcto de personas mayores de 18                               | 5 pts      |
+| Identificación de la persona permitida con mayor edad                   | 15 pts     |
+| Documentación clara mediante comentarios                                | 5 pts      |
+| **Total**                                                               | **60 pts** |
 
 ---
 
@@ -90,23 +90,24 @@ Además, se quiere formar una palabra oculta tomando la **última letra de cada 
 3. Documentar correctamente el programa.
 
 > [!NOTE]
-> Pistas:  
-> - Recorrer todas las palabras de la lista y guardar la información en variables fuera del loop.  
+> Pistas:
+>
+> - Recorrer todas las palabras de la lista y guardar la información en variables fuera del loop.
 > - Forme un string inicialmente vacío y vaya concatenando los caracteres extraídos de cada palabra.
 
 ### Criterios de Evaluación
 
-| Criterio | Puntaje |
-|---------|---------|
-| Lectura de la frase original | 2.5 pts |
-| División de la frase en palabras | 2.5 pts |
-| Conteo correcto de palabras que terminan con `a` | 10 pts |
-| Cálculo de longitud y detección de la palabra más larga | 10 pts |
-| Palabra oculta generada a partir de las últimas letras | 10 pts |
-| Comentarios claros en el código | 5 pts |
-| **Extra:** Lista con las palabras invertidas | 5 pts |
-| **Extra:** Conteo de palabras con exactamente 5 letras | 7.5 pts |
-| **Total** | **52.5 pts** |
+| Criterio                                                | Puntaje      |
+| ------------------------------------------------------- | ------------ |
+| Lectura de la frase original                            | 2.5 pts      |
+| División de la frase en palabras                        | 2.5 pts      |
+| Conteo correcto de palabras que terminan con `a`        | 10 pts       |
+| Cálculo de longitud y detección de la palabra más larga | 10 pts       |
+| Palabra oculta generada a partir de las últimas letras  | 10 pts       |
+| Comentarios claros en el código                         | 5 pts        |
+| **Extra:** Lista con las palabras invertidas            | 5 pts        |
+| **Extra:** Conteo de palabras con exactamente 5 letras  | 7.5 pts      |
+| **Total**                                               | **52.5 pts** |
 
 ### Ejemplo esperado de ejecución
 
