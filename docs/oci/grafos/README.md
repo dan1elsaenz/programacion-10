@@ -1,8 +1,6 @@
 # Algoritmos de Grafos
 
----
-
-### 1. Introducción a los Grafos
+### Introducción a los Grafos
 
 Un **grafo** es una estructura que modela relaciones entre pares de elementos.
 Cada elemento se llama **nodo** o **vértice**, y cada conexión entre dos nodos se llama **arista**.
@@ -32,7 +30,7 @@ grafoLista = [[1,2], [0,3], [0, 3], [1,2]]
 
 ---
 
-### 2. _Depth First Search_ (DFS)
+### _Depth First Search_ (DFS)
 
 La **búsqueda en profundidad (DFS)** es un algoritmo de recorrido de grafos que explora tan profundo como sea posible a lo largo de cada rama antes de retroceder.
 
@@ -118,7 +116,7 @@ def dfs(grafoLista):
 
 ---
 
-### 3. _Breadth First Search_ (BFS)
+### _Breadth First Search_ (BFS)
 
 La **búsqueda en anchura (BFS)** es un algoritmo de recorrido de grafos que explora primero los nodos más cercanos al nodo de inicio, antes de avanzar hacia niveles más profundos.
 
@@ -205,7 +203,7 @@ def bfs(grafo):
 
 ---
 
-### 4. Orden Topológico (DAG)
+### Orden Topológico (DAG)
 
 El **orden topológico** es una enumeración lineal de los nodos de un **grafo dirigido acíclico (DAG)**, de forma que si existe una arista del nodo `u` al nodo `v`, entonces `u` aparece antes que `v` en el orden resultante.
 
@@ -271,7 +269,7 @@ Una posible salida de `orden_topologico(grafo)` sería:
 - El orden topológico **solo es posible si el grafo no contiene ciclos**. Si se detecta un ciclo, el algoritmo debe manejarlo o reportarlo.
 - Este algoritmo tiene una complejidad de **O(V + E)**, donde `V` es el número de vértices y `E` el número de aristas.
 
-### 5. Detección de Ciclos
+### Detección de Ciclos
 
 Detectar **ciclos** en un grafo permite determinar si existen **caminos cerrados**.
 
@@ -379,7 +377,7 @@ grafo = {
 
 ---
 
-### 6. Componentes Conexas
+### Componentes Conexas
 
 Una **componente conexa** en un **grafo no dirigido** es un conjunto máximo de nodos donde existe al menos un camino entre cualquier par de nodos dentro del conjunto.
 
@@ -440,7 +438,7 @@ Este grafo tiene tres componentes conexas:
 
 ---
 
-### 7. Puntos de Articulación y Puentes (Tarjan)
+### Puntos de Articulación y Puentes (Tarjan)
 
 En un **grafo no dirigido**, existen nodos y aristas críticas cuya eliminación puede afectar la conectividad del grafo:
 

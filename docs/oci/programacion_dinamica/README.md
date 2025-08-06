@@ -1,21 +1,4 @@
-# Programación Dinámica <!-- omit from toc -->
-
-<details> 
-  <summary>Tabla de contenidos</summary>
-
-- [¿Qué es la programación dinámica?](#qué-es-la-programación-dinámica)
-- [¿Cuándo se debe usar programación dinámica?](#cuándo-se-debe-usar-programación-dinámica)
-- [Tipos de programación dinámica](#tipos-de-programación-dinámica)
-- [Ejemplo: Fibonacci](#ejemplo-fibonacci)
-  - [1. Memoización automática con `@lru_cache`](#1-memoización-automática-con-lru_cache)
-  - [2. Memoización manual (_Top-Down_)](#2-memoización-manual-top-down)
-  - [3. Tabulación (_Bottom-Up_)](#3-tabulación-bottom-up)
-- [Ejemplo: Mochila 0/1](#ejemplo-mochila-01)
-- [Ejemplo: Longest Common Subsequence (LCS)](#ejemplo-longest-common-subsequence-lcs)
-
-</details>
-
----
+# Programación Dinámica
 
 ## ¿Qué es la programación dinámica?
 
@@ -223,3 +206,4 @@ print(lcs(cadena1, cadena2))  # Salida esperada: 3
 - La respuesta final se encuentra en `dp[n][m]`, que representa la longitud del LCS entre ambas cadenas completas.
 
 ---
+

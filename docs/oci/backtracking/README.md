@@ -1,21 +1,4 @@
-# _Backtracking_ <!-- omit from toc -->
-
-<details> 
-  <summary>Tabla de contenidos</summary>
-
-- [¿Qué es _backtracking_?](#qué-es-backtracking)
-- [¿Cuándo se usa?](#cuándo-se-usa)
-- [Desventajas](#desventajas)
-- [Ejemplo: Algoritmo de las `N` Reinas](#ejemplo-algoritmo-de-las-n-reinas)
-- [Ejemplo: Permutaciones y combinaciones de un conjunto](#ejemplo-permutaciones-y-combinaciones-de-un-conjunto)
-  - [1. Permutaciones](#1-permutaciones)
-  - [2. Combinaciones](#2-combinaciones)
-- [Ejemplo: _Sudoku Solver_](#ejemplo-sudoku-solver)
-- [Ejemplo: Resolver un laberinto](#ejemplo-resolver-un-laberinto)
-
-</details>
-
----
+# _Backtracking_
 
 ## ¿Qué es _backtracking_?
 
