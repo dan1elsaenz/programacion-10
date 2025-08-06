@@ -1,2 +1,5 @@
 # Python virtual env
 venv/
+
+# MacOS
+.DS_Store
