@@ -89,7 +89,11 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.mark
   - pymdownx.smartsymbols
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.tasklist:
@@ -128,7 +132,8 @@ nav:
       - Clase 14. Manejo de archivos, errores y uso de múltiples archivos fuente: material/i_ciclo/014/README.md
       - Clase 15. Repaso para el examen: material/i_ciclo/015/README.md
     - II Ciclo:
-      - Clase 1. Repaso de anteriores: material/ii_ciclo/001/README.md
+      - Clase 1. Repaso de conceptos anteriores: material/ii_ciclo/001/README.md
+      - Clase 2. Introducción a OOP: material/ii_ciclo/002/README.md
 
   - Tareas:
     - I Ciclo:
@@ -142,7 +147,8 @@ nav:
       - Práctica 2: practicas_evaluadas/i_ciclo/002/README.md
       - Práctica 3: practicas_evaluadas/i_ciclo/003/README.md
       - Práctica 4: practicas_evaluadas/i_ciclo/004/README.md
-    # - II Ciclo:
+    - II Ciclo:
+      - Práctica 1: practicas_evaluadas/ii_ciclo/001/README.md
   - Exámenes:
     - I Ciclo:
       - Examen 1: examenes/i_ciclo/examen1/README.md
