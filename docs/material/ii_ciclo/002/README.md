@@ -115,12 +115,14 @@ c2 = Contador(10)
 c1.valor += 5
 c2.valor += 1
 
-print(c1.valor)  # 5
-print(c2.valor)  # 11
-print(id(c1) != id(c2))  # (1)!
+print(c1.valor)  # (1)!
+print(c2.valor)  # (2)!
+print(id(c1) != id(c2))  # (3)!
 ```
 
-1. `True`: objetos distintos
+1. 5
+2. 11
+3. `True`: objetos distintos
 
 !!! note "Concepto clave"
 
@@ -145,8 +147,10 @@ Los métodos se suelen dividir en estos dos tipos por funcoinalidad.
             return self.base * self.altura
 
     r = Rectangulo(3, 4)
-    print(r.area())  # 12
+    print(r.area())  # (1)!
     ```
+
+    1. 12
 
 === "Mutar (cambia estado)"
 
@@ -250,8 +254,10 @@ print(b.disponible())                 # (2)!
     Cree una clase `Libro` con atributos de instancia `titulo` (str) y `paginas` (int).
 
     Añada:
+
     - `descripcion()`: **consultor** que retorna `"<titulo> (<paginas> págs.)"`.
     - `agregar_paginas(n)`: **mutador** que suma `n` si `n > 0`.
+
     Instancie dos libros y demuestre que sus estados son independientes.
 
 === "Solución"
@@ -273,9 +279,12 @@ print(b.disponible())                 # (2)!
     l2 = Libro("Algoritmos", 250)
 
     l1.agregar_paginas(20)
-    print(l1.descripcion())  # POO en Python (200 págs.)
-    print(l2.descripcion())  # Algoritmos (250 págs.)
+    print(l1.descripcion())  # (1)!
+    print(l2.descripcion())  # (2)!
     ```
+
+    1. POO en Python (200 págs.)
+    2. Algoritmos (250 págs.)
 
 ### Ejercicio 2
 
@@ -284,6 +293,7 @@ print(b.disponible())                 # (2)!
     Cree `Termometro` con atributo `celsius` (float).
 
     Añada:
+
     - `a_fahrenheit()`: **consultor** que retorna la conversión.
     - `ajustar(delta)`: **mutador** que suma `delta` al valor en °C.
     Instancie dos termómetros y evidencie que mutar uno no afecta el otro.
@@ -305,6 +315,9 @@ print(b.disponible())                 # (2)!
     t2 = Termometro(30.0)
 
     t1.ajustar(5.0)
-    print(t1.celsius, t1.a_fahrenheit())  # 25.0 77.0
-    print(t2.celsius, t2.a_fahrenheit())  # 30.0 86.0
+    print(t1.celsius, t1.a_fahrenheit())  # (1)!
+    print(t2.celsius, t2.a_fahrenheit())  # (2)!
     ```
+
+    1. `25.0 77.0`
+    2. `30.0 86.0`
