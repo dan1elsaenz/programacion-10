@@ -1,5 +1,8 @@
 # Python virtual env
 venv/
 
+# LaTeX output folder
+.out/
+
 # MacOS
 .DS_Store
