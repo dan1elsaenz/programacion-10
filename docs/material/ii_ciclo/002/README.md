@@ -282,7 +282,6 @@ print(b.disponible())                 # (2)!
 
     print(l1.descripcion()) # (1)!
     print(l2.descripcion()) # (2)!
-
     ```
 
     1. POO en Python (200 págs.)
@@ -320,7 +319,6 @@ print(b.disponible())                 # (2)!
 
     print(t1.celsius, t1.a_fahrenheit()) # (1)!
     print(t2.celsius, t2.a_fahrenheit()) # (2)!
-
     ```
 
     1. `25.0 77.0`
