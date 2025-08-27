@@ -1,0 +1,37 @@
+% Contenido de los encabezados y pies de pagina
+\pagestyle{fancy}
+\lhead{Compendio Algoritmos}
+\rhead{II Eliminatoria - OCI 2025}
+\lfoot{Colegio Científico de Puriscal}
+\cfoot{\thepage\ de \pageref{LastPage}}
+\rfoot{Programación - Décimo}
+
+\let\OLDthebibliography=\thebibliography
+\def\thebibliography#1{\OLDthebibliography{#1}%
+\addcontentsline{toc}{section}{\refname}}
+
+\makeatletter
+\renewcommand\@biblabel[1]{#1. \ }
+\makeatother
+
+% Section
+\titleformat{\section}
+  {\large\bfseries}
+  {\thesection.}
+  {1em} % Espacio entre número y título
+  {}
+
+% Subsection
+\titleformat{\subsection}
+  {\normalsize\bfseries}
+  {\thesubsection}
+  {1em}
+  {}
+
+% Espaciado
+\titlespacing*{\section}{0pt}{1.5ex plus 1ex minus .2ex}{1ex}
+\titlespacing*{\subsection}{0pt}{1ex plus .5ex minus .2ex}{0.8ex}
+
+% Arreglar advertencia de márgenes
+\setlength{\headheight}{14.49998pt}
+

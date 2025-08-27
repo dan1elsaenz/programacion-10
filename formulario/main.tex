@@ -1,0 +1,781 @@
+% Tipo de documento y otras especificaciones
+\documentclass[12pt,letterpaper]{article}
+% Configuracion
+\input{Configuration/project_configuration}
+
+\input{Configuration/page_setup}
+
+\begin{document}
+
+\input{Configuration/title}
+
+\tableofcontents
+
+\newpage
+
+\section{Formato de Input y Output}
+
+\subsection{Líneas separadas}
+
+Sirve para una cantidad establecida de números en líneas separadas.
+
+\begin{minted}{python}
+cantidad1 = int(input())
+cantidad2 = int(input())
+\end{minted}
+
+\subsection{Cantidad definida de números en una misma línea}
+
+En el ejemplo se muestra la lectura de tres números a partir de un \texttt{input()}.
+Se sabe previamente que se va a leer esa cantidad y se asigna cada uno a una variable con \texttt{map()}.
+
+\begin{minted}{python}
+n1, n2, n3 = map(int, input().split())
+\end{minted}
+
+Una alternativa es guardar los números leídos en una lista:
+
+\begin{minted}{python}
+# Forma 1
+lista1 = list(map(int, input().split()))
+
+# Forma 2
+lista2 = [int(x) for x in input().split()]
+\end{minted}
+
+\subsection{Cantidad indefinida de números en una misma línea}
+
+Se aplica \textit{list comprehension} para que se separe cada valor por espacio, a partir del \texttt{split()}. Luego, se convierten dichos strings en enteros con el \texttt{for} loop.
+
+\begin{minted}{python}
+numeros = [int(x) for x in input().split()]
+\end{minted}
+
+\subsection{Lectura completa del \texttt{stdin}}
+
+Lee todo el \texttt{stdin} (entrada).
+Para detener la lectura en caso de ejecutarse en un entorno interactivo como VS Code, utilizar el comando \texttt{Ctrl+Z} y luego \texttt{Enter}.
+
+\begin{minted}{python}
+import sys
+
+lectura = sys.stdin.read()
+\end{minted}
+
+\subsection{Lectura de una cantidad determinada de líneas}
+
+Suponga que se desea leer $n$ líneas de la terminal.
+Para no utilizar \texttt{input()} muchas veces, se puede utilizar el siguiente comando.
+Cada línea contiene \texttt{.split()}, en caso de que se desee separar su contenido interno por espacio (para varias palabras).
+
+\begin{minted}{python}
+# Forma 1
+lineas = [input().split() for _ in range(n)]
+
+# Forma 2
+lista = []
+for _ in range(n):
+    lista.append(input().split())
+\end{minted}
+
+\subsection{Lectura de un tablero}
+
+Note que la lectura de las columnas corresponde a la lista interna.
+Mientras que, la lectura de las filas corresponde a la externa.
+Se utiliza el valor leído de las filas para saber cuántas leer, para las columnas no es necesario pues estas se separan en el \texttt{split()}.
+
+\begin{minted}{python}
+filas, columnas = map(int, input().split())
+
+tablero = [[int(x) for x in input().split()] for _ in range(filas)]
+\end{minted}
+
+\subsection{Imprimir elementos separados por espacio dentro de una lista}
+
+El elemento de salida de este bloque de código corresponde a la concatenación de los strings separados por un espacio.
+
+\begin{minted}{python}
+lista = [string1, string2, string3]
+stringConcatenado = ' '.join(lista)
+\end{minted}
+
+\subsection{Formato para floats con el juez en línea}
+
+Se debe utilizar el siguiente formato para tener un redondeo con $n$ decimales (se sustituye el $n$ por la cantidad requerida).
+
+\begin{minted}{python}
+print(f"{round(numero), n}:.nf")
+\end{minted}
+
+\section{Algoritmos generales}
+
+\subsection{Suma máxima de un subarreglo (\textit{Algoritmo de Kadane})}
+
+Se tiene un arreglo numérico, al cual se requiere obtener la suma máxima de un subarreglo (datos contiguos).
+Este algoritmo posee una complejidad temporal $O(n)$.
+
+\begin{minted}{python}
+def algoritmo_kadane(arr):
+    # Inicializar sumas con el primer elemento
+    actual = mejor = arr[0]
+
+    for num in arr[1:]:
+        actual = max(num, actual + num)
+        mejor = max(mejor, actual)
+
+    return mejor
+\end{minted}
+
+\subsection{Encontrar máximo o mínimo de un arreglo de datos}
+
+Recuerde que existen las funciones integradas \texttt{max()} y \texttt{min()}.
+
+Si se requiere encontrar el índice del número mayor puede utilizar \mintinline{python}{.index()} en listas o de la siguiente forma:
+
+\begin{minted}{python}
+indice_max = None
+indice_min = None
+
+for i in range(len(l)):
+    # Encontrar el maximo
+    if indice_max == None or indice_max < l[i]:
+        indice_max = i
+
+    # Encontrar el minimo
+    if indice_min == None:
+        indice_min = i
+    elif indice_min > l[i]:
+        indice_min = i
+\end{minted}
+
+\subsection{Sumas de prefijos de un arreglo}
+
+La suma de prefijos de un arreglo consiste en una estructura de datos que guarda las sumas acumulativas del arreglo hasta cierto índice.
+
+\subsubsection{Lineal}
+
+En el caso lineal, se guardan las sumas acumulativas en un arreglo del mismo tamaño del original.
+
+\begin{minted}{python}
+# Lista con la suma acumulativa hasta cierto numero
+prefijos = [0 for _ in range(len(numeros))]
+
+prefijos[0] = numeros[0]
+
+for i in range(1, len(numeros)):
+    prefijos[i] = prefijos[i-1] + numeros[i]
+
+\end{minted}
+
+\subsubsection{Bidimensional}
+
+En el caso del bidimensional, se guardan las sumas en un arreglo con la misma cantidad de entradas.
+Se restan las prefijos, como se muestra en la línea \texttt{26} en adelante, de forma que se ajusta la suma dependiendo de la casilla en la que se encuentra para una consulta entre dos entradas distintas de la inicial del arreglo.
+
+\begin{minted}{python}
+filas = len(matriz)
+columnas = len(matriz[0])
+
+# Crear matriz de 0 del tamano filas x columnas (prefijos)
+p = [[0 for _ in range(columnas)] for _ in range(filas)]
+
+# Primer elemento de la suma
+p[0][0] = matriz[0][0]
+
+# Llenar primera fila
+for i in range(1, filas):
+    p[i][0] = p[i-1][0] + matriz[i][0]
+
+# Llenar primera columna
+for j in range(1, columnas):
+    p[0][j] = p[0][j-1] + matriz[0][j]
+
+# Llenar el resto de la matriz p
+for i in range(1, filas):
+    for j in range(1, columnas):
+        p[i][j] = p[i-1][j] + p[i][j-1] - p[i-1][j-1] + matriz[i][j]
+
+def sumaRango(f1, c1, f2, c2):
+    suma = p[f2][c2]
+
+    # Restar prefijos para ajustar suma
+    if f1 > 0:
+        suma -= p[f1-1][c2]
+    if c1 > 0:
+        suma -= p[f2][c1-1]
+    if f1 > 0 and c1 > 0:
+        suma += p[f1-1][c1-1]
+
+    return suma
+\end{minted}
+
+\subsection{Búsqueda binaria}
+
+El algoritmo de búsqueda binaria sirve para hallar un número objetivo dentro de un arreglo de datos.
+
+\subsubsection{Iterativa}
+
+Implementación con un \texttt{while} loop.
+
+\begin{minted}{python}
+def busqueda_binaria_iterativa(arreglo, objetivo):
+    izquierdo, derecho = 0, len(arreglo) - 1
+
+    while izquierdo <= derecho:
+        medio = (izquierdo + derecho) // 2
+
+        if arreglo[medio] == objetivo:
+            return medio
+        elif arreglo[medio] < objetivo:
+            izquierdo = medio + 1
+        else:
+            derecho = medio - 1
+    return -1 # Si no se encontro
+\end{minted}
+
+\subsubsection{Recursiva}
+
+Implementación con recursión y definición de los casos base para la terminación del proceso recursivo.
+
+\begin{minted}{python}
+def busqueda_binaria_recursiva(arreglo, objetivo, izquierdo, derecho):
+    # Si no se encontro (caso base)
+    if izquierdo > derecho:
+        return -1
+    medio = (izquierdo + derecho) // 2
+    if arreglo[medio] == objetivo:
+        return medio
+    elif arreglo[medio] < objetivo:
+        return busqueda_binaria_recursiva(arreglo, objetivo, medio + 1, derecho)
+    else:
+        return busqueda_binaria_recursiva(arreglo, objetivo, izquierdo, medio - 1)
+\end{minted}
+
+\subsection{Ordenamiento de listas}
+
+En Python, el método \mintinline{python}{.sort()} permite ordenar listas con base en un criterio de ordenamiento utilizando el parámetro \mintinline{python}{key}, que acepta una función.
+
+\subsubsection{Ordenamiento de números}
+
+\begin{enumerate}
+  \item \textbf{Ordenar por valor absoluto:}
+
+\begin{minted}{python}
+numeros = [3, -7, 1, -2]
+numeros.sort(key=lambda x: abs(x))
+print(numeros)  # [1, -2, 3, -7]
+\end{minted}
+
+  \item \textbf{Ordenar por cantidad de dígitos:}
+
+\begin{minted}{python}
+numeros = [100, 5, 23, 9, 1000]
+numeros.sort(key=lambda x: len(str(x)))
+print(numeros)  # [5, 9, 23, 100, 1000]
+\end{minted}
+
+\end{enumerate}
+
+\subsubsection{Ordenamiento con strings}
+
+\begin{enumerate}
+
+  \item \textbf{Por longitud:}
+
+\begin{minted}{python}
+palabras = ['gato', 'elefante', 'pez']
+palabras.sort(key=lambda x: len(x))
+print(palabras)  # ['pez', 'gato', 'elefante']
+\end{minted}
+
+  \item \textbf{Por última letra:}
+
+\begin{minted}{python}
+palabras = ['gato', 'elefante', 'pez']
+palabras.sort(key=lambda x: x[-1])
+print(palabras)  # ['elefante', 'gato', 'pez']
+\end{minted}
+
+\end{enumerate}
+
+\subsubsection{Ordenamiento con tuplas}
+
+\begin{enumerate}
+
+  \item \textbf{Por segundo valor:}
+
+\begin{minted}{python}
+pares = [(1, 3), (2, 1), (5, 0)]
+pares.sort(key=lambda x: x[1])
+print(pares)  # [(5, 0), (2, 1), (1, 3)]
+\end{minted}
+
+  \item \textbf{Por suma de elementos:}
+
+\begin{minted}{python}
+puntos = [(1, 2), (3, 1), (0, 0)]
+puntos.sort(key=lambda x: x[0] + x[1])
+print(puntos)
+\end{minted}
+
+  \item \textbf{Por múltiples criterios: nombre y edad:} Se define el primer criterio que sea \mintinline{python}{x[0]} y el segundo \mintinline{python}{x[1]}.
+
+\begin{minted}{python}
+personas = [('Ana', 25), ('Luis', 20), ('Ana', 19)]
+personas.sort(key=lambda x: (x[0], x[1]))
+print(personas)
+\end{minted}
+
+  \item \textbf{Por edad descendente, luego nombre:}
+
+\begin{minted}{python}
+personas = [('Ana', 25), ('Luis', 25), ('Bea', 30)]
+personas.sort(key=lambda x: (-x[1], x[0]))
+print(personas)
+\end{minted}
+
+\end{enumerate}
+
+\section{Algoritmos sobre números}
+
+\subsection{Algoritmo de Euclides}
+
+Sirve para el cálculo del máximo común divisor (\texttt{mcd}) de un número.
+
+\begin{equation*}
+\text{mcd}(a,b) =
+     \begin{cases}
+       \text{a} & \quad b = 0 \\
+       \text{mcd}(b, a \text{ mód }b) &\quad b \neq 0 \\
+     \end{cases}
+\end{equation*}
+
+\begin{minted}{python}
+def euclides(a, b):
+    while b != 0:
+        a, b = b, a % b
+
+    return a
+
+def mcd(a,b):
+    if b == 0:
+        return a
+    return mcd(b,a%b)
+\end{minted}
+
+Recuerde la propiedad que relaciona el mínimo común múltiplo y el máximo común divisor de dos números $a$ y $b$:
+
+\begin{equation*}
+    \text{mcm}(a,b) = \frac{a \cdot b}{\text{mcd}(a,b)}
+\end{equation*}
+
+\subsection{Exponenciación binaria}
+
+Para calcular eficientemente una potencia se utiliza este algoritmo pues se ahorra casi la mitad de multiplicaciones en cada paso recursivo.
+
+\begin{minted}{python}
+def potencia(a, b):
+	if b == 0:
+		return 1
+
+	s = potencia(a, b//2)
+
+	if b % 2 == 0:
+		return s*s
+	else:
+		return s * s * a
+\end{minted}
+
+\subsection{Test de primalidad \texorpdfstring{$O(\sqrt{n})$}{O(√n)}}
+
+Para encontrar si un número es primo o no.
+Se repite el proceso para todo $x^2 < n$; en cada repetición del \texttt{while} loop, se incrementa el valor de x.
+
+\begin{minted}{python}
+n = 25 # Numero de ejemplo
+x = 2
+esPrimo = True
+
+while x*x <= n:
+    if n%x == 0:
+        esPrimo = False
+        break
+    x+=1
+
+print(esPrimo)
+\end{minted}
+
+\subsection{Cálculo de divisores}
+
+Se comprueba la divisibilidad de cada número en el rango de $\left[ 2, n \right]$, por medio de un \texttt{for} loop.
+Cuando se encuentra que es divisible, se divide $n$ respecto a $i$.
+
+\begin{minted}{python}
+from math import sqrt
+
+n = 16 # Numero de prueba
+raiz = int(sqrt(n))
+
+# Lista de divisores
+divisores = [1]
+
+if n != 1:
+    divisores.append(n)
+
+for i in range(2, raiz+1):
+    if n % i == 0:
+        divisores.append(i)
+
+        # Agregar el complemento del divisor si es distinto de sí mismo
+        if n // i != i:
+            divisores.append(n//i)
+
+divisores.sort() # Ordenamiento creciente
+print(divisores)
+\end{minted}
+
+\subsection{Criba de Eratóstenes}
+
+\subsubsection{Imprimir lista de primos}
+
+Imprime una lista que muestra 0 para los números primos y su máximo divisor primo para los números compuestos.
+
+\begin{minted}{python}
+def criba_lista(n):
+    lista_criba = list()
+
+    # Creacion de la lista inicializada en 0 para n elementos
+    for _ in range(2, n+1):
+        lista_criba.append(0)
+
+    # Implementacion del algoritmo
+    for i in range(2, n+1):
+        if lista_criba[i-2] != 0:
+            continue
+
+        for j in range(2*i, n+1, i):
+            lista_criba[j-2] = i
+
+    print(lista_criba)
+\end{minted}
+
+\subsubsection{Comprobación de primalidad de número específico}
+
+Imprime si el número $n$ ingresado como parámetro es primo o no.
+En caso de que no lo sea, imprime el menor primo que lo divide.
+
+\begin{minted}{python}
+def criba_verificar_primo(n):
+
+    es_primo = [True for _ in range(n+1)]
+
+    menor_primo = [-1 for _ in range(n+1)]
+
+    es_primo[0] = es_primo[1] = False
+
+    primos = []
+
+    for i in range(2, n+1):
+        if es_primo[i]:
+            primos.append(i)
+
+            for j in range(i*i, n+1, i):
+                es_primo[j] = False
+
+                if menor_primo[j] == -1:
+                    menor_primo[j] = i
+
+
+    print(es_primo[n], menor_primo[n])
+\end{minted}
+
+\subsection{Cálculo de la distancia entre puntos}
+
+Suma de la distancia entre una serie de puntos que forman una figura cerrada.
+
+\begin{minted}{python}
+from math import sqrt
+
+def dist(p1, p2):
+  # Coordenadas
+  x1, y1 = p1
+  x2, y2 = p2
+
+  return sqrt((x2-x1)**2 + (y2-y1)**2)
+\end{minted}
+
+\section{Programación Dinámica}
+
+Consiste en el principio de programación donde se divide un problema en subproblemas para resolverlos y utilizar las soluciones previas para construir la general.
+
+\subsection{Memoización con \texttt{@lru\_cache}}
+
+Utiliza el decorador \texttt{@lru\_cache} para guardar el resultado obtenido de cada paso recursivo dentro del programa.
+
+\begin{minted}{python}
+from functools import lru_cache
+
+@lru_cache(maxsize=None)
+def fibonacci(n):
+    if n == 0:
+        return 0
+    if n == 1:
+        return 1
+    print(f"Calculo de {n}")
+    return fibonacci(n-1) + fibonacci(n-2)
+\end{minted}
+
+% ==================
+
+\section{Algoritmos sobre grafos}
+
+Los tipos de recubrimiento en grafos estudiados para la olimpiada consisten en los siguientes:
+
+\begin{enumerate}
+    \item Recubrimiento por profundidad: Explora un camino hasta el final (un vértice sin vecinos no visitados) antes de retroceder y explorar otros caminos. Utiliza \textbf{pilas}.
+    \item Recubrimiento por anchura: Visita los nodos en niveles y utiliza \textbf{colas}.
+\end{enumerate}
+
+Entre los conceptos de interés para el estudio de grafos, se tienen a continuación:
+\begin{description}
+    \item[Matriz de adyacencia:] Consiste en una matriz de tamaño $n \times n$ para un grafo con $n$ nodos, tal que cada entrada contiene un $1$ en caso de que haya una arista entre el par de nodos de los índices, o un $0$ si no hay conexión.
+    \item[Lista de Adyacencia:] Cada índice $i$ contiene una lista con las aristas del nodo $i$.
+\end{description}
+
+\subsection{Recubrimiento por profundidad (DFS)}
+
+\subsubsection{Por matriz de adyacencia}
+
+\begin{minted}{python}
+def dfs(grafo):
+    pila = [0]  # Empieza desde el nodo 0 por ejemplo
+    visitados = [0] * len(grafo)  # Marca si el nodo fue visitado y el orden en que fue visitado
+    cont = 1  # Contador para registrar el orden de visita
+
+    while pila:
+        top = pila.pop()  # Extrae el nodo del top de la pila
+        if not visitados[top]:
+            visitados[top] = cont  # Marca el nodo como visitado con el contador
+            cont += 1
+            # Recorre los vecinos (desde el nodo más alto al más bajo)
+            for i in reversed(range(len(grafo[top]))):
+                if grafo[top][i] == 1 and not visitados[i]:
+                    pila.append(i)  # Agrega vecinos no visitados a la pila
+    print(visitados)
+\end{minted}
+
+\subsubsection{Por lista de adyacencia}
+
+\begin{minted}{python}
+def dfs(grafo, nodo, visitado=None):
+    if visitado is None:
+        visitado = set()  # Conjunto para registrar nodos ya visitados (evita repeticiones)
+    visitado.add(nodo)
+    print(nodo, end=' ')  # Procesa el nodo actual
+
+    # Recorre todos los vecinos del nodo actual
+    for vecino in grafo[nodo]:
+        if vecino not in visitado:
+            dfs(grafo, vecino, visitado)  # Llamada recursiva sobre el vecino no visitado
+\end{minted}
+
+\subsection{Recubrimiento por anchura (BFS)}
+
+\subsubsection{Por matriz de adyacencia}
+
+Como nota, en esta implementación, por la naturaleza de la listas, se insertan los elementos por el lado izquierdo de la lista (al inicio) y se eliminan por el derecho.
+
+\begin{minted}{python}
+from collections import deque
+
+def bfs(grafo):
+    cola = deque()
+    cola.append(0)
+    visitados = [0] * len(grafo)
+    cont = 1
+
+    while cola:
+        front = cola.popleft()
+        if not visitados[front]:
+            visitados[front] = cont
+            cont += 1
+            for i in range(len(grafo[front])):
+                if grafo[front][i] == 1 and not visitados[i]:
+                    cola.append(i)
+    print(visitados)
+\end{minted}
+
+\subsubsection{Por lista de adyacencia}
+
+Se utiliza la estructura de datos importada del módulo \texttt{Collections} denominada \texttt{deque}, que corresponde a la implementación de una cola.
+De esta forma, se sigue la idea original del orden de inserción y eliminación de elementos.
+
+\begin{minted}{python}
+from collections import deque
+
+def bfs(grafo, nodo_inicio):
+    visitado = set()
+    cola = deque([nodo_inicio]) # Inicializar cola
+    while cola:
+        nodo = cola.popleft()
+        if nodo not in visitado:
+            print(nodo, end=' ')
+            visitado.add(nodo)
+            # Agrega vecinos no visitados al final de la cola
+            cola.extend([vec for vec in grafo[nodo] if vec not in visitado])
+\end{minted}
+
+\subsection{Algoritmos sobre grafos}
+
+\subsubsection{Detección de ciclos}
+
+\begin{minted}{python}
+def tiene_ciclo(grafo):
+    visitado = set()
+
+    def dfs(nodo, padre):
+        visitado.add(nodo)
+        for vecino in grafo[nodo]:
+            if vecino not in visitado:
+                if dfs(vecino, nodo):
+                    return True
+            elif vecino != padre:
+                return True
+        return False
+
+    for nodo in grafo:
+        if nodo not in visitado:
+            if dfs(nodo, None):
+                return True
+    return False
+\end{minted}
+
+\subsubsection{Verificar existencia de camino entre una serie de nodos}
+
+A partir de una secuencia que se recibe en forma de lista o de string, que contiene a cada uno de los nodos, en orden, que se requiere determinar si existe un camino para conectarlos.
+Por medio de recursión, se retorna el \texttt{True} o \texttt{False} al terminar el proceso.
+
+\begin{minted}{python}
+def esCamino(sec, grafo):
+    # Para matriz de adyacencia
+    if len(sec) < 2:
+        return True
+    if grafo[sec[0]][sec[1]] == 0:
+        return False
+    return esCamino(sec[1:], grafo)
+\end{minted}
+
+\subsubsection{Comprobar si un grafo es conexo}
+
+Un grafo conexo corresponde a un grafo tal que no existen que estén aislados del resto del grafo; es decir, todos los nodos están conectados por, al menos, un camino.
+
+\begin{minted}{python}
+def componentes_conexas(grafo):
+    visitado = set()
+    componentes = []
+
+    def dfs(nodo, componente):
+        visitado.add(nodo)
+        componente.append(nodo)
+        for vecino in grafo[nodo]:
+            if vecino not in visitado:
+                dfs(vecino, componente)
+
+    for nodo in grafo:
+        if nodo not in visitado:
+            componente = []
+            dfs(nodo, componente)
+            componentes.append(componente)
+
+    return componentes
+\end{minted}
+
+\subsubsection{Orden topológico de nodos}
+
+\begin{minted}{python}
+grafo = {
+    "A": ["C"],
+    "B": ["C", "D"],
+    "C": ["E"],
+    "D": ["F"],
+    "E": ["H", "F"],
+    "F": ["G"],
+    "G": [],
+    "H": [],
+}
+
+def orden_topologico(grafo):
+    visitado = set()
+    pila = []
+
+    def dfs(nodo):
+        visitado.add(nodo)
+        for vecino in grafo.get(nodo, []):
+            if vecino not in visitado:
+                dfs(vecino)
+        pila.append(nodo)
+
+    for nodo in grafo:
+        if nodo not in visitado:
+            dfs(nodo)
+
+    return pila[::-1]  # Invierte la pila para obtener el orden topológico correcto
+
+
+print(orden_topologico(grafo))
+\end{minted}
+
+\subsubsection{Puntos de articulación y puentes}
+
+\begin{minted}{python}
+def articulaciones_y_puentes(grafo):
+    tiempo = 0
+    visitado = set()
+    disc = {}
+    low = {}
+    padre = {}
+    articulaciones = set()
+    puentes = []
+
+    def dfs(u):
+        nonlocal tiempo
+        visitado.add(u)
+        disc[u] = low[u] = tiempo
+        tiempo += 1
+        hijos = 0
+
+        for v in grafo[u]:
+            if v not in visitado:
+                padre[v] = u
+                hijos += 1
+                dfs(v)
+                # Si `v` o un descendiente alcanza un nodo descubierto antes que `u`, entonces `u`
+                # también puede alcanzarlo y se actualiza con este valor
+                low[u] = min(low[u], low[v])
+
+                # Condición para punto de articulación
+                if padre.get(u) is None and hijos > 1:
+                    articulaciones.add(u)
+
+                # Si no existe un camino desde `v` o sus descendientes hacia un nodo descubierto antes que `u`
+                # entonces el único camino hacia los anteriores, sería a través de `u`
+                if padre.get(u) is not None and low[v] >= disc[u]:
+                    articulaciones.add(u)
+
+                # Condición para puente
+                # Si no se alcanza ningún nodo descubierto antes que `u`
+                if low[v] > disc[u]:
+                    puentes.append((u, v))
+            elif v != padre.get(u):
+                # Caso de arista de retroceso
+                #
+                low[u] = min(low[u], disc[v])
+
+    for u in grafo:
+        if u not in visitado:
+            dfs(u)
+
+    return articulaciones, puentes
+\end{minted}
+
+\end{document}

@@ -1,0 +1,99 @@
+% Para escribir tildes y eñes
+\usepackage[utf8]{inputenc}
+
+% Para que los títulos de figuras, tablas y otros estén en español
+\usepackage[spanish]{babel}
+
+% Modificar el tamaño de section
+\usepackage{titlesec}
+
+% Los paquetes ams son desarrollados por la American Mathematical Society y mejoran la escritura de fórmulas y símbolos matemáticos.
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+% Para insertar gráficas
+\usepackage{graphicx}
+
+% Para colocar varias figuras
+\usepackage[lofdepth,lotdepth]{subfig}
+
+% Para la presentación correcta de unidades
+\usepackage{unitsdef}
+
+% Redimensionamiento del espacio entre magnitud y unidad
+\renewcommand{\unitvaluesep}{\hspace*{4pt}}
+
+% Para insertar hipervínculos y marcadores
+\usepackage[colorlinks=true,urlcolor=blue,linkcolor=black,citecolor=green]{hyperref}
+
+% Para ubicar las tablas y figuras justo después del texto
+\usepackage{float}
+
+% Para hacer tablas más estilizadas
+\usepackage{booktabs}
+
+% Para manejar los encabezados y pies de página
+\usepackage{fancyhdr}
+
+% Cambiar nombre a tablas
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
+% Cambiar nombre a lista de tablas
+\addto\captionsspanish{\renewcommand{\listtablename}{Índice de tablas}}
+
+% Tamaño del área de escritura de la página
+\usepackage[left=18mm,right=18mm,top=21mm,bottom=21mm]{geometry}
+
+%Codigo
+\usepackage{listings}
+
+% Letra para el código
+\usepackage{minted}
+
+% Configuración para minted con fuente Inconsolata
+\setminted{
+  fontfamily=zi4, % inconsolata
+  linenos,
+  frame=lines,
+  framesep=2mm,
+  baselinestretch=1.2,
+  fontsize=\footnotesize,
+  breaklines=true,
+  tabsize=4,
+  numbersep=5pt
+}
+
+
+\usepackage{xcolor}
+
+% Definicion de colores
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{mygray}{rgb}{0.9,0.9,0.9}
+
+\lstdefinestyle{mystyle}{
+    language=Python, % Specify the programming language
+    backgroundcolor=\color{white}, % Background color for the listing
+    commentstyle=\color{codegreen}, % Comment style
+    keywordstyle=\color{codepurple}, % Keyword style
+    numberstyle=\tiny\color{codegray}, % Line number style
+    stringstyle=\color{blue}, % String literal style
+    basicstyle=\ttfamily\footnotesize, % Basic style
+    breakatwhitespace=false, % Break lines only at whitespace
+    breaklines=true, % Automatic line breaking
+    captionpos=b, % Position of the caption
+    keepspaces=true, % Keep spaces in the listing
+    numbers=left, % Position of line numbers
+    numbersep=5pt, % Padding between line numbers and code
+    showspaces=false, % Show spaces with underscores?
+    showstringspaces=false, % Show spaces in strings?
+    showtabs=false, % Show tabs within strings?
+    tabsize=2 % Tab size
+}
+
+\usepackage{lastpage}
+\graphicspath{{./Figuras/}}
+\pagenumbering{arabic}
+

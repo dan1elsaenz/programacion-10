@@ -82,7 +82,7 @@ class Persona:
         self.edad = edad
 
     def saludar(self):                 # (3)!
-        print(f"Hola, soy {self.nombre} y tengo {self.edad} años.")  # (4)
+        print(f"Hola, soy {self.nombre} y tengo {self.edad} años.")  # (4)!
 
 # Crear (instanciar) objetos
 p1 = Persona("Ana", 21)                # (5)!
@@ -279,8 +279,9 @@ print(b.disponible())                 # (2)!
     l2 = Libro("Algoritmos", 250)
 
     l1.agregar_paginas(20)
-    print(l1.descripcion())  # (1)!
-    print(l2.descripcion())  # (2)!
+
+    print(l1.descripcion()) # (1)!
+    print(l2.descripcion()) # (2)!
     ```
 
     1. POO en Python (200 págs.)
@@ -315,8 +316,9 @@ print(b.disponible())                 # (2)!
     t2 = Termometro(30.0)
 
     t1.ajustar(5.0)
-    print(t1.celsius, t1.a_fahrenheit())  # (1)!
-    print(t2.celsius, t2.a_fahrenheit())  # (2)!
+
+    print(t1.celsius, t1.a_fahrenheit()) # (1)!
+    print(t2.celsius, t2.a_fahrenheit()) # (2)!
     ```
 
     1. `25.0 77.0`
