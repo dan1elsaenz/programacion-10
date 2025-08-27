@@ -134,13 +134,15 @@ nav:
     - II Ciclo:
       - Clase 1. Repaso de conceptos anteriores: material/ii_ciclo/001/README.md
       - Clase 2. Introducción a OOP: material/ii_ciclo/002/README.md
+      - Clase 3. Encapsulamiento de datos y herencia: material/ii_ciclo/003/README.md
 
   - Tareas:
     - I Ciclo:
       - Tarea 1: tareas/i_ciclo/001/README.md
       - Tarea 2: tareas/i_ciclo/002/README.md
       - Tarea 3: tareas/i_ciclo/003/README.md
-    # - II Ciclo:
+    - II Ciclo:
+      - Tarea 1: tareas/ii_ciclo/001/README.md
   - Prácticas Evaluadas:
     - I Ciclo:
       - Práctica 1: practicas_evaluadas/i_ciclo/001/README.md
