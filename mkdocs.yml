@@ -100,6 +100,9 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tilde
 
+extra_javascript:
+      - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
 extra:
   social:
     - icon: fontawesome/brands/github
@@ -139,6 +142,7 @@ nav:
       - Clase 5. Polimorfismo, decoradores y sobrecarga de operadores: material/ii_ciclo/005/README.md
       - Clase 6. Programación funcional: material/ii_ciclo/006/README.md
       - Clase 7. Introducción a árboles binarios: material/ii_ciclo/007/README.md
+      - Clase 8. Ejercicios de árboles binarios: material/ii_ciclo/008/README.md
 
   - Tareas:
     - I Ciclo:
