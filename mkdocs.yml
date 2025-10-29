@@ -143,6 +143,7 @@ nav:
       - Clase 6. Programación funcional: material/ii_ciclo/006/README.md
       - Clase 7. Introducción a árboles binarios: material/ii_ciclo/007/README.md
       - Clase 8. Ejercicios de árboles binarios: material/ii_ciclo/008/README.md
+      - Clase 9. Ejercicios sobre grafos: material/ii_ciclo/009/README.md
 
   - Tareas:
     - I Ciclo:
@@ -160,6 +161,7 @@ nav:
       - Práctica 4: practicas_evaluadas/i_ciclo/004/README.md
     - II Ciclo:
       - Práctica 1: practicas_evaluadas/ii_ciclo/001/README.md
+      - Práctica 2: practicas_evaluadas/ii_ciclo/002/README.md
   - Exámenes:
     - I Ciclo:
       - Examen 1: examenes/i_ciclo/examen1/README.md
