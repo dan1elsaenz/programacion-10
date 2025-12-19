@@ -1,4 +1,4 @@
-## Práctica evaluada 2: Red de contactos
+# Práctica evaluada 2: Red de contactos
 
 !!! question "Planteamiento"
 
