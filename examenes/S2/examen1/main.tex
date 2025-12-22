@@ -1,0 +1,52 @@
+\documentclass[letterpaper,12pt]{article}
+
+\input{preamble}
+
+\begin{document}
+
+\AddToShipoutPicture{\BackgroundPic} % Agrega el fondo a todas las hojas
+
+\thispagestyle{firstpage}
+
+% Encabezado
+\noindent
+\begin{minipage}[t]{0.59\textwidth}
+    \textbf{Colegio Científico de Puriscal} \\
+    \textbf{Programación 10°} \\
+    \textbf{Ciclo:} II-2025
+\end{minipage}
+\begin{minipage}[t]{0.4\textwidth}
+    \raggedleft
+    \textbf{Fecha:} 22/10/2025 \\
+    \textbf{Profesor:} Daniel Sáenz Obando
+\end{minipage}
+
+\vspace{0.2cm}
+\hrule
+\vspace{0.1cm}
+
+\begin{center}
+	\Large \textbf{Examen Parcial I}
+\end{center}
+
+\vspace{0.1cm}
+\hrule
+\vspace{0.2cm}
+
+\subsection*{Indicaciones generales}
+
+\begin{itemize}
+    \item El examen tiene una duración total de 2 horas y 15 minutos. Subir al Google Classroom las soluciones en el espacio denominado \texttt{Examen Parcial I}.
+    \item Debe entregar los siguientes archivos: \texttt{parte1.py} y \texttt{parte2.txt}.
+    \begin{itemize}
+        \item Subir cada uno de los archivos al espacio, no como una carpeta comprimida.
+    \end{itemize}
+    \item Esta es una prueba de carácter individual y está prohibido el acceso a información en internet. En caso de detectar uso de inteligencia artificial, se va a anular la nota para dicha persona.
+\end{itemize}
+
+\hrule
+
+\input{content/p1.tex}
+\input{content/p2.tex}
+
+\end{document}

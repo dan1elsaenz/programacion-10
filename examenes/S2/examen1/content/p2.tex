@@ -1,0 +1,89 @@
+\section*{Parte 2: Programación funcional}
+
+Para esta parte, debe entregar un archivo \texttt{parte2.txt}, donde enumere las respuestas correctas como:
+\begin{minted}{text}
+1. X
+2. X
+3. X
+4. X
+5. X
+6. <Explicación>
+\end{minted}
+
+Cada pregunta de selección única tiene un valor de $6\%$ y la pregunta de desarrollo tiene un valor de $10\%$.
+
+\subsubsection*{Pregunta 1}
+
+¿Cuál comprensión de lista \textbf{equivale} a quedarse con las palabras que empiezan con \texttt{a} y ponerlas en mayúsculas?
+
+\begin{minted}{python}
+palabras = ["ana", "pedro", "alberto", "lucía"]
+\end{minted}
+
+\begin{enumerate}[label=\alph*)]
+  \item \mintinline{python}{[p for p in palabras if p.startswith("a")]}
+  \item \mintinline{python}{[p.upper() for p in palabras if p.startswith("a")]}
+  \item \mintinline{python}{[p.upper() if p.startswith("a") for p in palabras]}
+  \item \mintinline{python}{[p for p in palabras.upper() if p.startswith("a")]}
+\end{enumerate}
+
+\subsubsection*{Pregunta 2}
+
+¿Cuál expresión genera la suma de los cuadrados de los números positivos en la lista?
+
+\begin{minted}{python}
+nums = [-2, -1, 0, 1, 2, 3]
+\end{minted}
+
+\begin{enumerate}[label=\alph*)]
+  \item \mintinline{python}{sum([x**2 for x in nums if x > 0])}
+  \item \mintinline{python}{sum(x**2 for x in nums if x > 0)}
+  \item \mintinline{python}{sum(map(lambda x: x**2, filter(lambda x: x > 0, nums)))}
+  \item Todas las anteriores producen el mismo resultado.
+\end{enumerate}
+
+\subsubsection*{Pregunta 3}
+
+¿Cuál expresión ordena la lista de palabras según la última letra de cada una?
+\begin{minted}{python}
+palabras = ["python", "java", "c", "javascript"]
+\end{minted}
+
+\begin{enumerate}[label=\alph*)]
+  \item \mintinline{python}{sorted(palabras, key=lambda s: s[0])}
+  \item \mintinline{python}{sorted(palabras, key=lambda s: s[-1])}
+  \item \mintinline{python}{sorted(palabras, key=len)}
+  \item \mintinline{python}{sorted(palabras)}
+\end{enumerate}
+
+\subsubsection*{Pregunta 4}
+
+¿Cuál de las siguientes expresiones con funciones de orden superior obtiene sólo los números negativos?
+\begin{minted}{python}
+nums = [-2, -1, 0, 1, 2]
+\end{minted}
+
+\begin{enumerate}[label=\alph*)]
+  \item \mintinline{python}{list(filter(lambda x: x < 0, nums))}
+  \item \mintinline{python}{list(filter(lambda x: x <= 0, nums))}
+  \item \mintinline{python}{list(filter(lambda x: x > 0, nums))}
+  \item \mintinline{python}{[x for x in nums if x < 0]}
+\end{enumerate}
+
+\subsubsection*{Pregunta 5}
+
+¿Cuál expresión genera una lista con los dobles de los números dados?
+\begin{minted}{python}
+nums = [1, 2, 3]
+\end{minted}
+
+\begin{enumerate}[label=\alph*)]
+  \item \mintinline{python}{map(lambda x: x*2, nums)}
+  \item \mintinline{python}{list(map(lambda x: x*2, nums))}
+  \item \mintinline{python}{[x*2 for x in nums]}
+  \item Las opciones b) y c) son equivalentes.
+\end{enumerate}
+
+\subsubsection*{Pregunta 6}
+Explique la diferencia entre una \textbf{comprensión de lista} y una \textbf{expresión generadora} en términos de evaluación y uso de memoria.
+Indique un caso concreto en el que conviene usar cada una.
