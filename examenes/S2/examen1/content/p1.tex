@@ -1,0 +1,133 @@
+\section*{Parte 1: Carrito de compras de una librería en línea}
+
+\subsection*{{\small \faHistory}\; Contexto}
+
+Amazon inició en 1994 como una \textit{librería en línea} enfocada en la venta de libros físicos mediante un carrito de compras.
+En este examen, debe implementar una versión simplificada de ese \textbf{carrito de compras} en Python para \emph{libros físicos} y \emph{ebooks}, por medio del paradigma de programación orientada a objetos.
+
+Debe entregar un archivo llamado \texttt{parte1.py} como solución de esta parte.
+
+\subsection*{{\small \faCubes}\; Requerimientos por clase}
+
+En este apartado, se describen cada uno de los requerimientos técnicos a implementar en el diseño.
+
+\subsubsection*{Clase \texttt{Producto}}
+
+\begin{itemize}
+  \item \textbf{Atributos:}
+    \begin{itemize}
+      \item \texttt{nombre} (\texttt{str}).
+      \item \texttt{precio} (numérico) como \textit{atributo privado}.
+    \end{itemize}
+
+  \item \textbf{Encapsulamiento de \texttt{precio}:} implementar \mintinline{python}{@property} y \mintinline{python}{@precio.setter}.
+    El setter debe impedir precios negativos; si se asigna un valor negativo, el atributo de \mintinline{python}{precio} debe quedar en \mintinline{python}{0}.
+
+  \item \textbf{Representación:} definir \mintinline{python}{__str__} para devolver:
+\begin{minted}{text}
+Producto: <nombre>, Precio: <precio>
+\end{minted}
+
+  \item \textbf{Sobrecarga de operadores:}
+    \begin{itemize}
+      \item \mintinline{python}{__add__}: al sumar dos productos, debe devolver la suma de sus precios.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection*{Clase \texttt{LibroFisico}}
+
+\begin{itemize}
+  \item \textbf{Herencia:} debe heredar de \texttt{Producto}.
+  \item \textbf{Atributo adicional:} \texttt{masa} (en kilogramos).
+  \item \textbf{Representación:} redefinir \mintinline{python}{__str__} para devolver exactamente:
+\begin{minted}{text}
+Libro Físico: <nombre>, Precio: <precio>, Masa: <masa> kg
+\end{minted}
+\end{itemize}
+
+\subsubsection*{Clase \texttt{Ebook}}
+
+\begin{itemize}
+  \item \textbf{Herencia:} debe heredar de \texttt{Producto}.
+  \item \textbf{Atributo adicional:} \texttt{formato} (por ejemplo: \mintinline{python}{"PDF"}, \mintinline{python}{"EPUB"}).
+  \item \textbf{Representación:} redefinir \mintinline{python}{__str__} para devolver exactamente:
+\begin{minted}{text}
+Ebook: <nombre>, Precio: <precio>, Formato: <formato>
+\end{minted}
+\end{itemize}
+
+\subsubsection*{Clase \texttt{Carrito}}
+
+\begin{itemize}
+  \item \textbf{Atributo:} \texttt{productos}, una lista que almacena instancias de \mintinline{python}{LibroFisico} y \mintinline{python}{Ebook} (heredadas de \mintinline{python}{Producto}).
+
+  \item \textbf{Métodos:}
+    \begin{itemize}
+      \item \mintinline{python}{agregar_producto(producto)}: Agrega un objeto de tipo \texttt{Producto} a la lista interna (acepta \texttt{Producto}, \texttt{LibroFisico} o \texttt{Ebook}).
+      \item \mintinline{python}{vaciar_carrito()}: Elimina todos los productos del carrito.
+      \item \mintinline{python}{calcular_total()}: Retorna la suma de todos los \mintinline{python}{precio} de los productos contenidos, por medio de un recorrido sobre los elementos de la lista.\footnote{\textit{Tip}: Anteriormente se implementó la sobrecarga de operadores para la suma, utilícela.}
+      \item \mintinline{python}{mostrar_carrito()}: Recorre la lista e imprime cada elemento usando \mintinline{python}{print(obj)}.\footnote{\textit{Tip}: Se implementó la sobrecarga de operadores para \mintinline{python}{__str__}.}
+    \end{itemize}
+
+  \item \textbf{Sobrecarga de operadores:}
+    \begin{itemize}
+      \item \mintinline{python}{__len__}: Permite que \mintinline{python}{len(carrito)} devuelva la cantidad de productos almacenados. Es decir, al pasarle una instancia de la clase \mintinline{python}{Carrito} a la función \mintinline{python}{len()}, devuelve el largo de la lista \mintinline{python}{productos}.
+    \end{itemize}
+
+\end{itemize}
+
+\subsection*{{\small \faPlay\;} Prueba en \texttt{main}}
+
+Dentro de un bloque \mintinline{python}{if __name__ == "__main__":} se debe:\footnote{Observe que no se están realizando \mintinline{python}{input()}.}
+\begin{enumerate}
+  \item Crear al menos dos instancias de \texttt{LibroFisico} y una instancia de \texttt{Ebook}.
+  \item Crear un objeto \texttt{Carrito} y agregar los productos creados.
+  \item Mostrar el contenido del carrito con \mintinline{python}{mostrar_carrito()}.
+  \item Imprimir el total con \mintinline{python}{calcular_total()}.
+  \item Imprimir la cantidad de productos con \mintinline{python}{len(carrito)}.
+  \item Vaciar el carrito y verificar que quede vacío.
+\end{enumerate}
+
+\section*{{\small \faClipboardCheck\;} Rúbrica de evaluación}
+
+\begin{table}[H]
+    \centering
+    \resizebox{0.6\textwidth}{!}{
+    \begin{tabular}{p{11cm}r}
+        \toprule
+        \textbf{Criterios} & \textbf{Puntos} \\
+        \midrule
+        \multicolumn{2}{l}{\textbf{Clase \texttt{Producto} (15 pts)}}\\
+        Definición de atributos (\mintinline{python}{nombre}, \mintinline{python}{precio} privado) & 4 \\
+        Encapsulamiento \mintinline{python}{precio} con \mintinline{python}{@property} y setter (bloquea negativos) & 6 \\
+        Implementación de \mintinline{python}{__str__} con formato requerido & 3 \\
+        Implementación de \mintinline{python}{__add__} para suma & 2 \\
+        \midrule
+        \multicolumn{2}{l}{\textbf{Clases \texttt{LibroFisico} y \texttt{Ebook} (15 pts)}}\\
+        \texttt{LibroFisico}: atributo \mintinline{python}{masa} y \mintinline{python}{__str__} actualizado & 7 \\
+        \texttt{Ebook}: atributo \mintinline{python}{formato} y \mintinline{python}{__str__} actualizado & 8 \\
+        \midrule
+        \multicolumn{2}{l}{\textbf{Clase \texttt{Carrito} (20 pts)}}\\
+        Atributo \mintinline{python}{productos} & 2 \\
+        \mintinline{python}{agregar_producto} agrega instancias válidas & 4 \\
+        \mintinline{python}{vaciar_carrito} vacía completamente & 3 \\
+        \mintinline{python}{calcular_total} suma correctamente los precios & 6 \\
+        \mintinline{python}{mostrar_carrito} imprime usando polimorfismo & 3 \\
+        \mintinline{python}{__len__} retorna la cantidad de productos & 2 \\
+        \midrule
+        \multicolumn{2}{l}{\textbf{Prueba en \texttt{main} (10 pts)}}\\
+        Crea 2 \texttt{LibroFisico} y un \texttt{Ebook} & 3 \\
+        Agrega al carrito y muestra con \mintinline{python}{mostrar_carrito} & 2 \\
+        Imprime total (\mintinline{python}{calcular_total}) & 1 \\
+        Imprime cantidad (\mintinline{python}{len(carrito)}) & 1 \\
+        Vacía y verifica carrito vacío & 3 \\
+        \midrule
+        \textbf{Total} & \textbf{60} \\
+        \bottomrule
+    \end{tabular}
+    }
+    \caption{Rúbrica de evaluación del Ejercicio 1.}
+    \label{tab1}
+\end{table}
+
+\noindent\textbf{\faInfoCircle\; Nota:} Se acepta cualquier diseño interno mientras se cumplan exactamente las salidas y restricciones indicadas por clase.
