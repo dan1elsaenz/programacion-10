@@ -3,6 +3,7 @@ venv/
 
 # LaTeX output folder
 .out/
+out/
 
 # MacOS
 .DS_Store
