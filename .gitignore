@@ -7,3 +7,6 @@ out/
 
 # MacOS
 .DS_Store
+
+# Zensical site directory
+site/

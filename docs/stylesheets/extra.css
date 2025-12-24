@@ -1,0 +1,4 @@
+/* Cambiar logo en modo oscuro */
+[data-md-color-scheme="slate"] .md-logo img {
+  content: url("../images/logo_dark.png");
+}
