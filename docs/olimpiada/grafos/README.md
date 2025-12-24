@@ -1,6 +1,8 @@
-# Algoritmos de Grafos
+---
+icon: material/graph-outline
+---
 
-### Introducción a los Grafos
+# :material-graph-outline: Algoritmos de Grafos
 
 Un **grafo** es una estructura que modela relaciones entre pares de elementos.
 Cada elemento se llama **nodo** o **vértice**, y cada conexión entre dos nodos se llama **arista**.

@@ -1,6 +1,8 @@
-# Programación Dinámica
+---
+icon: material/table-cog
+---
 
-## ¿Qué es la programación dinámica?
+# :material-table-cog: Dynamic programming
 
 La **Programación Dinámica (DP)** es una técnica de diseño algorítmico utilizada para resolver **problemas que pueden dividirse en subproblemas más pequeños**, donde estos subproblemas **se repiten una y otra vez**.
 
@@ -206,4 +208,3 @@ print(lcs(cadena1, cadena2))  # Salida esperada: 3
 - La respuesta final se encuentra en `dp[n][m]`, que representa la longitud del LCS entre ambas cadenas completas.
 
 ---
-
