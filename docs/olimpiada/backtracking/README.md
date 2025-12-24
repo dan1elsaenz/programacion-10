@@ -1,6 +1,8 @@
-# _Backtracking_
+---
+icon: material/source-branch
+---
 
-## ¿Qué es _backtracking_?
+# :material-source-branch: _Backtracking_
 
 **Backtracking** (o búsqueda con retroceso) es una técnica de diseño algorítmico que permite **explorar todas las soluciones posibles** de un problema, **descartando aquellas que no cumplen las condiciones**.
 
