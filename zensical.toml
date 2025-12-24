@@ -1,0 +1,105 @@
+# =============================================================================
+#
+#                   Archivo de configuración de Zensical
+#
+# =============================================================================
+
+[project]
+
+site_name = "Programación 10°"
+site_description = "Curso de programación de 10° del Colegio Científico de Puriscal"
+site_author = "Daniel Sáenz Obando"
+site_url = "https://dan1elsaenz.github.io/programacion-10/"
+repo_name = "dan1elsaenz/programacion-10"
+repo_url = "https://github.com/dan1elsaenz/programacion-10"
+copyright = """
+Copyright MIT License; 2026 Daniel Sáenz
+"""
+
+# Cambio de logo según el modo
+extra_css = ["stylesheets/extra.css"]
+
+# ----------------------------------------------------------------------------
+# Configuración del tema
+# ----------------------------------------------------------------------------
+[project.theme]
+
+favicon = "images/logo_light.png"
+logo = "images/logo_light.png"
+language = "es"
+
+features = [
+    "announce.dismiss",
+
+    # Features
+    "content.code.annotate",
+    "content.code.copy",
+    "content.code.select",
+    "content.footnote.tooltips",
+    "content.tabs.link",
+    "content.tooltips",
+
+    # Carga de página
+    "navigation.indexes",
+    "navigation.instant",
+    "navigation.instant.prefetch",
+    "navigation.path",
+
+    # Estructura
+    "navigation.sections",
+    "navigation.tabs",
+    # "navigation.footer",
+    #"navigation.tabs.sticky",
+    "navigation.top",
+
+    # Misc
+    "navigation.tracking",
+    "search.highlight",
+
+    # TOC
+    # "toc.follow",
+    #"toc.integrate",
+]
+
+# ----------------------------------------------------------------------------
+# Esquema de colores
+#
+# - https://zensical.org/docs/setup/colors/
+# ----------------------------------------------------------------------------
+[[project.theme.palette]]
+scheme = "default"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+scheme = "slate"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to light mode"
+
+# ----------------------------------------------------------------------------
+# Font
+# ----------------------------------------------------------------------------
+# [project.theme.font]
+#text = "Inter"
+# code = "Jetbrains Mono"
+
+# ----------------------------------------------------------------------------
+# GitHub logo
+
+# - https://zensical.org/docs/setup/logo-and-icons
+# - https://zensical.org/docs/authoring/icons-emojis/#search
+# ----------------------------------------------------------------------------
+[project.theme.icon]
+repo = "fontawesome/brands/github"
+
+# ----------------------------------------------------------------------------
+# Extra
+# ----------------------------------------------------------------------------
+[[project.extra.social]]
+icon = "fontawesome/brands/github"
+link = "https://github.com/dan1elsaenz"
+
+# Quitar el generador
+[project.extra]
+generator = false
+

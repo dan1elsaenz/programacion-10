@@ -1,8 +1,0 @@
-Comprar víveres;alta
-Estudiar para el examen;media
-Llamar al doctor;baja
-Hacer ejercicio;media
-Enviar correo al profesor;alta
-Limpiar habitación;baja
-Leer libro;baja
-Preparar presentación;alta
