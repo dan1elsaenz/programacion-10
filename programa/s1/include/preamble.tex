@@ -1,0 +1,57 @@
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% \usepackage[letterpaper,margin=2.5cm]{geometry}
+\usepackage[letterpaper, top=2.0cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+
+% Fonts
+\usepackage{libertinus}
+\usepackage{libertinust1math}
+
+% Letra para el código
+\usepackage{minted}
+\usemintedstyle{emacs}
+\usepackage{FiraMono}
+\renewcommand{\ttdefault}{fvm}
+\DeclareTextFontCommand{\texttt}{\footnotesize\ttfamily}
+
+\setminted{
+  fontfamily=fvm, % FiraMono
+  linenos,
+  frame=lines,
+  framesep=2mm,
+  baselinestretch=1.2,
+  fontsize=\footnotesize,
+  breaklines=true,
+  tabsize=4,
+  numbersep=5pt,
+  xleftmargin=1.5em,
+  xrightmargin=1.5em
+}
+\setmintedinline{breaklines}
+
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{caption}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[colorlinks,pagebackref,pdfusetitle,urlcolor=NavyBlue,citecolor=darkblue,linkcolor=.]{hyperref}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+% Cambiar segundo nivel de enumerate con el formato #.#
+\renewcommand{\theenumii}{\theenumi.\arabic{enumii}}
+\renewcommand{\labelenumii}{\theenumii.}
+
+\setlist[enumerate,1]{label=\arabic*.}
+\setlist[enumerate,2]{label*=\arabic*}
