@@ -1,5 +1,5 @@
 % Comando para doble línea
-\newcommand{\doublerule}[1][.4pt]{
+\newcommand{\doublerule}[1][.6pt]{
   \noindent
   \makebox[0pt][l]{\rule[.7ex]{\linewidth}{#1}}%
   \rule[1pt]{\linewidth}{#1}\par}
@@ -7,12 +7,14 @@
 {
   \centering
   \doublerule
-    \begin{minipage}[c]{0.3\textwidth}
-      \includegraphics[width=2.5cm]{images/logo.jpg}
+    \begin{minipage}[c]{0.2\textwidth}
+      \centering
+      \includegraphics[width=2.9cm]{images/logo.jpg}
     \end{minipage}
-    \begin{minipage}[c]{0.6\textwidth}
+    \begin{minipage}[c]{0.5\textwidth}
 
   {\scshape
+    \centering
     \vspace{0.25cm}
     \LARGE \coursetitle
     \\[0.25cm]
@@ -22,20 +24,25 @@
     \vspace{0.3cm}
   }
     \end{minipage}
+    \begin{minipage}[c]{0.2\textwidth}
+      \centering
+      \includegraphics[width=2.3cm]{images/uned.png}
+    \end{minipage}
 
   \vspace{0.1cm}
 
   \hrule
 }
 
-\begin{multicols}{2}
-  \textbf{Nivel:} \grade \\
-  \textbf{Horario:} \horario \\
-  \textbf{Profesor:} \instructor \\
-  \textbf{Correo:} \href{mailto:dsaenzobando@gmail.com}{\texttt{dsaenzobando@gmail.com}}
-\end{multicols}
+\begin{center}
+\begin{tabular}{lll}
+  \textbf{Docente:} \instructor & & \textbf{Correo:} \href{mailto:dsaenzobando@gmail.com}{\texttt{dsaenzobando@gmail.com}} \\
+  \addlinespace
+  \textbf{Intensidad:} \horario & & \textbf{Nivel:} \grade \\
+\end{tabular}
+\end{center}
 
-\vspace{-0.5cm}
+% \vspace{-0.5cm}
 
 \doublerule
 
