@@ -1,0 +1,25 @@
+\pagestyle{fancyplain}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\cfoot{\thepage\ de \pageref{LastPage}}
+\lfoot{\coursetitle\ -- \grade}
+\rfoot{\semester}
+\thispagestyle{plain}
+
+% Section
+\titleformat{\section}
+  {\large\scshape}
+  {\thesection.}
+  {1em} % Espacio entre número y título
+  {}
+
+% Subsection
+\titleformat{\subsection}
+  {\normalsize\bfseries}
+  {\thesubsection}
+  {1em}
+  {}
+
+% Espaciado
+\titlespacing*{\section}{0pt}{1.5ex plus 1ex minus .2ex}{1ex}
+\titlespacing*{\subsection}{0pt}{1ex plus .5ex minus .2ex}{0.8ex}

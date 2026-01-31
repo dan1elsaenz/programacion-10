@@ -1,0 +1,80 @@
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% \usepackage[letterpaper,margin=2.5cm]{geometry}
+\usepackage[letterpaper, top=2.0cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+
+% Fonts
+\usepackage{libertinus}
+\usepackage{libertinust1math}
+
+% Letra para el código
+\usepackage{minted}
+\usemintedstyle{emacs}
+\usepackage{FiraMono}
+\renewcommand{\ttdefault}{fvm}
+\DeclareTextFontCommand{\texttt}{\footnotesize\ttfamily}
+
+\setminted{
+  fontfamily=fvm, % FiraMono
+  linenos,
+  frame=lines,
+  framesep=2mm,
+  baselinestretch=1.2,
+  fontsize=\footnotesize,
+  breaklines=true,
+  tabsize=4,
+  numbersep=5pt,
+  xleftmargin=1.5em,
+  xrightmargin=1.5em
+}
+\setmintedinline{breaklines}
+
+\usepackage{booktabs}
+\usepackage{tabularx}
+
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{caption}
+\usepackage{multirow}
+\usepackage{multicol}
+
+\usepackage{enumitem}
+\setlist[enumerate,1]{label=\arabic*., ref=\arabic*}
+\setlist[enumerate,2]{label=\theenumi.\arabic*., ref=\theenumi.\arabic*}
+
+\usepackage{longtable}
+\usepackage{array}
+\usepackage[dvipsnames, table]{xcolor}
+
+\usepackage{titlesec}
+\renewcommand{\thesection}{\Roman{section}}
+
+\usepackage[colorlinks,pagebackref,pdfusetitle,urlcolor=NavyBlue,citecolor=darkblue,linkcolor=.]{hyperref}
+\renewcommand{\UrlFont}{\footnotesize\ttfamily}
+
+% Imagen de fondo
+\usepackage{eso-pic}
+\usepackage{transparent}
+
+\newcommand\BackgroundPic{
+  \put(0,0){
+    \parbox[b][\paperheight]{\paperwidth}{%
+      \vfill
+      \centering
+      \transparent{0.05}
+      \includegraphics[width=0.5\paperwidth,keepaspectratio]{images/logo.jpg}
+      \vfill
+    }
+  }
+}
+
+\AddToShipoutPictureBG{
+  \ifnum\value{page}>1
+    \BackgroundPic
+  \fi
+}

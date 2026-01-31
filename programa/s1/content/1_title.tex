@@ -1,0 +1,48 @@
+% Comando para doble línea
+\newcommand{\doublerule}[1][.6pt]{
+  \noindent
+  \makebox[0pt][l]{\rule[.7ex]{\linewidth}{#1}}%
+  \rule[1pt]{\linewidth}{#1}\par}
+
+{
+  \centering
+  \doublerule
+    \begin{minipage}[c]{0.2\textwidth}
+      \centering
+      \includegraphics[width=2.9cm]{images/logo.jpg}
+    \end{minipage}
+    \begin{minipage}[c]{0.5\textwidth}
+
+  {\scshape
+    \centering
+    \vspace{0.25cm}
+    \LARGE \coursetitle
+    \\[0.25cm]
+    \large\textsc{\school}
+    \\
+    \normalsize\textsc{\semester}\par
+    \vspace{0.3cm}
+  }
+    \end{minipage}
+    \begin{minipage}[c]{0.2\textwidth}
+      \centering
+      \includegraphics[width=2.3cm]{images/uned.png}
+    \end{minipage}
+
+  \vspace{0.1cm}
+
+  \hrule
+}
+
+\begin{center}
+\begin{tabular}{lll}
+  \textbf{Docente:} \instructor & & \textbf{Correo:} \href{mailto:dsaenzobando@gmail.com}{\texttt{dsaenzobando@gmail.com}} \\
+  \addlinespace
+  \textbf{Intensidad:} \horario & & \textbf{Nivel:} \grade \\
+\end{tabular}
+\end{center}
+
+% \vspace{-0.5cm}
+
+\doublerule
+
