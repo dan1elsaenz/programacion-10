@@ -352,6 +352,258 @@ print(max(frutas)) # (2)!
 | `min(lista)` | Elemento con el valor más pequeño |
 | `max(lista)` | Elemento con el valor más grande  |
 
+## Métodos de listas
+
+Además de las operaciones básicas, las listas poseen **métodos integrados** que permiten agregar, eliminar, buscar y transformar elementos.
+
+Un método se invoca utilizando la notación:
+
+```python
+lista.metodo()
+```
+
+> A diferencia de los strings, varios métodos de listas **modifican la lista original** en lugar de devolver una nueva.
+
+### Agregar un elemento al final
+
+El método `append()` agrega un nuevo elemento al final de la lista.
+
+```python
+frutas = ["manzana", "pera", "uva"]
+
+frutas.append("mango") # (1)!
+
+print(frutas) # (2)!
+```
+
+1. Agrega `"mango"` al final de la lista.
+2. `['manzana', 'pera', 'uva', 'mango']`
+
+Este es el método más común para construir una lista elemento por elemento.
+
+### Eliminar el último elemento
+
+El método `pop()` elimina el último elemento de la lista y lo **devuelve** como resultado.
+
+```python
+notas = [85, 90, 72, 88]
+
+ultima = notas.pop() # (1)!
+
+print(ultima) # (2)!
+print(notas)  # (3)!
+```
+
+1. Elimina `88` de la lista y lo guarda en `ultima`.
+2. `88`
+3. `[85, 90, 72]`
+
+!!! note "El valor eliminado puede guardarse"
+
+    Como `pop()` devuelve el elemento eliminado, se puede asignar a una variable para usarlo después.
+
+### Contar apariciones de un elemento
+
+El método `count()` devuelve cuántas veces aparece un valor dentro de la lista.
+
+```python
+votos = ["sí", "no", "sí", "sí", "no"]
+
+print(votos.count("sí")) # (1)!
+print(votos.count("no")) # (2)!
+```
+
+1. `3`
+2. `2`
+
+### Buscar el índice de un elemento
+
+El método `index()` devuelve la posición de la primera aparición de un valor.
+
+```python
+frutas = ["manzana", "pera", "uva", "mango"]
+
+print(frutas.index("uva")) # (1)!
+```
+
+1. `2`
+
+!!! warning "El valor debe existir en la lista"
+
+    Si el valor no se encuentra, Python genera un `ValueError`.
+    Se recomienda verificar primero con `in` antes de usar `index()`.
+
+    ```python
+    if "uva" in frutas:
+        print(frutas.index("uva"))
+    ```
+
+### Insertar un elemento en una posición específica
+
+El método `insert()` agrega un elemento en el índice indicado, desplazando los elementos siguientes.
+
+```python
+frutas = ["manzana", "pera", "uva"]
+
+frutas.insert(1, "kiwi") # (1)!
+
+print(frutas) # (2)!
+```
+
+1. Inserta `"kiwi"` en la posición `1`. Los elementos desde esa posición se desplazan hacia la derecha.
+2. `['manzana', 'kiwi', 'pera', 'uva']`
+
+### Eliminar un valor específico
+
+El método `remove()` elimina la **primera aparición** de un valor en la lista.
+
+```python
+frutas = ["manzana", "pera", "uva", "pera"]
+
+frutas.remove("pera") # (1)!
+
+print(frutas) # (2)!
+```
+
+1. Elimina solo la primera `"pera"` encontrada.
+2. `['manzana', 'uva', 'pera']`
+
+!!! warning "Solo elimina la primera aparición"
+
+    Si el valor aparece varias veces, únicamente se elimina la primera ocurrencia.
+    Si el valor no existe, Python genera un `ValueError`.
+
+### Invertir el orden de la lista
+
+El método `reverse()` invierte la lista, sin devolver una nueva lista.
+
+```python
+numeros = [1, 2, 3, 4, 5]
+
+numeros.reverse()
+
+print(numeros) # (1)!
+```
+
+1. `[5, 4, 3, 2, 1]`
+
+### Ordenar la lista
+
+El método `sort()` ordena los elementos de la lista, de menor a mayor por defecto.
+
+```python
+notas = [88, 72, 95, 65, 90]
+
+notas.sort()
+
+print(notas) # (1)!
+```
+
+1. `[65, 72, 88, 90, 95]`
+
+Para ordenar de mayor a menor se utiliza el parámetro `reverse=True`:
+
+```python
+notas.sort(reverse=True)
+
+print(notas) # (1)!
+```
+
+1. `[95, 90, 88, 72, 65]`
+
+### Concatenar listas
+
+El operador `+` une dos listas y produce una **nueva lista** con todos los elementos de ambas.
+
+```python
+l1 = [1, 2]
+l2 = [3, 4]
+
+l3 = l1 + l2
+
+print(l3) # (1)!
+```
+
+1. `[1, 2, 3, 4]`
+
+### Repetir una lista
+
+El operador `*` repite los elementos de una lista un número determinado de veces.
+
+```python
+l1 = [1, 2]
+
+l3 = l1 * 3
+
+print(l3) # (1)!
+```
+
+1. `[1, 2, 1, 2, 1, 2]`
+
+### Copiar una lista
+
+Asignar una lista a otra variable **no crea una copia independiente**: ambas variables apuntan a la misma lista en memoria.
+
+```python
+l1 = [1, 2, 3]
+l2 = l1        # l2 apunta a la misma lista que l1
+
+l2.append(4)
+
+print(l1) # (1)!
+print(l2) # (2)!
+```
+
+1. `[1, 2, 3, 4]`
+2. `[1, 2, 3, 4]`
+
+Para crear una copia verdaderamente independiente se utiliza el método `copy()`:
+
+```python
+l1 = [1, 2, 3]
+l2 = l1.copy()  # l2 es una copia independiente
+
+l2.append(4)
+
+print(l1) # (1)!
+print(l2) # (2)!
+```
+
+1. `[1, 2, 3]`
+2. `[1, 2, 3, 4]`
+
+!!! warning "Diferencia con los números"
+
+    Con variables numéricas, la asignación sí crea una copia independiente:
+
+    ```python
+    n1 = 10
+    n2 = n1
+    n2 *= 3
+
+    print(n1) # 10
+    print(n2) # 30
+    ```
+
+    Con listas, en cambio, la asignación simple crea un *alias*, no una copia.
+    Siempre use `.copy()` si necesita trabajar con versiones separadas de una misma lista.
+
+### Resumen de métodos de listas
+
+|                   Método | Descripción                                         |
+| -----------------------: | --------------------------------------------------- |
+|      `lista.append(val)` | Agrega `val` al final de la lista                   |
+|            `lista.pop()` | Elimina y devuelve el último elemento               |
+|       `lista.count(val)` | Devuelve cuántas veces aparece `val`                |
+|       `lista.index(val)` | Devuelve el índice de la primera aparición de `val` |
+| `lista.insert(idx, val)` | Inserta `val` en la posición `idx`                  |
+|      `lista.remove(val)` | Elimina la primera aparición de `val`               |
+|        `lista.reverse()` | Invierte el orden de los elementos                  |
+|           `lista.sort()` | Ordena los elementos de menor a mayor               |
+|                `l1 + l2` | Concatena dos listas en una nueva                   |
+|                 `l1 * n` | Repite los elementos de la lista `n` veces          |
+|           `lista.copy()` | Devuelve una copia independiente de la lista        |
+
 ## Ejercicio integrador
 
 === "Enunciado"
