@@ -39,70 +39,49 @@ Además:
 
 ## Casos de ejemplo
 
-### Caso válido 1
+!!! example "Casos de ejecución"
 
-Entrada:
+    === "Caso válido 1"
 
-```
-Nombre: Ana
-Edad: 20
-Permiso: no
-```
+        ```
+        Nombre: Ana
+        Edad: 20
+        Permiso: no
 
-Salida esperada:
+        Bienvenido/a Ana.
+        Puede ingresar al evento.
+        ```
 
-```
-Bienvenida Ana.
-Puede ingresar al evento.
-```
+    === "Caso válido 2"
 
-### Caso válido 2
+        ```
+        Nombre: Luis
+        Edad: 16
+        Permiso: si
 
-Entrada:
+        Bienvenido/a Luis.
+        Puede ingresar al evento.
+        ```
 
-```
-Nombre: Luis
-Edad: 16
-Permiso: si
-```
+    === "Caso no válido"
 
-Salida esperada:
+        ```
+        Nombre: Carla
+        Edad: 15
+        Permiso: no
 
-```
-Bienvenido Luis.
-Puede ingresar al evento.
-```
+        Lo sentimos Carla.
+        No puede ingresar al evento.
+        ```
 
-### Caso no válido
+    === "Caso con error"
 
-Entrada:
+        ```
+        Nombre: Pedro
+        Edad: abc
 
-```
-Nombre: Carla
-Edad: 15
-Permiso: no
-```
-
-Salida esperada:
-
-```
-Lo sentimos Carla.
-No puede ingresar al evento.
-```
-
-### Caso con error
-
-Entrada:
-
-```
-Edad: abc
-```
-
-Salida esperada:
-
-```
-Error: la edad debe ser un número válido.
-```
+        Error: la edad debe ser un número válido.
+        ```
 
 ## Rúbrica de evaluación
 
@@ -209,3 +188,30 @@ Error: la edad debe ser un número válido.
 - 5 pts: Código limpio y organizado.
 - 3 pts: Algo desordenado.
 - 0 pts: Difícil de leer.
+
+## Solución
+
+```python title="solucion.py"
+nombre = input("Nombre: ").strip()
+
+if nombre == "":
+    print("Error: el nombre no puede estar vacío.")
+else:
+    try:
+        edad = int(input("Edad: "))
+
+        if edad < 0:
+            print("Error: la edad no puede ser negativa.")
+        else:
+            permiso = input("Permiso: ").strip().lower()
+
+            if edad >= 18 or permiso == "si":
+                print(f"Bienvenido/a {nombre}.")
+                print("Puede ingresar al evento.")
+            else:
+                print(f"Lo sentimos {nombre}.")
+                print("No puede ingresar al evento.")
+
+    except ValueError:
+        print("Error: la edad debe ser un número válido.")
+```
