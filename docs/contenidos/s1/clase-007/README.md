@@ -815,3 +815,450 @@ print(suma_lista([1, 2, 3, 4, 5]))  # (1)!
             Temperatura del Lunes (°C): 22
             Temperatura del Martes (°C): ...
             ```
+
+## Ejercicios adicionales
+
+Como funciones es un tema tan amplio, a continuación se muestran 10 ejercicios resueltos para practicar los conceptos vistos hasta el momento.
+
+### 1. Clasificar triángulo
+
+=== "Enunciado"
+
+    Escriba dos funciones: `es_valido(a, b, c)` que verifique si tres lados forman un triángulo (la suma de cualquier par de lados debe ser mayor que el tercero), y `clasificar_triangulo(a, b, c)` que retorne `"Equilátero"`, `"Isósceles"`, `"Escaleno"` o `"Inválido"` según corresponda. El programa debe pedir los tres lados al usuario.
+
+=== "Solución"
+
+    ```python
+    def es_valido(a, b, c):
+        return a + b > c and a + c > b and b + c > a
+
+    def clasificar_triangulo(a, b, c):
+        if not es_valido(a, b, c):
+            return "Inválido"
+        if a == b == c:
+            return "Equilátero"
+        if a == b or b == c or a == c:
+            return "Isósceles"
+        return "Escaleno"
+
+    a = float(input("Lado a: "))
+    b = float(input("Lado b: "))
+    c = float(input("Lado c: "))
+    print(clasificar_triangulo(a, b, c))
+    ```
+
+    > Observe el uso de una función que retorna un booleano como condición dentro de un `if`.
+    Esta es una práctica común.
+
+    !!! example "Ejemplos de ejecución"
+
+        === "Isósceles"
+            ```
+            Lado a: 5
+            Lado b: 5
+            Lado c: 3
+            Isósceles
+            ```
+        === "Inválido"
+            ```
+            Lado a: 1
+            Lado b: 2
+            Lado c: 10
+            Inválido
+            ```
+
+### 2. Fibonacci recursivo
+
+=== "Enunciado"
+
+    Escriba una función recursiva `fibonacci(n)` que retorne el n-ésimo número de la secuencia de Fibonacci, donde `fibonacci(0) = 0` y `fibonacci(1) = 1`. El programa debe pedir un número al usuario e imprimir el resultado.
+
+    La secuencia comienza: 0, 1, 1, 2, 3, 5, 8, 13, 21, …
+
+=== "Solución"
+
+    ```python
+    def fibonacci(n):
+        if n == 0:                              # (1)!
+            return 0
+        if n == 1:                              # (2)!
+            return 1
+        return fibonacci(n - 1) + fibonacci(n - 2)  # (3)!
+
+    n = int(input("Posición en la secuencia: "))
+    print(f"Fibonacci({n}) = {fibonacci(n)}")
+    ```
+
+    1. Caso base: el término 0 es 0.
+    2. Caso base: el término 1 es 1.
+    3. Caso recursivo: cada término es la suma de los dos anteriores.
+
+    !!! example "Ejemplos de ejecución"
+
+        === "Posición 7"
+            ```
+            Posición en la secuencia: 7
+            Fibonacci(7) = 13
+            ```
+        === "Posición 0"
+            ```
+            Posición en la secuencia: 0
+            Fibonacci(0) = 0
+            ```
+
+### 3. Contar vocales
+
+=== "Enunciado"
+
+    Escriba una función `contar_vocales(texto)` que reciba una cadena de texto y retorne la cantidad de vocales que contiene (sin distinguir mayúsculas de minúsculas). El programa debe pedir una oración al usuario e imprimir el resultado.
+
+=== "Solución"
+
+    ```python
+    def contar_vocales(texto):
+        vocales = "aeiouáéíóúAEIOUÁÉÍÓÚ"
+        contador = 0
+        for caracter in texto:      # (1)!
+            if caracter in vocales:
+                contador += 1
+        return contador
+
+    oracion = input("Ingrese una oración: ")
+    print(f"Cantidad de vocales: {contar_vocales(oracion)}")
+    ```
+
+    1. Se recorre la cadena carácter por carácter y se verifica si pertenece al string de vocales.
+
+    !!! example "Ejemplos de ejecución"
+
+        === "Caso normal"
+            ```
+            Ingrese una oración: Hola mundo
+            Cantidad de vocales: 4
+            ```
+        === "Con tildes"
+            ```
+            Ingrese una oración: Murciélago
+            Cantidad de vocales: 5
+            ```
+
+### 4. Estadísticas de una lista
+
+=== "Enunciado"
+
+    Escriba una función `estadisticas(lista)` que reciba una lista de números y retorne una tupla con tres valores: el promedio, el mínimo y el máximo. El programa debe pedir al usuario 5 números, llamar a la función e imprimir los tres resultados.
+
+=== "Solución"
+
+    ```python
+    def estadisticas(lista):
+        promedio = sum(lista) / len(lista)
+        return promedio, min(lista), max(lista)  # (1)!
+
+    numeros = []
+    for i in range(5):
+        numeros.append(float(input(f"Número {i + 1}: ")))
+
+    promedio, minimo, maximo = estadisticas(numeros)  # (2)!
+    print(f"Promedio: {promedio:.2f}")
+    print(f"Mínimo: {minimo}")
+    print(f"Máximo: {maximo}")
+    ```
+
+    1. Se retornan tres valores separados por coma; Python los empaqueta automáticamente en una tupla.
+    2. Los tres valores se desempaquetan en tres variables al recibirlos.
+
+    !!! example "Ejemplo de ejecución"
+
+        === "Caso normal"
+            ```
+            Número 1: 10
+            Número 2: 4
+            Número 3: 7
+            Número 4: 15
+            Número 5: 3
+            Promedio: 7.80
+            Mínimo: 3.0
+            Máximo: 15.0
+            ```
+
+### 5. Validar contraseña
+
+=== "Enunciado"
+
+    Escriba una función `validar_contrasena(clave)` que verifique si una contraseña cumple todas las siguientes reglas y retorne una lista de errores (vacía si es válida):
+
+    1. Tiene al menos 8 caracteres.
+    2. Contiene al menos una letra mayúscula.
+    3. Contiene al menos un dígito.
+
+    El programa debe pedir la contraseña e informar si es válida o cuáles reglas no se cumplen.
+
+=== "Solución"
+
+    ```python
+    def validar_contrasena(clave):
+        errores = []
+        if len(clave) < 8:
+            errores.append("Debe tener al menos 8 caracteres.")
+        if not any(c.isupper() for c in clave):     # (1)!
+            errores.append("Debe contener al menos una mayúscula.")
+        if not any(c.isdigit() for c in clave):     # (2)!
+            errores.append("Debe contener al menos un dígito.")
+        return errores
+
+    clave = input("Ingrese una contraseña: ")
+    errores = validar_contrasena(clave)
+
+    if not errores:
+        print("Contraseña válida.")
+    else:
+        for error in errores:
+            print(f"- {error}")
+    ```
+
+    1. `any` retorna `True` si al menos un carácter cumple la condición; `isupper()` verifica si es mayúscula.
+    2. `isdigit()` verifica si el carácter es un dígito del 0 al 9.
+
+    !!! example "Ejemplos de ejecución"
+
+        === "Válida"
+            ```
+            Ingrese una contraseña: Colegio2025
+            Contraseña válida.
+            ```
+        === "Inválida"
+            ```
+            Ingrese una contraseña: hola
+            - Debe tener al menos 8 caracteres.
+            - Debe contener al menos una mayúscula.
+            - Debe contener al menos un dígito.
+            ```
+
+### 6. Tabla de multiplicar
+
+=== "Enunciado"
+
+    Escriba una función `tabla_multiplicar(n, limite=10)` que imprima la tabla de multiplicar del número `n` desde 1 hasta `limite`. El parámetro `limite` debe tener valor por defecto de 10. El programa debe pedir el número al usuario y, opcionalmente, hasta qué múltiplo mostrar.
+
+=== "Solución"
+
+    ```python
+    def tabla_multiplicar(n, limite=10):
+        for i in range(1, limite + 1):
+            print(f"{n} × {i} = {n * i}")
+
+    n = int(input("Número: "))
+    respuesta = input("¿Hasta qué múltiplo? (Enter para usar 10): ")
+
+    if respuesta == "":         # (1)!
+        tabla_multiplicar(n)
+    else:
+        tabla_multiplicar(n, int(respuesta))
+    ```
+
+    1. Si el usuario no ingresa nada, se usa el valor por defecto del parámetro `limite`.
+
+    !!! example "Ejemplos de ejecución"
+
+        === "Con defecto"
+            ```
+            Número: 7
+            ¿Hasta qué múltiplo? (Enter para usar 10):
+            7 × 1 = 7
+            7 × 2 = 14
+            ...
+            7 × 10 = 70
+            ```
+        === "Con límite personalizado"
+            ```
+            Número: 3
+            ¿Hasta qué múltiplo? (Enter para usar 10): 5
+            3 × 1 = 3
+            3 × 2 = 6
+            3 × 3 = 9
+            3 × 4 = 12
+            3 × 5 = 15
+            ```
+
+### 7. Potencia recursiva
+
+=== "Enunciado"
+
+    Escriba una función recursiva `potencia(base, exp)` que calcule `base` elevado a `exp` **sin usar el operador `**`**. El exponente siempre será un entero no negativo. El programa debe pedir ambos valores al usuario.
+
+    Pista: `base^0 = 1` y `base^n = base × base^(n-1)`.
+
+=== "Solución"
+
+    ```python
+    def potencia(base, exp):
+        if exp == 0:                               # (1)!
+            return 1
+        return base * potencia(base, exp - 1)     # (2)!
+
+    base = float(input("Base: "))
+    exp  = int(input("Exponente (entero ≥ 0): "))
+    print(f"{base} ^ {exp} = {potencia(base, exp)}")
+    ```
+
+    1. Caso base: cualquier número elevado a 0 es 1.
+    2. Caso recursivo: `base^n` es `base` multiplicado por `base^(n-1)`.
+
+    !!! example "Ejemplos de ejecución"
+
+        === "2^10"
+            ```
+            Base: 2
+            Exponente (entero ≥ 0): 10
+            2.0 ^ 10 = 1024.0
+            ```
+        === "5^0"
+            ```
+            Base: 5
+            Exponente (entero ≥ 0): 0
+            5.0 ^ 0 = 1
+            ```
+
+### 8. Verificar palíndromo
+
+=== "Enunciado"
+
+    Escriba una función `es_palindromo(palabra)` que retorne `True` si la palabra es un palíndromo (se lee igual de izquierda a derecha que de derecha a izquierda) y `False` en caso contrario. La función debe ignorar mayúsculas y minúsculas. El programa debe pedir una palabra al usuario e informar el resultado.
+
+=== "Solución"
+
+    ```python
+    def es_palindromo(palabra):
+        palabra = palabra.lower()           # (1)!
+        return palabra == palabra[::-1]     # (2)!
+
+    palabra = input("Ingrese una palabra: ")
+
+    if es_palindromo(palabra):
+        print(f'"{palabra}" es un palíndromo.')
+    else:
+        print(f'"{palabra}" no es un palíndromo.')
+    ```
+
+    1. Se convierte a minúsculas para que la comparación no distinga entre `A` y `a`.
+    2. `[::-1]` invierte la cadena; si es igual a sí misma invertida, es un palíndromo.
+
+    !!! example "Ejemplos de ejecución"
+
+        === "Palíndromo"
+            ```
+            Ingrese una palabra: Reconocer
+            "Reconocer" es un palíndromo.
+            ```
+        === "No palíndromo"
+            ```
+            Ingrese una palabra: Python
+            "Python" no es un palíndromo.
+            ```
+
+### 9. Análisis de calificaciones
+
+=== "Enunciado"
+
+    Escriba un programa con tres funciones para analizar las notas de un grupo de estudiantes:
+
+    1. `pedir_notas(cantidad)` — solicita `cantidad` notas al usuario (entre 0 y 100) y las retorna en una lista.
+    2. `clasificar(nota)` — retorna `"Aprobado"` si la nota es mayor o igual a 70, o `"Reprobado"` en caso contrario.
+    3. `mostrar_reporte(notas)` — imprime cada nota con su clasificación, el promedio del grupo y cuántos aprobaron.
+
+=== "Solución"
+
+    ```python
+    def pedir_notas(cantidad):
+        notas = []
+        for i in range(cantidad):
+            continuar = True
+            while continuar:
+                try:
+                    nota = float(input(f"Nota {i + 1}: "))
+                    if 0 <= nota <= 100:
+                        notas.append(nota)
+                        continuar = False
+                    else:
+                        print("La nota debe estar entre 0 y 100.")
+                except ValueError:
+                    print("Ingrese un número válido.")
+        return notas
+
+    def clasificar(nota):
+        return "Aprobado" if nota >= 70 else "Reprobado"
+
+    def mostrar_reporte(notas):
+        print("\n--- Reporte del grupo ---")
+        aprobados = 0
+        for i, nota in enumerate(notas):
+            estado = clasificar(nota)           # (1)!
+            if estado == "Aprobado":
+                aprobados += 1
+            print(f"Estudiante {i + 1}: {nota:.1f} — {estado}")
+        print(f"\nPromedio: {sum(notas) / len(notas):.1f}")
+        print(f"Aprobados: {aprobados} de {len(notas)}")
+
+    cantidad = int(input("¿Cuántos estudiantes? "))
+    notas = pedir_notas(cantidad)
+    mostrar_reporte(notas)
+    ```
+
+    1. `mostrar_reporte` delega la clasificación de cada nota a `clasificar`, que tiene una sola responsabilidad.
+
+    !!! example "Ejemplo de ejecución"
+
+        === "Grupo de 4"
+            ```
+            ¿Cuántos estudiantes? 4
+            Nota 1: 85
+            Nota 2: 62
+            Nota 3: 70
+            Nota 4: 45
+
+            --- Reporte del grupo ---
+            Estudiante 1: 85.0 — Aprobado
+            Estudiante 2: 62.0 — Reprobado
+            Estudiante 3: 70.0 — Aprobado
+            Estudiante 4: 45.0 — Reprobado
+
+            Promedio: 65.5
+            Aprobados: 2 de 4
+            ```
+
+### 10. Suma de dígitos
+
+=== "Enunciado"
+
+    Escriba una función recursiva `suma_digitos(n)` que reciba un número entero positivo y retorne la suma de todos sus dígitos. El programa debe pedir un número al usuario e imprimir el resultado.
+
+    Por ejemplo: `suma_digitos(1234)` → `1 + 2 + 3 + 4 = 10`.
+
+=== "Solución"
+
+    ```python
+    def suma_digitos(n):
+        if n < 10:                              # (1)!
+            return n
+        return n % 10 + suma_digitos(n // 10)  # (2)!
+
+    n = int(input("Ingrese un número entero positivo: "))
+    print(f"Suma de dígitos de {n}: {suma_digitos(n)}")
+    ```
+
+    1. Caso base: un número de un solo dígito es él mismo.
+    2. Caso recursivo: el último dígito (`n % 10`) más la suma de los dígitos restantes (`n // 10` elimina el último dígito).
+
+    !!! example "Ejemplos de ejecución"
+
+        === "1234"
+            ```
+            Ingrese un número entero positivo: 1234
+            Suma de dígitos de 1234: 10
+            ```
+        === "999"
+            ```
+            Ingrese un número entero positivo: 999
+            Suma de dígitos de 999: 27
+            ```
