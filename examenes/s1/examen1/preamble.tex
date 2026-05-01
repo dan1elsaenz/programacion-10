@@ -1,0 +1,100 @@
+% Para escribir tildes y eñes
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Tamaño del área de escritura de la página
+\usepackage[margin=2.5cm]{geometry}
+
+% Para que los títulos de figuras, tablas y otros estén en español
+\usepackage[spanish]{babel}
+
+% Letra
+\usepackage{libertinus}
+\usepackage{libertinust1math}
+
+\usepackage{FiraMono}
+\renewcommand{\ttdefault}{fvm}
+\DeclareTextFontCommand{\texttt}{\footnotesize\ttfamily}
+
+% Letra para el código
+\usepackage{minted}
+\usemintedstyle{emacs}
+
+% Configuración para minted con fuente FiraMono
+\setminted{
+  fontfamily=fvm, % FiraMono
+  linenos,
+  frame=lines,
+  framesep=2mm,
+  baselinestretch=1.2,
+  fontsize=\footnotesize,
+  breaklines=true,
+  tabsize=4,
+  numbersep=5pt,
+  xleftmargin=1.5em,
+  xrightmargin=1.5em
+}
+\setmintedinline{breaklines}
+
+% Íconos
+\usepackage{fontawesome5}
+
+% Los paquetes ams son desarrollados por la American Mathematical Society y mejoran la escritura de fórmulas y símbolos matemáticos.
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+% Para insertar gráficas
+\usepackage{graphicx}
+
+% Enums
+\usepackage{enumitem}
+
+% Para insertar hipervínculos y marcadores
+\usepackage[colorlinks=true,urlcolor=blue,linkcolor=black,citecolor=green]{hyperref}
+
+% Para ubicar las tablas y figuras justo después del texto
+\usepackage{float}
+
+% Para hacer tablas más estilizadas
+\usepackage{booktabs}
+
+% Para manejar los encabezados y pies de página
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{14.49998pt}
+\fancyhead[L]{Examen Parcial I}
+\fancyhead[R]{Programación 10°}
+\fancyfoot[C]{\thepage\ de \pageref{LastPage}}
+
+
+% Encabezado para la primera página
+\fancypagestyle{firstpage}{
+    \fancyhf{}
+    \cfoot{\thepage\ de \pageref{LastPage}} % Número de página visible
+    \renewcommand{\headrulewidth}{0pt} % Sin línea
+}
+
+% Cambiar nombre a tablas
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
+
+\renewcommand{\tablename}{Tabla}
+
+% Imagen de fondo
+\usepackage{eso-pic}
+\usepackage{transparent}
+
+\newcommand\BackgroundPic{
+  \put(0,0){
+    \parbox[b][\paperheight]{\paperwidth}{%
+      \vfill
+      \centering
+      \transparent{0.05}  % Cambia el valor según lo que desees
+      \includegraphics[width=0.5\paperwidth,keepaspectratio]{images/logo.jpg}
+      \vfill
+    }
+  }
+}

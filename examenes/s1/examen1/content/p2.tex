@@ -1,0 +1,107 @@
+\section*{Parte 2: Selección única}
+
+Para esta parte, debe entregar un archivo \texttt{parte2\_NombreApellido.txt} con las respuestas en el siguiente formato:
+
+\begin{minted}{text}
+1. X
+2. X
+3. X
+4. X
+5. X
+\end{minted}
+
+Cada pregunta vale \textbf{6 puntos}. Las preguntas se basan en el siguiente programa, que implementa un codificador y decodificador de código Morse:
+
+\begin{minted}{python}
+MORSE = {
+    "A": ".-",   "B": "-...", "C": "-.-.", "D": "-..",
+    "E": ".",    "F": "..-.", "G": "--.",  "H": "....",
+    "I": "..",   "J": ".---", "K": "-.-",  "L": ".-..",
+    "M": "--",   "N": "-.",   "O": "---",  "P": ".--.",
+    "Q": "--.-", "R": ".-.",  "S": "...",  "T": "-",
+    "U": "..-",  "V": "...-", "W": ".--",  "X": "-..-",
+    "Y": "-.--", "Z": "--..",
+}
+
+def codificar(mensaje):
+    resultado = ""
+    for letra in mensaje.upper():
+        if letra == " ":
+            resultado += "/ "
+        elif letra in MORSE:
+            resultado += MORSE[letra] + " "
+    return resultado.strip()
+
+def decodificar(codigo):
+    inverso = {}
+    for letra, simbolo in MORSE.items():
+        inverso[simbolo] = letra
+    resultado = ""
+
+    # .split(" / "): Separa el string en una lista según " / "
+    for palabra in codigo.split(" / "): 
+        for simbolo in palabra.split():
+            resultado += inverso[simbolo]
+        resultado += " "
+    return resultado.strip()
+
+mensaje = input("Mensaje: ")
+codificado = codificar(mensaje)
+print("Morse:", codificado)
+print("Decodificado:", decodificar(codificado))
+\end{minted}
+
+\subsubsection*{Pregunta 1}
+
+¿Qué verifica la condición \mintinline{python}{elif letra in MORSE} dentro de \texttt{codificar}?
+
+\begin{enumerate}[label=\alph*)]
+    \item Que \mintinline{python}{letra} sea un símbolo Morse como \mintinline{python}{".-"} o \mintinline{python}{"-..."}
+    \item Que \mintinline{python}{letra} esté definida como clave del diccionario, como \mintinline{python}{"A"} o \mintinline{python}{"B"}
+    \item Que \mintinline{python}{letra} sea un carácter alfabético en minúsculas
+    \item Que \mintinline{python}{letra} no sea un espacio ni un número
+\end{enumerate}
+
+\subsubsection*{Pregunta 2}
+
+¿Qué retorna \mintinline{python}{codificar("Hi!")}?
+
+\begin{enumerate}[label=\alph*)]
+    \item \mintinline{text}{".... .. !"}
+    \item Un error porque \mintinline{python}{"!"} no existe en el diccionario
+    \item \mintinline{text}{".... .. "}
+    \item \mintinline{text}{".... .."}
+\end{enumerate}
+
+\subsubsection*{Pregunta 3}
+
+¿Cuál es el valor de \mintinline{python}{codificado} después de llamar \mintinline{python}{codificar("ET")}?
+
+\begin{enumerate}[label=\alph*)]
+    \item \mintinline{text}{".-"}
+    \item \mintinline{text}{"E T"}
+    \item \mintinline{text}{". -"}
+    \item \mintinline{text}{"E. T-"}
+\end{enumerate}
+
+\subsubsection*{Pregunta 4}
+
+¿Cuántas veces se ejecuta la línea \mintinline{python}{resultado += " "} dentro de \texttt{decodificar} si recibe el string \mintinline{text}{".... .-.. / .-"}?
+
+\begin{enumerate}[label=\alph*)]
+    \item 1 vez
+    \item 3 veces
+    \item 4 veces
+    \item 2 veces
+\end{enumerate}
+
+\subsubsection*{Pregunta 5}
+
+¿Qué retorna \mintinline{python}{decodificar(codificar("hola"))}?
+
+\begin{enumerate}[label=\alph*)]
+    \item \mintinline{python}{"hola"}
+    \item \mintinline{python}{".... --- .-.. .-"}
+    \item \mintinline{python}{"HOLA"}
+    \item Un error porque \mintinline{python}{codificar} no acepta minúsculas
+\end{enumerate}

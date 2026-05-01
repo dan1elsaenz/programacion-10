@@ -1,0 +1,211 @@
+\section*{Parte 1: Sistema de misiones de PurisQuest}
+
+\subsection*{{\small \faDragon}\; Contexto}
+
+PurisQuest es un videojuego de rol ambientado en un mundo de fantasía medieval.
+Cada jugador comienza como un \emph{Aprendiz} y avanza de nivel conforme completa misiones y acumula puntos de experiencia (XP).
+En este examen debe implementar el núcleo del sistema de misiones del juego usando Python.
+
+Debe entregar un archivo llamado \texttt{parte1\_NombreApellido.py} como solución.
+
+\subsection*{{\small \faDatabase}\; Datos predefinidos}
+
+El programa debe iniciar con el siguiente diccionario declarado directamente en el código:
+
+\begin{minted}{python}
+misiones = {
+    "Bosque Maldito":   {"xp": 150, "dificultad": "Fácil"},
+    "Cueva Oscura":     {"xp": 300, "dificultad": "Media"},
+    "Torre Abandonada": {"xp": 500, "dificultad": "Difícil"},
+    "Aldea Olvidada":   {"xp": 100, "dificultad": "Fácil"},
+    "Minas Profundas":  {"xp": 250, "dificultad": "Media"},
+    "Castillo Eterno":  {"xp": 800, "dificultad": "Legendaria"},
+}
+\end{minted}
+
+Además, se deben declarar:
+
+\begin{itemize}
+    \item Una \textbf{lista vacía} \mintinline{python}{completadas} para registrar las misiones completadas.
+    \item Una variable \mintinline{python}{xp_acumulado} inicializada en \mintinline{python}{0}.
+\end{itemize}
+
+El nivel del personaje se determina según la siguiente tabla:
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{cc}
+        \toprule
+        \textbf{XP acumulado} & \textbf{Nivel} \\
+        \midrule
+        0 -- 299    & Aprendiz \\
+        300 -- 699  & Guerrero \\
+        700 -- 1199 & Héroe \\
+        1200 o más  & Leyenda \\
+        \bottomrule
+    \end{tabular}
+    \caption{Niveles del personaje según XP acumulado.}
+    \label{tab:niveles}
+\end{table}
+
+\subsection*{{\small \faCogs}\; Funciones requeridas}
+
+\subsubsection*{Función \texttt{calcular\_nivel(xp)}}
+
+Recibe el XP acumulado y \textbf{retorna} el nombre del nivel correspondiente según la tabla anterior:
+\mintinline{python}{"Aprendiz"}, \mintinline{python}{"Guerrero"}, \mintinline{python}{"Héroe"} o \mintinline{python}{"Leyenda"}.
+
+\subsubsection*{Función \texttt{mostrar\_misiones(misiones)}}
+
+Recibe el diccionario de misiones y recorre sus elementos para imprimir el nombre, el XP y la dificultad de cada misión.
+
+\subsubsection*{Función \texttt{completar\_mision(nombre, misiones, completadas, xp)}}
+
+Recibe el nombre ingresado por el usuario, el diccionario de misiones, la lista de completadas y el XP actual.
+Aplica la siguiente lógica en orden:
+
+\begin{enumerate}
+    \item Normalizar el nombre para aceptar cualquier combinación de mayúsculas y minúsculas.
+    \item Si \textbf{no existe} en el diccionario, imprimir y no hacer nada más:
+    \begin{minted}{text}
+Misión no encontrada.
+    \end{minted}
+    \item Si \textbf{ya está} en la lista \mintinline{python}{completadas}, imprimir y no hacer nada más:
+    \begin{minted}{text}
+Esa misión ya fue completada.
+    \end{minted}
+    \item Si la misión es válida, agregar el nombre a \mintinline{python}{completadas}, sumar el XP de esa misión al XP recibido e imprimir:
+    \begin{minted}{text}
+Misión completada. +<XP> XP
+    \end{minted}
+    \item \textbf{Retornar} el nuevo valor de XP acumulado en todos los casos.
+\end{enumerate}
+
+\subsubsection*{Función \texttt{mostrar\_perfil(jugador, xp, completadas)}}
+
+Recibe el nombre del jugador, el XP acumulado y la lista de completadas.
+
+\begin{minted}{text}
+=== Perfil de <jugador> ===
+XP total: <xp>
+Nivel: <nivel>
+Misiones completadas: <lista>
+\end{minted}
+
+\subsection*{{\small \faList}\; Menú principal}
+
+Al iniciar el programa se solicita el nombre del jugador y se muestra el siguiente menú en un ciclo \mintinline{python}{while} hasta que el usuario elija salir:
+
+\begin{minted}{text}
+=== PurisQuest ===
+1. Ver misiones disponibles
+2. Completar una misión
+3. Ver perfil del personaje
+4. Salir
+\end{minted}
+
+Cada opción debe solicitar los datos necesarios e invocar la función correspondiente.
+Al salir (opción 4), imprimir:
+
+\begin{minted}{text}
+Hasta la próxima, <jugador>. Nivel alcanzado: <nivel>.
+\end{minted}
+
+\subsection*{{\small \faPlay}\; Ejemplo de ejecución}
+
+Los valores en \textbf{negrita} corresponden a lo que escribe el usuario; el resto es salida del programa.
+
+\begin{minted}[escapeinside=||]{text}
+Nombre del personaje: |\textbf{Wilson}|
+
+=== PurisQuest ===
+1. Ver misiones disponibles
+2. Completar una misión
+3. Ver perfil del personaje
+4. Salir
+Opción: |\textbf{1}|
+
+Bosque Maldito - XP: 150 - Dificultad: Fácil
+Cueva Oscura - XP: 300 - Dificultad: Media
+Torre Abandonada - XP: 500 - Dificultad: Difícil
+Aldea Olvidada - XP: 100 - Dificultad: Fácil
+Minas Profundas - XP: 250 - Dificultad: Media
+Castillo Eterno - XP: 800 - Dificultad: Legendaria
+
+=== PurisQuest ===
+...
+Opción: |\textbf{2}|
+Nombre de la misión: |\textbf{bosque maldito}|
+Misión completada. +150 XP
+
+=== PurisQuest ===
+...
+Opción: |\textbf{2}|
+Nombre de la misión: |\textbf{Bosque Maldito}|
+Esa misión ya fue completada.
+
+=== PurisQuest ===
+...
+Opción: |\textbf{2}|
+Nombre de la misión: |\textbf{Lago Eterno}|
+Misión no encontrada.
+
+=== PurisQuest ===
+...
+Opción: |\textbf{3}|
+
+=== Perfil de Wilson ===
+XP total: 150
+Nivel: Aprendiz
+Misiones completadas: ['Bosque Maldito']
+
+=== PurisQuest ===
+...
+Opción: |\textbf{4}|
+Hasta la próxima, Wilson. Nivel alcanzado: Aprendiz.
+\end{minted}
+
+\section*{{\small \faClipboardCheck\;} Rúbrica de evaluación}
+
+\begin{table}[H]
+    \centering
+    \resizebox{0.6\textwidth}{!}{
+    \begin{tabular}{p{11cm}r}
+        \toprule
+        \textbf{Criterios} & \textbf{Puntos} \\
+        \midrule
+        \multicolumn{2}{l}{\textit{Datos iniciales (5 pts)}}\\
+        Diccionario \mintinline{python}{misiones} correctamente declarado & 3 \\
+        Lista \mintinline{python}{completadas} vacía y \mintinline{python}{xp_acumulado} en \mintinline{python}{0} & 2 \\
+        \midrule
+        \multicolumn{2}{l}{\textit{Función \texttt{calcular\_nivel} (10 pts)}}\\
+        Umbrales de nivel correctos & 6 \\
+        Retorna el nombre del nivel como \mintinline{python}{str} & 4 \\
+        \midrule
+        \multicolumn{2}{l}{\textit{Función \texttt{mostrar\_misiones} (10 pts)}}\\
+        Recorre el diccionario correctamente & 5 \\
+        Imprime con el formato requerido & 5 \\
+        \midrule
+        \multicolumn{2}{l}{\textit{Función \texttt{completar\_mision} (20 pts)}}\\
+        Normaliza el nombre & 4 \\
+        Valida que la misión exista en el diccionario & 5 \\
+        Valida que no haya sido completada previamente & 5 \\
+        Agrega a \mintinline{python}{completadas} y acumula el XP correctamente & 4 \\
+        Retorna el nuevo XP acumulado & 2 \\
+        \midrule
+        \multicolumn{2}{l}{\textit{Función \texttt{mostrar\_perfil} (10 pts)}}\\
+        Imprime nombre, XP y lista de completadas & 5 \\
+        Invoca \texttt{calcular\_nivel} para mostrar el nivel & 5 \\
+        \midrule
+        \multicolumn{2}{l}{\textit{Menú principal (15 pts)}}\\
+        Solicita el nombre del jugador al inicio & 2 \\
+        Ciclo \mintinline{python}{while} que se repite hasta la opción 4 & 5 \\
+        Cada opción invoca la función correcta con los parámetros necesarios & 8 \\
+        \midrule
+        \textbf{Total} & \textbf{70} \\
+        \bottomrule
+    \end{tabular}
+    }
+    \caption{Rúbrica de evaluación de la Parte 1.}
+    \label{tab:rubrica1}
+\end{table}
