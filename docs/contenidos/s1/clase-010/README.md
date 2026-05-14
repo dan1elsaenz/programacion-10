@@ -27,8 +27,8 @@ Se debe implementar un enfoque basado en funciones de Python.
 - Primera línea: entero `N` (cantidad de vagones, 1 ≤ N ≤ 100).
 - Segunda línea: entero `Q` (cantidad de operaciones, 1 ≤ Q ≤ 50).
 - Las siguientes `Q` líneas contienen una operación cada una:
-    - `A p v` con 1 ≤ p ≤ N y 1 ≤ v ≤ 1000.
-    - `C p` con 1 ≤ p ≤ N.
+  - `A p v` con 1 ≤ p ≤ N y 1 ≤ v ≤ 1000.
+  - `C p` con 1 ≤ p ≤ N.
 
 ### Salida
 
@@ -134,11 +134,52 @@ Una línea por cada operación `C` con el valor de carga del vagón consultado.
 
 ### Rúbrica
 
-| Criterio                                                                       | Puntaje |
-| ------------------------------------------------------------------------------ | ------- |
-| Crea la lista e inicializa los N vagones en cero                               | 10      |
-| Lee e identifica correctamente la operación (`A` o `C`) en cada línea         | 15      |
-| `cargar`: usa un ciclo para agregar `v` a cada vagón del 1 al `p`             | 35      |
-| `consultar`: retorna la carga del vagón `p`                                   | 25      |
-| Imprime una línea por cada operación `C` con el valor correcto                | 15      |
-| **Total**                                                                      | **100** |
+| Criterio                                                              | Puntaje |
+| --------------------------------------------------------------------- | ------- |
+| Crea la lista e inicializa los N vagones en cero                      | 10      |
+| Lee e identifica correctamente la operación (`A` o `C`) en cada línea | 15      |
+| `cargar`: usa un ciclo para agregar `v` a cada vagón del 1 al `p`     | 35      |
+| `consultar`: retorna la carga del vagón `p`                           | 25      |
+| Imprime una línea por cada operación `C` con el valor correcto        | 15      |
+| **Total**                                                             | **100** |
+
+## Solución
+
+```py
+def cargar(vagones, p, v):
+    """
+    func agregar
+    """
+    for i in range(p):
+        vagones[i] += v
+
+
+def consultar(vagones, p):
+    """
+    func consultar
+    """
+    return vagones[p - 1]
+
+
+"""
+main
+"""
+N = int(input())  # Cantidad de vagones
+Q = int(input())  # Cantidad de operaciones
+
+vagones = [0] * N
+
+for _ in range(Q):
+    linea = input().split()  # ["A", "p", "v"] / ["C", "p"]
+
+    if linea[0] == "A":
+        p = int(linea[1])
+        v = int(linea[2])
+
+        cargar(vagones, p, v)
+
+    elif linea[0] == "C":
+        p = int(linea[1])
+
+        print(consultar(vagones, p))
+```
