@@ -32,16 +32,33 @@ Se recorre el arreglo una sola vez, manteniendo una variable que guarda el mejor
 
     El arreglo debe tener al menos un elemento. Inicializar con `numeros[0]` lanza un `IndexError` si el arreglo está vacío.
 
-```python
-numeros = [213, 34, 12, 43, 65, 78, 100, 1, -1, -234]
+=== "C++"
 
-maximo = numeros[0]
-for x in numeros:
-    if x > maximo:
-        maximo = x
+    ```cpp
+    vector<int> numeros = {213, 34, 12, 43, 65, 78, 100, 1, -1, -234};
 
-print(maximo)  # 213
-```
+    int maximo = numeros[0];
+    for (int x : numeros) {
+        if (x > maximo) {
+            maximo = x;
+        }
+    }
+
+    cout << maximo << endl;  // 213
+    ```
+
+=== "Python"
+
+    ```python
+    numeros = [213, 34, 12, 43, 65, 78, 100, 1, -1, -234]
+
+    maximo = numeros[0]
+    for x in numeros:
+        if x > maximo:
+            maximo = x
+
+    print(maximo)  # 213
+    ```
 
 La complejidad es $O(n)$: cada elemento se visita exactamente una vez.
 
@@ -49,14 +66,29 @@ La complejidad es $O(n)$: cada elemento se visita exactamente una vez.
 
     Si se necesita la _posición_ del elemento máximo en lugar de su valor, se itera con `range(len(...))` y se guarda el índice:
 
-    ```python
-    indice_max = 0
-    for i in range(1, len(numeros)):
-        if numeros[i] > numeros[indice_max]:
-            indice_max = i
+    === "C++"
 
-    print(indice_max)   # 0  (el valor 213 está en la posición 0)
-    ```
+        ```cpp
+        int indice_max = 0;
+        for (int i = 1; i < (int)numeros.size(); i++) {
+            if (numeros[i] > numeros[indice_max]) {
+                indice_max = i;
+            }
+        }
+
+        cout << indice_max << endl;   // 0  (el valor 213 está en la posición 0)
+        ```
+
+    === "Python"
+
+        ```python
+        indice_max = 0
+        for i in range(1, len(numeros)):
+            if numeros[i] > numeros[indice_max]:
+                indice_max = i
+
+        print(indice_max)   # 0  (el valor 213 está en la posición 0)
+        ```
 
 !!! note "Funciones de Python"
 
@@ -74,14 +106,28 @@ Las _sumas de prefijos_ permiten responder cada consulta en $O(1)$, pagando solo
 
 Se construye un arreglo auxiliar `prefijos` donde `prefijos[k]` almacena la suma de todos los elementos desde el índice `0` hasta el índice `k`.
 
-```python
-numeros  = [23, 14, 12, 21, 45, 32]
-prefijos = [0] * len(numeros)
+=== "C++"
 
-prefijos[0] = numeros[0]
-for i in range(1, len(numeros)):
-    prefijos[i] = prefijos[i-1] + numeros[i]
-```
+    ```cpp
+    vector<int> numeros  = {23, 14, 12, 21, 45, 32};
+    vector<int> prefijos(numeros.size());
+
+    prefijos[0] = numeros[0];
+    for (int i = 1; i < (int)numeros.size(); i++) {
+        prefijos[i] = prefijos[i-1] + numeros[i];
+    }
+    ```
+
+=== "Python"
+
+    ```python
+    numeros  = [23, 14, 12, 21, 45, 32]
+    prefijos = [0] * len(numeros)
+
+    prefijos[0] = numeros[0]
+    for i in range(1, len(numeros)):
+        prefijos[i] = prefijos[i-1] + numeros[i]
+    ```
 
 | Índice | Valor | Prefijo acumulado |
 | ------ | ----- | ----------------- |
@@ -98,12 +144,25 @@ Para obtener la suma entre los índices `i` y `j` se usa la fórmula:
 
 $\text{suma}(i, j) = \text{prefijos}[j] - \text{prefijos}[i - 1]$
 
-```python
-def suma_rango(prefijos, i, j):
-    if i == 0:
-        return prefijos[j]
-    return prefijos[j] - prefijos[i - 1]
-```
+=== "C++"
+
+    ```cpp
+    int suma_rango(vector<int>& prefijos, int i, int j) {
+        if (i == 0) {
+            return prefijos[j];
+        }
+        return prefijos[j] - prefijos[i - 1];
+    }
+    ```
+
+=== "Python"
+
+    ```python
+    def suma_rango(prefijos, i, j):
+        if i == 0:
+            return prefijos[j]
+        return prefijos[j] - prefijos[i - 1]
+    ```
 
 !!! example "Ejemplo"
 
@@ -148,22 +207,46 @@ flowchart TD
     A -- No --> G["Retornar -1"]
 ```
 
-```python
-def busqueda_binaria(arreglo, objetivo):
-    izquierdo, derecho = 0, len(arreglo) - 1
+=== "C++"
 
-    while izquierdo <= derecho:
-        medio = (izquierdo + derecho) // 2
+    ```cpp
+    int busqueda_binaria(vector<int>& arreglo, int objetivo) {
+        int izquierdo = 0, derecho = (int)arreglo.size() - 1;
 
-        if arreglo[medio] == objetivo:
-            return medio
-        elif arreglo[medio] < objetivo:
-            izquierdo = medio + 1
-        else:
-            derecho = medio - 1
+        while (izquierdo <= derecho) {
+            int medio = (izquierdo + derecho) / 2;
 
-    return -1
-```
+            if (arreglo[medio] == objetivo) {
+                return medio;
+            } else if (arreglo[medio] < objetivo) {
+                izquierdo = medio + 1;
+            } else {
+                derecho = medio - 1;
+            }
+        }
+
+        return -1;
+    }
+    ```
+
+=== "Python"
+
+    ```python
+    def busqueda_binaria(arreglo, objetivo):
+        izquierdo, derecho = 0, len(arreglo) - 1
+
+        while izquierdo <= derecho:
+            medio = (izquierdo + derecho) // 2
+
+            if arreglo[medio] == objetivo:
+                return medio
+            elif arreglo[medio] < objetivo:
+                izquierdo = medio + 1
+            else:
+                derecho = medio - 1
+
+        return -1
+    ```
 
 !!! example "Ejemplo de ejecución"
 
@@ -220,14 +303,31 @@ $$\text{mcd}(a, b) = \begin{cases} a & \text{si } b = 0 \\ \text{mcd}(b,\; a \bm
 Esto se repite reduciendo los valores en cada paso hasta que el segundo número sea cero.
 En este punto, el primero es el MCD.
 
-```python
-def mcd(a, b):
-    while b != 0:
-        a, b = b, a % b
-    return a
+=== "C++"
 
-print(mcd(48, 18))  # 6
-```
+    ```cpp
+    int mcd(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+    cout << mcd(48, 18) << endl;  // 6
+    ```
+
+=== "Python"
+
+    ```python
+    def mcd(a, b):
+        while b != 0:
+            a, b = b, a % b
+        return a
+
+    print(mcd(48, 18))  # 6
+    ```
 
 !!! example "Ejemplo de ejecución"
 
@@ -246,12 +346,24 @@ print(mcd(48, 18))  # 6
 
     $\text{mcm}(a, b) = \frac{a \cdot b}{\text{mcd}(a, b)}$
 
-    ```python
-    def mcm(a, b):
-        return a * b // mcd(a, b)
+    === "C++"
 
-    print(mcm(4, 6))  # 12
-    ```
+        ```cpp
+        int mcm(int a, int b) {
+            return a * b / mcd(a, b);
+        }
+
+        cout << mcm(4, 6) << endl;  // 12
+        ```
+
+    === "Python"
+
+        ```python
+        def mcm(a, b):
+            return a * b // mcd(a, b)
+
+        print(mcm(4, 6))  # 12
+        ```
 
 !!! abstract "Complejidad"
 
@@ -273,18 +385,38 @@ La reducción de complejidad se basa en la siguiente observación:
 
 En lugar de hacer `n` multiplicaciones, se hace la mitad del trabajo en cada paso recursivo.
 
-```python
-def potencia(a, n):
-    if n == 0:
-        return 1
+=== "C++"
 
-    mitad = potencia(a, n // 2)
+    ```cpp
+    long long potencia(long long a, long long n) {
+        if (n == 0) {
+            return 1;
+        }
 
-    if n % 2 == 0:
-        return mitad * mitad
-    else:
-        return mitad * mitad * a
-```
+        long long mitad = potencia(a, n / 2);
+
+        if (n % 2 == 0) {
+            return mitad * mitad;
+        } else {
+            return mitad * mitad * a;
+        }
+    }
+    ```
+
+=== "Python"
+
+    ```python
+    def potencia(a, n):
+        if n == 0:
+            return 1
+
+        mitad = potencia(a, n // 2)
+
+        if n % 2 == 0:
+            return mitad * mitad
+        else:
+            return mitad * mitad * a
+    ```
 
 !!! example "Ejemplo de ejecución"
 
@@ -313,20 +445,43 @@ Si `n` tiene un divisor $d > \sqrt{n}$, entonces $\frac{n}{d} < \sqrt{n}$, lo qu
 Por lo tanto, basta revisar divisores hasta $\sqrt{n}$.
 Tiene una complejidad temporal de $O(\sqrt{n})$.
 
-```python
-def es_primo(n):
-    if n < 2:
-        return False
-    x = 2
-    while x * x <= n:
-        if n % x == 0:
-            return False
-        x += 1
-    return True
+=== "C++"
 
-print(es_primo(97))   # True
-print(es_primo(100))  # False
-```
+    ```cpp
+    bool es_primo(int n) {
+        if (n < 2) {
+            return false;
+        }
+        int x = 2;
+        while (x * x <= n) {
+            if (n % x == 0) {
+                return false;
+            }
+            x++;
+        }
+        return true;
+    }
+
+    cout << es_primo(97) << endl;   // 1 (true)
+    cout << es_primo(100) << endl;  // 0 (false)
+    ```
+
+=== "Python"
+
+    ```python
+    def es_primo(n):
+        if n < 2:
+            return False
+        x = 2
+        while x * x <= n:
+            if n % x == 0:
+                return False
+            x += 1
+        return True
+
+    print(es_primo(97))   # True
+    print(es_primo(100))  # False
+    ```
 
 !!! warning "No usar para muchas consultas"
 
@@ -337,21 +492,41 @@ print(es_primo(100))  # False
 La factorización de un número `n` consiste en encontrar todos los valores que lo dividen exactamente.
 La observación clave es que si `d` divide a `n` y $d \leq \sqrt{n}$, entonces $n / d$ también es divisor, lo que permite encontrarlos de a pares revisando solo hasta $\sqrt{n}$, con complejidad $O(\sqrt{n})$.
 
-```python
-from math import isqrt # Retorna un entero en lugar de float
+=== "C++"
 
-def divisores(n):
-    resultado = []
-    for i in range(1, isqrt(n) + 1):
-        if n % i == 0:
-            resultado.append(i)
-            if i != n // i:
-                resultado.append(n // i)
-    resultado.sort()
-    return resultado
+    ```cpp
+    vector<int> divisores(int n) {
+        vector<int> resultado;
+        for (int i = 1; (long long)i * i <= n; i++) {
+            if (n % i == 0) {
+                resultado.push_back(i);
+                if (i != n / i) {
+                    resultado.push_back(n / i);
+                }
+            }
+        }
+        sort(resultado.begin(), resultado.end());
+        return resultado;
+    }
+    ```
 
-print(divisores(36))  # [1, 2, 3, 4, 6, 9, 12, 18, 36]
-```
+=== "Python"
+
+    ```python
+    from math import isqrt # Retorna un entero en lugar de float
+
+    def divisores(n):
+        resultado = []
+        for i in range(1, isqrt(n) + 1):
+            if n % i == 0:
+                resultado.append(i)
+                if i != n // i:
+                    resultado.append(n // i)
+        resultado.sort()
+        return resultado
+
+    print(divisores(36))  # [1, 2, 3, 4, 6, 9, 12, 18, 36]
+    ```
 
 !!! example "Ejemplo para n = 36"
 
@@ -372,21 +547,43 @@ print(divisores(36))  # [1, 2, 3, 4, 6, 9, 12, 18, 36]
 
     Para encontrar los _factores primos_ de `n`, se divide `n` mientras sea divisible:
 
-    ```python
-    def factores_primos(n):
-        factores = []
-        d = 2
-        while d * d <= n:
-            while n % d == 0:
-                factores.append(d)
-                n //= d
-            d += 1
-        if n > 1:
-            factores.append(n)
-        return factores
+    === "C++"
 
-    print(factores_primos(360))  # [2, 2, 2, 3, 3, 5]
-    ```
+        ```cpp
+        vector<int> factores_primos(int n) {
+            vector<int> factores;
+            int d = 2;
+            while ((long long)d * d <= n) {
+                while (n % d == 0) {
+                    factores.push_back(d);
+                    n /= d;
+                }
+                d++;
+            }
+            if (n > 1) {
+                factores.push_back(n);
+            }
+            return factores;
+        }
+        ```
+
+    === "Python"
+
+        ```python
+        def factores_primos(n):
+            factores = []
+            d = 2
+            while d * d <= n:
+                while n % d == 0:
+                    factores.append(d)
+                    n //= d
+                d += 1
+            if n > 1:
+                factores.append(n)
+            return factores
+
+        print(factores_primos(360))  # [2, 2, 2, 3, 3, 5]
+        ```
 
 ---
 
@@ -398,24 +595,51 @@ La _Criba de Eratóstenes_ hace lo mismo en $O(n \cdot \log(\log(n)))$, que en l
 
 La idea es comenzar con todos los números marcados como primos y luego, para cada primo encontrado, _eliminar todos sus múltiplos_.
 
-```python
-def criba(n):
-    es_primo = [True] * (n + 1)
-    es_primo[0] = es_primo[1] = False
+=== "C++"
 
-    i = 2
-    while i * i <= n:
-        if es_primo[i]:
-            for j in range(i * i, n + 1, i):   # (1)!
-                es_primo[j] = False
-        i += 1
+    ```cpp
+    vector<int> criba(int n) {
+        vector<bool> es_primo(n + 1, true);
+        es_primo[0] = es_primo[1] = false;
 
-    return [i for i in range(2, n + 1) if es_primo[i]]
+        for (int i = 2; (long long)i * i <= n; i++) {
+            if (es_primo[i]) {
+                for (int j = i * i; j <= n; j += i) {  // (1)!
+                    es_primo[j] = false;
+                }
+            }
+        }
 
-print(criba(30))  # [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
-```
+        vector<int> primos;
+        for (int i = 2; i <= n; i++) {
+            if (es_primo[i]) primos.push_back(i);
+        }
+        return primos;
+    }
+    ```
 
-1. Se empieza en `i * i` porque los múltiplos menores (`2i`, `3i`, ..., `(i-1)i`) ya fueron eliminados por primos anteriores.
+    1. Se empieza en `i * i` porque los múltiplos menores (`2i`, `3i`, ..., `(i-1)i`) ya fueron eliminados por primos anteriores.
+
+=== "Python"
+
+    ```python
+    def criba(n):
+        es_primo = [True] * (n + 1)
+        es_primo[0] = es_primo[1] = False
+
+        i = 2
+        while i * i <= n:
+            if es_primo[i]:
+                for j in range(i * i, n + 1, i):   # (1)!
+                    es_primo[j] = False
+            i += 1
+
+        return [i for i in range(2, n + 1) if es_primo[i]]
+
+    print(criba(30))  # [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
+    ```
+
+    1. Se empieza en `i * i` porque los múltiplos menores (`2i`, `3i`, ..., `(i-1)i`) ya fueron eliminados por primos anteriores.
 
 !!! example "Visualización para n = 15"
 
