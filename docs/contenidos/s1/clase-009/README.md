@@ -173,20 +173,20 @@ Ciencias: 92
 
 Python incluye un conjunto de métodos integrados para trabajar con diccionarios. La siguiente tabla presenta los más utilizados:
 
-| Método / Operación          | Descripción                                                       |
-|-----------------------------|-------------------------------------------------------------------|
-| `d[clave]`                  | Accede al valor. Lanza `KeyError` si la clave no existe.          |
-| `d.get(clave, defecto)`     | Accede al valor. Retorna `defecto` (o `None`) si no existe.       |
-| `d[clave] = valor`          | Agrega o actualiza un par clave–valor.                            |
-| `del d[clave]`              | Elimina el par con esa clave.                                     |
-| `d.pop(clave)`              | Elimina y **retorna** el valor asociado a la clave.               |
-| `d.keys()`                  | Retorna una vista con todas las claves.                           |
-| `d.values()`                | Retorna una vista con todos los valores.                          |
-| `d.items()`                 | Retorna una vista con todos los pares `(clave, valor)`.           |
-| `d.update(otro)`            | Copia los pares de `otro` en `d`, sobreescribiendo si hay claves repetidas. |
-| `d.clear()`                 | Elimina todos los pares del diccionario.                          |
-| `clave in d`                | Retorna `True` si la clave existe en el diccionario.              |
-| `len(d)`                    | Retorna el número de pares clave–valor.                           |
+| Método / Operación      | Descripción                                                                 |
+| ----------------------- | --------------------------------------------------------------------------- |
+| `d[clave]`              | Accede al valor. Lanza `KeyError` si la clave no existe.                    |
+| `d.get(clave, defecto)` | Accede al valor. Retorna `defecto` (o `None`) si no existe.                 |
+| `d[clave] = valor`      | Agrega o actualiza un par clave–valor.                                      |
+| `del d[clave]`          | Elimina el par con esa clave.                                               |
+| `d.pop(clave)`          | Elimina y **retorna** el valor asociado a la clave.                         |
+| `d.keys()`              | Retorna una vista con todas las claves.                                     |
+| `d.values()`            | Retorna una vista con todos los valores.                                    |
+| `d.items()`             | Retorna una vista con todos los pares `(clave, valor)`.                     |
+| `d.update(otro)`        | Copia los pares de `otro` en `d`, sobreescribiendo si hay claves repetidas. |
+| `d.clear()`             | Elimina todos los pares del diccionario.                                    |
+| `clave in d`            | Retorna `True` si la clave existe en el diccionario.                        |
+| `len(d)`                | Retorna el número de pares clave–valor.                                     |
 
 A continuación se muestra cada método en uso:
 
@@ -484,4 +484,354 @@ Borrador   ₡   150  (75 unidades)
             Empanada      ₡    350       15
             Galletas      ₡    200        8
             Agua          ₡    300        5
+            ```
+
+## Ejercicios
+
+### 1. Anagramas
+
+Dos palabras son **anagramas** si contienen exactamente los mismos caracteres con la misma frecuencia.
+Dado dos palabras, determinar si son anagramas entre sí.
+
+=== "Enunciado"
+
+    **Entrada:** dos palabras en minúsculas, una por línea.
+
+    **Salida:** `SI` si son anagramas, `NO` en caso contrario.
+
+    | Entrada | Salida |
+    |---------|--------|
+    | `listen` <br> `silent` | `SI` |
+    | `amor` <br> `roma` | `SI` |
+    | `hola` <br> `mundo` | `NO` |
+
+=== "Solución"
+
+    Se construye un diccionario de frecuencias para cada palabra y se comparan directamente.
+    Si son iguales, las palabras son anagramas.
+
+    ```python
+    def frecuencias(palabra):
+        conteo = {}
+        for letra in palabra:
+            conteo[letra] = conteo.get(letra, 0) + 1  # (1)!
+        return conteo
+
+    a = input()
+    b = input()
+
+    if frecuencias(a) == frecuencias(b):  # (2)!
+        print("SI")
+    else:
+        print("NO")
+    ```
+
+    1. `.get(letra, 0)` evita el `KeyError` cuando la letra aparece por primera vez.
+    2. Comparar dos diccionarios en Python verifica que tengan exactamente las mismas claves y valores.
+
+    !!! example "Ejecución"
+
+        === "Son anagramas"
+
+            ```
+            listen
+            silent
+            SI
+            ```
+
+        === "No son anagramas"
+
+            ```
+            hola
+            mundo
+            NO
+            ```
+
+### 2. Dos sumas
+
+Dado una lista de N enteros y un objetivo T, encontrar dos números en la lista que sumen exactamente T e imprimir sus **índices** (el menor primero).
+Se garantiza que siempre existe exactamente una solución.
+
+=== "Enunciado"
+
+    **Entrada:**
+
+    - Primera línea: N (cantidad de números) y T (objetivo), separados por espacio.
+    - Segunda línea: N enteros separados por espacio.
+
+    **Salida:** los dos índices separados por espacio.
+
+    | Entrada | Salida |
+    |---------|--------|
+    | `4 9` <br> `2 7 11 15` | `0 1` |
+    | `3 6` <br> `3 2 4` | `1 2` |
+    | `2 6` <br> `3 3` | `0 1` |
+
+=== "Solución"
+
+    Para cada número `x`, el complemento necesario es `T - x`.
+    El diccionario guarda `valor → índice` de los números ya procesados. Si el complemento ya está registrado, se encontró la pareja.
+
+    ```python
+    n, t = map(int, input().split())
+    nums = list(map(int, input().split()))
+
+    vistos = {}  # (1)!
+
+    for i, x in enumerate(nums):
+        complemento = t - x
+        if complemento in vistos:       # (2)!
+            print(vistos[complemento], i)
+            break
+        vistos[x] = i                   # (3)!
+    ```
+
+    1. `vistos` mapea cada número a su índice a medida que se recorre la lista.
+    2. Si el complemento necesario ya fue visto, la pareja es `(índice del complemento, índice actual)`.
+    3. Si no se encontró complemento aún, se registra el número actual para consultas futuras.
+
+    !!! example "Ejecución"
+
+        === "Caso 1"
+
+            ```
+            4 9
+            2 7 11 15
+            0 1
+            ```
+
+        === "Caso 2"
+
+            ```
+            3 6
+            3 2 4
+            1 2
+            ```
+
+### 3. Diccionario inverso
+
+Dado N pares clave–valor, construir el diccionario inverso (intercambiar claves por valores).
+Si algún valor se repite en el original, el inverso no es posible: imprimir `NO INVERTIBLE`.
+
+=== "Enunciado"
+
+    **Entrada:**
+
+    - Primera línea: N (cantidad de pares).
+    - Las siguientes N líneas: cada una con una clave y un valor separados por espacio.
+
+    **Salida:** Si es invertible, los pares del diccionario inverso ordenados alfabéticamente por clave (nuevo), uno por línea con formato `clave: valor`. Si no, imprimir `NO INVERTIBLE`.
+
+    | Entrada | Salida |
+    |---------|--------|
+    | `3` <br> `a 1` <br> `b 2` <br> `c 3` | `1: a` <br> `2: b` <br> `3: c` |
+    | `3` <br> `x rojo` <br> `y azul` <br> `z rojo` | `NO INVERTIBLE` |
+
+=== "Solución"
+
+    Se recorre la lista de pares y se va construyendo el diccionario inverso. Si un valor ya fue usado como clave en el inverso, significa que está repetido y no se puede invertir.
+
+    ```python
+    n = int(input())
+
+    inverso = {}
+    invertible = True
+
+    for _ in range(n):
+        clave, valor = input().split()
+        if valor in inverso:            # (1)!
+            invertible = False
+            break
+        inverso[valor] = clave          # (2)!
+
+    if not invertible:
+        print("NO INVERTIBLE")
+    else:
+        for k in sorted(inverso):       # (3)!
+            print(f"{k}: {inverso[k]}")
+    ```
+
+    1. Si el valor ya existe como clave en el inverso, hay una colisión: el diccionario no es invertible.
+    2. Se intercambian los roles: el valor original se convierte en la nueva clave y viceversa.
+    3. `sorted` ordena las claves alfabéticamente para una salida consistente.
+
+    !!! example "Ejecución"
+
+        === "Invertible"
+
+            ```
+            3
+            a 1
+            b 2
+            c 3
+            1: a
+            2: b
+            3: c
+            ```
+
+        === "No invertible"
+
+            ```
+            3
+            x rojo
+            y azul
+            z rojo
+            NO INVERTIBLE
+            ```
+
+### 4. Conexiones directas
+
+Se registran R rutas de vuelo unidireccionales entre ciudades.
+Luego llegan Q consultas preguntando si existe un vuelo directo entre dos ciudades.
+Responder cada consulta.
+
+=== "Enunciado"
+
+    **Entrada:**
+
+    - Primera línea: R (rutas) y Q (consultas), separados por espacio.
+    - Las siguientes R líneas: cada una con dos ciudades `A B` (vuelo directo de A hacia B).
+    - Las siguientes Q líneas: cada una con dos ciudades `X Y` (¿hay vuelo directo de X a Y?).
+
+    **Salida:** Q líneas, cada una con `SI` o `NO`.
+
+    **Ejemplo de entrada:**
+    ```
+    4 3
+    SJO MIA
+    SJO BOG
+    MIA NYC
+    BOG LIM
+    SJO MIA
+    MIA SJO
+    BOG LIM
+    ```
+
+    **Ejemplo de salida:**
+    ```
+    SI
+    NO
+    SI
+    ```
+
+=== "Solución"
+
+    Las rutas se almacenan en un diccionario donde cada clave es una ciudad de origen y su valor es el conjunto de destinos directos.
+    Para responder cada consulta basta con verificar si el destino está en ese conjunto.
+
+    ```python
+    r, q = map(int, input().split())
+
+    rutas = {}                                  # (1)!
+    for _ in range(r):
+        origen, destino = input().split()
+        if origen not in rutas:
+            rutas[origen] = set()
+        rutas[origen].add(destino)              # (2)!
+
+    for _ in range(q):
+        x, y = input().split()
+        if x in rutas and y in rutas[x]:        # (3)!
+            print("SI")
+        else:
+            print("NO")
+    ```
+
+    1. `rutas` mapea cada ciudad de origen al conjunto de sus destinos directos.
+    2. Se usa un `set` para que agregar la misma ruta dos veces no la duplique.
+    3. Primero se verifica que la ciudad de origen tenga rutas registradas, luego que el destino específico esté entre ellas.
+
+    !!! example "Ejecución"
+
+        ```
+        4 3
+        SJO MIA
+        SJO BOG
+        MIA NYC
+        BOG LIM
+        SJO MIA
+        MIA SJO
+        BOG LIM
+        SI
+        NO
+        SI
+        ```
+
+### 5. Traductor de oraciones
+
+Dado un diccionario de traducción y una oración, traducir cada palabra que aparezca en el diccionario.
+Las palabras que no estén registradas se dejan tal cual.
+
+=== "Enunciado"
+
+    **Entrada:**
+
+    - Primera línea: N (cantidad de pares de traducción).
+    - Las siguientes N líneas: cada una con la palabra original y su traducción separadas por espacio.
+    - Última línea: la oración a traducir (palabras en minúsculas separadas por espacio).
+
+    **Salida:** La oración traducida en una sola línea.
+
+    **Ejemplo de entrada:**
+    ```
+    4
+    cat gato
+    dog perro
+    house casa
+    sun sol
+    the cat and the dog are in the house
+    ```
+
+    **Ejemplo de salida:**
+    ```
+    the gato and the perro are in the casa
+    ```
+
+=== "Solución"
+
+    Se carga el diccionario de traducción y luego se recorre la oración palabra por palabra.
+    Para cada palabra, `.get()` retorna la traducción si existe o la palabra original si no está registrada.
+
+    ```python
+    n = int(input())
+
+    traduccion = {}
+    for _ in range(n):
+        original, traducida = input().split()
+        traduccion[original] = traducida        # (1)!
+
+    oracion = input().split()
+
+    resultado = []
+    for palabra in oracion:
+        resultado.append(traduccion.get(palabra, palabra))  # (2)!
+
+    print(" ".join(resultado))
+    ```
+
+    1. El diccionario asocia cada palabra original con su traducción.
+    2. `.get(palabra, palabra)` intenta traducir; si la clave no existe, devuelve la palabra sin cambios como valor por defecto.
+
+    !!! example "Ejecución"
+
+        === "Traducción parcial"
+
+            ```
+            4
+            cat gato
+            dog perro
+            house casa
+            sun sol
+            the cat and the dog are in the house
+            the gato and the perro are in the casa
+            ```
+
+        === "Sin palabras conocidas"
+
+            ```
+            2
+            hello hola
+            bye adios
+            this is a test
+            this is a test
             ```
